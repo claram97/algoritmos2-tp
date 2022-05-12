@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main() {
+int main() {                   //comentario importante, si el barco o el soldado son puestos en el piso, pero en posiciones X invalidas, no deberia mostrar la letra.
 	
 	try{
 		
