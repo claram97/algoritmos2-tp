@@ -1,8 +1,7 @@
 #include <iostream>
-#include "jugador.cpp"
+#include "jugador.h"
 
 using namespace std;
-
 
 int main() {
 	int *cartas = new int[5];

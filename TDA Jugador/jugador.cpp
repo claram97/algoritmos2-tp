@@ -6,28 +6,17 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include <iostream>
-#include <stdio.h>
-
+#include "jugador.h"
 
 using namespace std;
 
-class Jugador {
+Jugador::Jugador(int id, int cantidadDeFichas, int* cartas) {
+	this->id = id;
+	this->cantidadDeFichas = cantidadDeFichas;
+	this->cartas = cartas;
+}
 
-private:
-	unsigned int id;
-	int cantidadDeFichas;
-	int* cartas; //TODO: Reemplazar int por TDA cartas
-
-public:
-	Jugador(int id, int cantidadDeFichas, int* cartas) {
-		this->id = id;
-		this->cantidadDeFichas = cantidadDeFichas;
-		this->cartas = cartas;
-	}
-
-	int obtenerCantidadDeFichas() {
-		return this->cantidadDeFichas;
-	}
-};
+int Jugador::obtenerCantidadDeFichas() {
+	return this->cantidadDeFichas;
+}
 
