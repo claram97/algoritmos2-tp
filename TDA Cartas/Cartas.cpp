@@ -73,6 +73,21 @@ void Cartas::nuevaCarta(int aleatorio){   //constructor?
 			tipoDeCarta = MISIL;
 			descripcion = "Misil";
 			break;
+		
+		case 4:
+		    tipoDeCarta = MINAS;
+		    descripcion = "Minas";
+		    break;
+
+		case 5:
+		    tipoDeCarta = RADAR;
+		    descripcion = "Radar";
+		    break;
+
+		case 6:
+		    tipoDeCarta = SUPER;
+		    descripcion = "Super";
+		    break;
 
 	}
 }
