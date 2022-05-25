@@ -5,6 +5,9 @@
 const char AVION = 'A';
 const char BARCO = 'B';
 const char MISIL = 'M';
+const char MINAS = 'm';
+const char RADAR = 'R';
+const char SUPER = 'S';
 #define MAX_CARTAS 5
 
 class Cartas{
