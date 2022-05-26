@@ -8,7 +8,7 @@ class Jugador {
 private:
 	unsigned int id;
 	int cantidadDeFichas;
-	std::deque<int*>* cartas; //TODO: Reemplazar int por TDA cartas
+	std::deque<Cartas *>* cartas; //TODO: Reemplazar int por TDA cartas
 
 public:
 	Jugador(int id, int cantidadDeFichas, std::deque<int*>* cartas);
