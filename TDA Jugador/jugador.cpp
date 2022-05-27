@@ -10,24 +10,46 @@
 
 using namespace std;
 
-Jugador::Jugador(int id, int cantidadDeFichas, std::deque<int*>* cartas) {
+Jugador::Jugador(int id, int cantidadDeFichas, std::deque<int**> cartas) {
 	this->id = id;
-	this->cantidadDeFichas = cantidadDeFichas;
+	if(cantidadDeFichas > 0){
+		this->cantidadDeFichas = cantidadDeFichas;
+		this->fichas = new Ficha*[this->cantidadDeFichas];
+        	for(int i = 0; i < this->cantidadDeFichas; i++){
+            		fichas[i] = NULL;
+       		}
+	}
 	this->cartas = cartas;
+	
+    }
+    
+    if(amountOfTokens <= 0){
+        throw "Invalidad amount of tokens.";
+    }
 }
 
-int Jugador::obtenerCantidadDeFichas() {
+unsigned int Jugador::getCantidadDeFichas() {
 	return this->cantidadDeFichas;
 }
-int Jugador::obtenerCantidadDeCartas() {
+
+void Jugador::setCantidadDeFichas(unsigned int cantidadDeFichas){
+    if(cantidadDeFichas > 0){
+        this->cantidadDeFichas = cantidadDeFichas;
+    }
+    else{
+        throw "Invalid amount of tokens.";
+    }
+}
+
+unsigned int Jugador::getCantidadDeCartas() {
 	return this->cartas->size();
 }
-void Jugador::agregarCarta(int* carta) {
+void Jugador::setCarta(int* carta) {
 	if (this->obtenerCantidadDeCartas() <= MAX_CARTAS) {
 		this->cartas->push_back(carta);
 	}
 }
-int* Jugador::obtenerCarta() {
+int* Jugador::getCarta() {
 	int *carta = this->cartas->front();
 	this->cartas->pop_front();
 	return carta;
