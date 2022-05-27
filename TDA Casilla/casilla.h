@@ -1,4 +1,4 @@
-/*Casillas: 						Clara
+/*Casillas: 						Clari
 	Coordenada
 	Contenido (Vacío, Lleno, Inactivo)
 	Tipo (Tierra, Mar, Aire)
@@ -9,31 +9,30 @@
 
 #ifndef NULL
 #define NULL 0
-#endif
 
-#define MAX_LENGHT 100
-#define MAX_WIDE 100
-#define MAX_HEIGHT 100
+
+#define MAX_LARGO 100
+#define MAX_ANCHO 100
+#define MAX_ALTO 100
 
 //content
-#define EMPTY ' '
+#define VACIO ' '
 #define FULL '*'
-#define INACTIVE 'X'
+#define INACTIVO 'X'
 //type
-#define EARTH 'T'
-#define AIR 'A'
-#define SEA 'S'
+#define TIERRA 'T'
+#define AIRE 'A'
+#define MAR 'S'
 
 class Casilla{
 
 private:
-	char content;
-    char type;
-    unsigned int lenght;
-    unsigned int wide;
-    unsigned int height;
-    Token** tokens;
-    unsigned int amountOfTokens;
+
+    char contenido;
+    char tipoDeCasilla;
+    unsigned int coordenadaX;
+    unsigned int coordenadaY;
+    unsigned int coordenadaZ;
 
 public:
     //Pre: recibe las coordenadas del tablero.
@@ -44,59 +43,53 @@ public:
 
     //Pre: recibe las coordenadas del tablero y una cantidad de tokens (fichas).
     //Post: crea una casilla.
-    Casilla(unsigned int amountOfTokens, unsigned int lenght, unsigned int wide, unsigned int height);
+    Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ);
     
-    //Pre: que la casilla exista.
-    //Post:
-    ~Casilla();
+    //Pre: -
+    //Post: elimina la casilla existente.
+    virtual ~Casilla();
 
-    //Pre:
-    //Post: devuelve la cantidad de fichas de una casilla dada.
-    unsigned int getAmountOfTokens();
 
-    //Pre: recibe una cantidad de tokens mayor a 0.
-    //Post: inicializa la cantidad de tokens.
-    void setAmountOfTokens(unsigned int amountOfTokens);
-
-    //Pre: recibe un contenido para la casilla (empty, full o inactiva).
+    //Pre: recibe un contenido para la casilla (vacío, full o inactiva).
     //Post: inicializa el contenido de la casilla según su tipo.
-    void setContent(char content);
+    void setContenido(char contenido);
 
     //Pre:
     //Post: devuelve el contenido de la casilla.
-    char getContent();
+    char getContenido();
 
     //Pre: recibe un tipo para la casilla (mar, tierra o aire).
     //Post: inicializa el tipo de la casilla según su tipo.
-    void setType(char type);
+    void setTipoDeCasilla(char tipoDeCasilla);
 
     //Pre:
     //Post: devuelve el tipo de la casilla.
-    char getType();
+    char getTipoDeCasilla();
 
     //Pre: recibe el largo (coordenada X), que debe estar entre 0 y 100.
     //Post: inicializa lenght de la casilla.
-    void setLenght(unsigned int lenght);
+    void setCoordenadaX(unsigned int coordenadaX);
 
     //Pre:
     //Post: devuelve lenght de una casilla dada.
-    unsigned int getLenght();
+    unsigned int getCoordenadaX();
 
     //Pre: recibe el ancho (coordenada Y), que debe estar entre 0 y 100.
     //Post: inicializa wide de la casilla.
-    void setWide(unsigned int lenght);
+    void setCoordendaY(unsigned int coordenadaY);
 
     //Pre:
     //Post: devuelve wide de una casilla dada.
-    unsigned int getWide();
+    unsigned int getCoordenadaY();
 
     //Pre: recibe el alto (coordenada Z), que debe estar entre 0 y 100.
     //Post: inicializa height de la casilla.
-    void setHeight(unsigned int lenght);
+    void setCoordenadaZ(unsigned int coordenadaZ);
 
     //Pre:
     //Post: devuelve height de una casilla dada.
-    unsigned int getHeight();
+    unsigned int getCoordenadaZ();
 }
 
+#endif
 #endif
