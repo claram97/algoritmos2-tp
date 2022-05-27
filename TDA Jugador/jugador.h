@@ -7,16 +7,22 @@ class Jugador {
 
 private:
 	unsigned int id;
-	int cantidadDeFichas;
+	Ficha** fichas;
+	unsigned int cantidadDeFichas;
 	std::deque<int *>* cartas; //TODO: Reemplazar int por TDA cartas
 
 public:
 	Jugador(int id, int cantidadDeFichas, std::deque<int*>* cartas);
-
-	int obtenerCantidadDeFichas();
-	int obtenerCantidadDeCartas();
-	void agregarCarta(int*carta);
-	int* obtenerCarta();
+	
+	unsigned int getCantidadDeFichas();
+	
+    	//Pre: recibe una cantidad de fichas mayor a 0.
+    	//Post: inicializa la cantidad de fichas.
+    	void setCantidadDeFichas(unsigned int cantidadDeFichas);
+	
+	unsigned int getCantidadDeCartas();
+	void agregarCarta(int*carta); //cambiar por Cartas*
+	int* getCarta(); //cambiar por Cartas*
 	void decrementarCantidadDeFichas();
 
 };
