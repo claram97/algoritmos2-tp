@@ -7,14 +7,21 @@ class Jugador {
 
 private:
 	unsigned int id;
-	Ficha** fichas;
-	unsigned int cantidadDeFichas;
+	Ficha** fichas;//el jugador necesita las fichas
+	unsigned int cantidadDeFichas;//por si acaso, vemos si se usa
+	unsigned int cantidadFichasSoldados; 	//para saber si sigue o no el juego, la cantidad de fichas totales va a ser la cantidad
+						//de fichas soldados + las otras :D
 	std::deque<int**> cartas; //TODO: Reemplazar int por TDA cartas
+	estadoJugador estadoDelJugador; //deberia empezar en jugando
 
 public:
 	//Pre: -
 	//Post: crea un jugador con su respectivo id, la cantidad de fichas que posee y las cartas en su mazo.
 	Jugador(int id, int cantidadDeFichas, std::deque<int*>* cartas);
+	
+	//Pre: -
+	//Post: destruye la instancia de jugador.
+	virtual ~Jugador();
 	
 	//Pre: -
 	//Post: devuelve la cantidad de fichas.
