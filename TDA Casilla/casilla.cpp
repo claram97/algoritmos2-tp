@@ -6,8 +6,7 @@ bool Casilla::isValidProportionsForBoard(unsigned int lenght, unsigned int wide,
 }
 
 Casilla::Casilla(unsigned int amountOfTokens,unsigned int lenght; unsigned int wide, unsigned int height){
-    //Acá hay que chequear lenght/wide/height para ver el tipo, no sé si se recibe por parámetro o se
-    //saca de otro lado.
+  //Esto no va acà creo pero lo dejo aca por si se necesita
     if(isValidProportionsForBoard(lenght,wide,height) && amountOfTokens > 0){
         this->content = VACIO;
         this->type;
@@ -21,20 +20,8 @@ Casilla::Casilla(unsigned int amountOfTokens,unsigned int lenght; unsigned int w
     
 }
 Casilla::~Casilla(){
-    if(tokens){
-        for(int i = 0; i < this->amountOfTokens; i++){
-            delete tokens[i];
-        }
-        delete []tokens;
-    }
-    
+  
 }
-
-unsigned int Casilla::getAmountOfTokens(){
-    return this->amountOfTokens;
-}
-
-
 
 void Casilla::setContenido(char contenido){
     if(contenido == VACIO || contenido == FULL || contenido == INACTIVO){
