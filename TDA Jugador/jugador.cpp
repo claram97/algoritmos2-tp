@@ -16,16 +16,27 @@ Jugador::Jugador(int id, int cantidadDeFichas, std::deque<int**> cartas) {
 		this->cantidadDeFichas = cantidadDeFichas;
 		this->fichas = new Ficha*[this->cantidadDeFichas];
         	for(int i = 0; i < this->cantidadDeFichas; i++){
-            		fichas[i] = NULL;
+            		//crear las fichas supongo
        		}
 	}
-	this->cartas = cartas;
+	this->cartas = cartas;//esto creo q hay q corregirlo
 	
     }
     
-    if(amountOfTokens <= 0){
+    if(this->cantidadDeFichas <= 0){
         throw "Invalidad amount of tokens.";
     }
+}
+
+Jugador::~Jugador(){
+	if(fichas){
+		for(int i = 0; i < this->cantidadDeFichas; i++){
+		    delete fichas[i];
+		}
+		delete []fichas;
+	 }
+	//hacer lo mismo con las cartas
+    
 }
 
 unsigned int Jugador::getCantidadDeFichas() {
