@@ -14,17 +14,7 @@ Casilla::Casilla(unsigned int amountOfTokens,unsigned int lenght; unsigned int w
         this->lenght = lenght;
         this->wide = wide;
         this->height = height;
-        this->tokens = new *tokens[amountOfTokens];
-        for(int i = 0; i < amountOfTokens; i++){
-            tokens[i] = NULL;
-        }
-        this->amountOfTokens = amountOfTokens;
     }
-    
-    if(amountOfTokens <= 0){
-        throw "Invalidad amount of tokens.";
-    }
-
     if(!isValidProportionsForBoard(lenght,wide,height)){
         throw "Invalid proportions for board.";
     }
@@ -44,76 +34,69 @@ unsigned int Casilla::getAmountOfTokens(){
     return this->amountOfTokens;
 }
 
-void Casilla::setAmountOfTokens(unsigned int amountOfTokens){
-    if(amountOfTokens > 0){
-        this->amountOfTokens = amountOfTokens;
+
+
+void Casilla::setContenido(char contenido){
+    if(contenido == VACIO || contenido == FULL || contenido == INACTIVO){
+        this->contenido = contenido;
     }
     else{
-        throw "Invalid amount of tokens.";
+        throw "El contenido es inválido, debe ser: VACIO, FULL, INACTIVO";
     }
 }
 
-void Casilla::setContent(char content){
-    if(content == EMPTY || content == FULL || content == INACTIVE){
-        this->content = content;
-    }
-    else{
-        throw "The content you tried to set is invalid.";
-    }
+char Casilla::getContenido(){
+    return this->contenido;
 }
 
-char Casilla::getContent(){
-    return this->content;
-}
-
-void Casilla::setType(char type){
-    if(type == EARTH || type == AIR || type == SEA){
-        this->type = type;
+void Casilla::setTipoDeCasilla(char tipoDeCasilla){
+    if(tipoDeCasilla == TIERRA || tipoDeCasilla == AGUA || tipoDeCasilla == MAR){
+        this->tipoDeCasilla = tipoDeCasilla;
     }
     else{
         throw "Invalid type.";
     }
 }
 
-char Casilla::getType(){
-    return this->type;
+char Casilla::getTipoDeCasilla(){
+    return this->tipoDeCasilla;
 }
 
-void Casilla::setLenght(unsigned int lenght){
-    if(lenght > 0 && lenght < MAX_LENGHT){
-        this->lenght = lenght;
+void Casilla::setCoordenadaX(unsigned int coordenadaX){
+    if(lenght > MIN_DIMENSION && lenght < MAX_DIMENSION){
+        this->coordenadaX = coordenadaX;
     }
     else{
-        throw "Invalid lenght."
+        throw "La coordenada X para la casilla no está dentro de un rango de valores válidos."
     }
 }
 
-unsigned int Casilla::getLenght(){
-    return this->lenght;
+unsigned int Casilla::getCoordenadaX(){
+    return this->coordenadaX;
 }
 
-void Casilla::setWide(unsigned int lenght){
-    if(wide > 0 && wide < MAX_LENGHT){
-        this->wide = wide;
-    }
-    else{
-        throw "Invalid wide."
-    }
-}
-
-unsigned int Casilla::getWide(){
-    return this->wide;
-}
-
-void Casilla::setHeight(unsigned int lenght){
-    if(height > 0 && height < MAX_LENGHT){
-        this->height = height;
+void Casilla::setCoordenadaY(unsigned int coordenadaY){
+    if(lenght > MIN_DIMENSION && lenght < MAX_DIMENSION){
+        this->coordenadaY = coordenadaY;
     }
     else{
-        throw "Invalid height."
+        throw "La coordenada Y para la casilla no está dentro de un rango de valores válidos."
     }
 }
 
-unsigned int Casilla::getHeight(){
-    return this->height;
+unsigned int Casilla::getCoordenadaY(){
+    return this->coordenadaY;
+}
+
+void Casilla::setCoordenadaZ(unsigned int coordenadaZ){
+    if(lenght > MIN_DIMENSION && lenght < MAX_DIMENSION){
+        this->coordenadaZ = coordenadaZ;
+    }
+    else{
+        throw "La coordenada Z para la casilla no está dentro de un rango de valores válidos."
+    }
+}
+
+unsigned int Casilla::getCoordenadaZ(){
+    return this->coordenadaZ;
 }
