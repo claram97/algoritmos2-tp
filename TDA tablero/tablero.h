@@ -1,7 +1,7 @@
 #ifndef TABLERO_H
 #define TABLERO_H
 
-class tablero{
+class Tablero{
 	private:
 		int fila; // X
 		int columna; // Y
@@ -9,7 +9,7 @@ class tablero{
 		int ***matriz;
 		
 	public:
-		tablero(int, int, int);	// tablero(int, int);
+		Tablero(int, int, int);	// tablero(int, int);
 		void mostrarTablero();
 		int getLargo();
 		int getAncho();
