@@ -1,5 +1,5 @@
-#ifndef FICHAS_H
-#define FICHAS_H
+#ifndef FICHA_H
+#define FICHA_H
 #include <string>
 
 
@@ -8,7 +8,7 @@
 #define BARCO 'B'
 #define MINA 'M'
 
-class Fichas
+class Ficha
 {
 	private:
 
@@ -26,14 +26,14 @@ class Fichas
 			Pre: Ingresa las posiciones donde quiere colocar la ficha, mientras esta sea una ficha valida (S,B,A,M)
 			Post: Se coloca la ficha
 		*/
-		Fichas(int posicionX,int posicionY,int posicionZ, char tipo); 
+		Ficha(int posicionX,int posicionY,int posicionZ, char tipo); 
 		
 		
 		/*
 			Pre: que se haya creado una ficha
 			Post: destruye la ficha
 		*/
-		~Fichas();
+		virtual ~Ficha();
 		
 		int getPosicionY();
 		int getPosicionX();
