@@ -22,7 +22,7 @@ BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantid
 		this->dimensionTablero = dimensionTablero;
 	}
 
-	this->jugadores = new Vector <Jugador*>(cantidadJugadores);
+	this->jugadores = new Vector<Jugador**>(cantidadJugadores);
 	this->turno = 1;
 	this->cantidadJugadores = cantidadJugadores;
 	this->cantidadSoldados = cantidadSoldados;
