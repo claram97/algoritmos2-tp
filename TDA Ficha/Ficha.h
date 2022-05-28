@@ -55,15 +55,16 @@ class Ficha
 		
 		/*
 			pre: - 
-			pos: 
+			pos: evalua si las posiciones y el tipo de ficha son validas entre si
 		*/
 		char verQueFichaEs();
 	
 		/*
 			pre: - 
-			pos: 
+			pos: devuelve el tipo de ficha
 		*/
 		char getTipo();
+		
 };
 
 #endif
