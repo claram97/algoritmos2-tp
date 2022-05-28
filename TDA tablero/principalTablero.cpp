@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 	
-	tablero *miTablero = new tablero(5, 3, 3);
+	Tablero *miTablero = new Tablero(5, 3, 3);
 	
 	miTablero->cargarFilas(5);
 	miTablero->cargarColumnas(3);
