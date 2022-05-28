@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-Fichas::Fichas(int posicionX,int posicionY,int posicionZ, char tipo){
+Ficha::Ficha(int posicionX,int posicionY,int posicionZ, char tipo){
 	
 	if ((posicionY < 0) || (posicionY > 20)){  //validar el ingreso de la posicion.
 		posicionY = 0;
@@ -17,12 +17,12 @@ Fichas::Fichas(int posicionX,int posicionY,int posicionZ, char tipo){
 }
 
 
-Fichas::~Fichas(){
+Ficha::~Ficha(){
 	
 }
 
 
-char Fichas::verQueFichaEs(){
+char Ficha::verQueFichaEs(){
 	
 	if (( this->getPosicionY() == 0) && (this->getPosicionX() < 10) && (this->getTipo() == 'B')) { // agregar las 
 		
@@ -67,20 +67,20 @@ char Fichas::verQueFichaEs(){
 	return this->fichaFinal;	
 }
 
-int Fichas::getPosicionY(){
+int Ficha::getPosicionY(){
 	return this->posicionY;
 }
 
 
-char Fichas::getTipo(){
+char Ficha::getTipo(){
 	return this->tipo;
 }
 
-int Fichas::getPosicionX(){
+int Ficha::getPosicionX(){
 	return this->posicionX;
 }
 
-int Fichas::getPosicionZ(){
+int Ficha::getPosicionZ(){
 	return this->posicionZ;
 }
 
