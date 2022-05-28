@@ -10,11 +10,37 @@
 
 using namespace std;
 
-Jugador::Jugador(int id, int cantidadDeSoldados) {
-	this->id = id;
-	this->cantidadDeSoldados = cantidadDeSoldados;
+unsigned int id;
+	Ficha** fichas;//el jugador necesita las fichas
+	unsigned int cantidadDeFichas;//por si acaso, vemos si se usa
+	unsigned int cantidadFichasSoldados; 	//para saber si sigue o no el juego, la cantidad de fichas totales va a ser la cantidad
+						//de fichas soldados + las otras :D
+	Carta** cartas;
+	unsigned int cantCartas;
+	estadoJugador estadoDelJugador; //deberia empezar en jugando
 
-	this->soldados = new std::vector<int*>();
+
+Jugador::Jugador(unsigned int id, unsigned int cantidadJugadores) {
+	if(id > MIN_JUGADORES &&  id < MAX_JUGADORES){
+		this->id = id;
+	}
+	else{
+		throw "Id inválido".
+	}
+	
+	fichas = new Vector <Fichas*>(MAX_FICHAS,NULL);
+	
+	for(int i = 0; i < MAX_FICHAS; i++){
+		fichas[i]->setTipo(soldado);
+		fichas[i]->setCoordenadas();
+	}
+	
+	if(cantidadDeSoldados > MIN_SOLDADOS && cantidadDeSoldados < MAX_SOLDADOS){
+		this->cantidadDeSoldados = cantidadDeSoldados;
+		
+	}
+	
+
 	for (unsigned int i = 0; i < this->cantidadDeSoldados; i++) {
 		int* soldado = new int(i);
 		this->soldados->push_back(soldado);
