@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Fichas.h"
+#include "Ficha.h"
 
 using namespace std;
 
@@ -7,7 +7,7 @@ int main() {                   //comentario importante, si el barco o el soldado
 	
 	try{
 		
-	Fichas *ficha1 = new Fichas(0,0,4,'B');
+	Ficha *ficha1 = new Fichas(0,0,4,'B');
 
 	cout<<ficha1->getPosicionX()<<endl;
 	cout<<ficha1->getPosicionY()<<endl;
