@@ -4,7 +4,7 @@
 
 #define MIN_JUGADORES 2
 #define MAX_JUGADORES 20
-#define MIN_SOLDADOS 2
+#define MIN_SOLDADOS 3
 #define MAX_SOLDADOS 8
 #define MIN_DIMENSION 20
 #define MAX_DIMENSION 100
@@ -14,7 +14,7 @@ enum estadoJuego{JUGANDO,FINALIZADO};
 class BatallaCampal{
 	
 	private:
-		Vector <Jugador*>* jugadores;
+		Vector <Jugador**> jugadores;
 		unsigned int turno;
 		Tablero* tablero;
 		int dimensionTablero;
