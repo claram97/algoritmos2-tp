@@ -4,6 +4,7 @@
 #define AVION 'A'
 #define BARCO 'B'
 #define MINA 'M'
+#define SIN_DEFINIR '-'
 
 class Ficha
 {
@@ -14,7 +15,7 @@ class Ficha
 		int posicionZ;
 		
 		char tipo;
-		char fichaFinal;
+		char fichaValida;
 		
 		
 	public:
@@ -52,15 +53,22 @@ class Ficha
 		
 		/*
 			pre: - 
-			pos: evalua si las posiciones y el tipo de ficha son validas entre si
+			pos: devuelve de qué tipo tendría que ser una ficha dadas sus coordenadas actuales.
 		*/
-		char verQueFichaEs();
+		char validarFicha();
 	
 		/*
 			pre: - 
 			pos: devuelve el tipo de ficha
 		*/
 		char getTipo();
+	
+		/*
+			pre: el tipo tiene que ser soldado, avion, barco o mina.
+			post: setea el tipo de la ficha actual según el tipo recibido.
+		*/
+		void setTipo(char tipo);
+		
 		
 };
 
