@@ -10,62 +10,65 @@
 
 using namespace std;
 
-Jugador::Jugador(int id, int cantidadDeFichas, std::deque<int**> cartas) {
+Jugador::Jugador(int id, int cantidadDeSoldados) {
 	this->id = id;
-	if(cantidadDeFichas > 0){
-		this->cantidadDeFichas = cantidadDeFichas;
-		this->fichas = new Ficha*[this->cantidadDeFichas];
-        	for(int i = 0; i < this->cantidadDeFichas; i++){
-            		//crear las fichas supongo
-       		}
+	this->cantidadDeSoldados = cantidadDeSoldados;
+
+	this->soldados = new std::vector<int*>();
+	for (unsigned int i = 0; i < this->cantidadDeSoldados; i++) {
+		int* soldado = new int(i);
+		this->soldados->push_back(soldado);
 	}
-	this->cartas = cartas;//esto creo q hay q corregirlo
-	
-    }
-    
-    if(this->cantidadDeFichas <= 0){
-        throw "Invalidad amount of tokens.";
-    }
+
+	this->cartas = new std::vector<int*>();
+	for (unsigned int i = 0; i < MAX_CARTAS; i++) {
+		int* carta = new int(5);
+		this->cartas->push_back(carta);
+	}
 }
 
-Jugador::~Jugador(){
-	if(fichas){
-		for(int i = 0; i < this->cantidadDeFichas; i++){
-		    delete fichas[i];
+Jugador::~Jugador() {
+	if (soldados) {
+		for (unsigned int i = 0; i < this->cantidadDeSoldados; i++) {
+			delete soldados->at(i);
 		}
-		delete []fichas;
-	 }
-	//hacer lo mismo con las cartas
-    
+		delete[] soldados;
+	}
+	if (cartas) {
+		for (unsigned int i = 0; i < this->getCantidadDeCartas(); i++) {
+			delete cartas->at(i);
+		}
+		delete[] cartas;
+	}
 }
 
-unsigned int Jugador::getCantidadDeFichas() {
-	return this->cantidadDeFichas;
+unsigned int Jugador::getCantidadDeSoldados() {
+	return this->cantidadDeSoldados;
 }
 
-void Jugador::setCantidadDeFichas(unsigned int cantidadDeFichas){
-    if(cantidadDeFichas > 0){
-        this->cantidadDeFichas = cantidadDeFichas;
-    }
-    else{
-        throw "Invalid amount of tokens.";
-    }
+void Jugador::setCantidadDeSoldados(unsigned int cantidadDeSoldados) {
+	if (cantidadDeSoldados > 0) {
+		this->cantidadDeSoldados = cantidadDeSoldados;
+	} else {
+		throw "Cantidad invalida de soldado.";
+	}
 }
 
 unsigned int Jugador::getCantidadDeCartas() {
 	return this->cartas->size();
 }
-void Jugador::setCarta(int* carta) {
-	if (this->obtenerCantidadDeCartas() <= MAX_CARTAS) {
+
+void Jugador::crearCarta() {
+	if (this->getCantidadDeCartas() <= MAX_CARTAS) {
+		int* carta = new int();
 		this->cartas->push_back(carta);
 	}
 }
 int* Jugador::getCarta() {
-	int *carta = this->cartas->front();
-	this->cartas->pop_front();
+	int* carta = this->cartas->begin()[0];
+	this->cartas->erase(this->cartas->begin());
 	return carta;
 }
-void Jugador::decrementarCantidadDeFichas() {
-	this->cantidadDeFichas = this->cantidadDeFichas - 1;
+void Jugador::decrementarCantidadDeSoldados() {
+	this->cantidadDeSoldados = this->cantidadDeSoldados - 1;
 }
-
