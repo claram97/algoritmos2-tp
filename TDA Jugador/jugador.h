@@ -47,6 +47,14 @@ public:
 	//Post: disminuye en 1 la cantidad de fichas.
 	void decrementarCantidadDeFichas();
 
+	//Pre: -
+	//Post: devuelve la cantidad de soldados actuales del jugador.
+	unsigned int getCantidadFichasSoldados();
+	
+	//Pre: recibe una cantidad de soldados mayor a 0.
+	//Post: modifica la cantidad de soldados del jugador.
+	void setCantidadFichasSoldados();
+			
 };
 
 #endif
