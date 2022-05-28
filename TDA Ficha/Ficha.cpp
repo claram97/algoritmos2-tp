@@ -1,4 +1,4 @@
-#include "Fichas.h"
+#include "Ficha.h"
 #include <string>
 #include <iostream>
 
