@@ -1,6 +1,6 @@
 #ifndef FICHA_H
 #define FICHA_H
-#include <string>
+
 
 
 #define SOLDADO 'S'
@@ -18,7 +18,7 @@ class Ficha
 		
 		char tipo;
 		char fichaFinal;
-		//std::string jugador;
+		
 		
 	public:
 		
