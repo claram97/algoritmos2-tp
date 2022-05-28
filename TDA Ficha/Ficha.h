@@ -1,8 +1,5 @@
 #ifndef FICHA_H
 #define FICHA_H
-
-
-
 #define SOLDADO 'S'
 #define AVION 'A'
 #define BARCO 'B'
