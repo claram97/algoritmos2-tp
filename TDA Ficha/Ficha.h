@@ -24,25 +24,45 @@ class Ficha
 		
 		/*
 			Pre: Ingresa las posiciones donde quiere colocar la ficha, mientras esta sea una ficha valida (S,B,A,M)
-			Post: Se coloca la ficha
+			Pos: Se coloca la ficha
 		*/
 		Ficha(int posicionX,int posicionY,int posicionZ, char tipo); 
 		
 		
 		/*
-			Pre: que se haya creado una ficha
-			Post: destruye la ficha
+			Pre: -
+			Pos: destruye la ficha
 		*/
 		virtual ~Ficha();
 		
+		/*
+			pre: - 
+			pos: devuelve la posicion Y
+		*/
 		int getPosicionY();
+	
+		/*
+			pre: - 
+			pos: devuelve la posicion X
+		*/
 		int getPosicionX();
+	
+		/*
+			pre: - 
+			pos: devuelve la posicion Z
+		*/
 		int getPosicionZ();
 		
 		/*
-			
+			pre: - 
+			pos: 
 		*/
 		char verQueFichaEs();
+	
+		/*
+			pre: - 
+			pos: 
+		*/
 		char getTipo();
 };
 
