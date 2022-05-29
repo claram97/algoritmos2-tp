@@ -10,91 +10,72 @@
 
 using namespace std;
 
-unsigned int id;
-	Ficha** fichas;//el jugador necesita las fichas
-	unsigned int cantidadDeFichas;//por si acaso, vemos si se usa
-	unsigned int cantidadFichasSoldados; 	//para saber si sigue o no el juego, la cantidad de fichas totales va a ser la cantidad
-						//de fichas soldados + las otras :D
-	Carta** cartas;
-	unsigned int cantCartas;
-	estadoJugador estadoDelJugador; //deberia empezar en jugando
 
-
-Jugador::Jugador(unsigned int id, unsigned int cantidadJugadores) {
-	if(id > MIN_JUGADORES &&  id < MAX_JUGADORES){
-		this->id = id;
-	}
-	else{
-		throw "Id inválido".
-	}
-	
-	fichas = new Vector <Fichas*>(MAX_FICHAS,NULL);
-	
-	for(int i = 0; i < MAX_FICHAS; i++){
-		fichas[i]->setTipo(soldado);
-		fichas[i]->setCoordenadas();
-	}
-	
-	if(cantidadDeSoldados > MIN_SOLDADOS && cantidadDeSoldados < MAX_SOLDADOS){
-		this->cantidadDeSoldados = cantidadDeSoldados;
-		
-	}
-	
-
-	for (unsigned int i = 0; i < this->cantidadDeSoldados; i++) {
-		int* soldado = new int(i);
-		this->soldados->push_back(soldado);
-	}
-
-	this->cartas = new std::vector<int*>();
-	for (unsigned int i = 0; i < MAX_CARTAS; i++) {
-		int* carta = new int(5);
-		this->cartas->push_back(carta);
-	}
+Jugador::Jugador(int id) {
+	this->id = id;
+	this->fichas = new std::vector<Ficha*>();
+	this->cartas = new std::vector<Carta*>();
+	this->estado = EstadoJugador::JUGANDO;
 }
 
 Jugador::~Jugador() {
-	if (soldados) {
-		for (unsigned int i = 0; i < this->cantidadDeSoldados; i++) {
-			delete soldados->at(i);
+	if (this->fichas) {
+		for (unsigned int i = 0; i < this->getCantidadDeFichas(); i++) {
+			delete this->fichas->at(i);
 		}
-		delete[] soldados;
+		delete[] this->fichas;
 	}
-	if (cartas) {
+	if (this->cartas) {
 		for (unsigned int i = 0; i < this->getCantidadDeCartas(); i++) {
-			delete cartas->at(i);
+			delete this->cartas->at(i);
 		}
-		delete[] cartas;
+		delete[] this->cartas;
 	}
+}
+
+unsigned int Jugador::getCantidadDeFichas() {
+	return this->fichas->size();
 }
 
 unsigned int Jugador::getCantidadDeSoldados() {
-	return this->cantidadDeSoldados;
-}
-
-void Jugador::setCantidadDeSoldados(unsigned int cantidadDeSoldados) {
-	if (cantidadDeSoldados > 0) {
-		this->cantidadDeSoldados = cantidadDeSoldados;
-	} else {
-		throw "Cantidad invalida de soldado.";
+	unsigned int cantidadDeSoldados = 0;
+	for (unsigned int i = 0; i < this->getCantidadDeFichas(); i++) {
+		if (this->fichas->at(i)->getTipo() == SOLDADO) {
+			cantidadDeSoldados++;
+		}
 	}
+	return cantidadDeSoldados;
 }
 
 unsigned int Jugador::getCantidadDeCartas() {
 	return this->cartas->size();
 }
 
-void Jugador::crearCarta() {
+void Jugador::setFicha(Ficha* ficha){
+    this->fichas->push_back(ficha);
+}
+
+Ficha* Jugador::getFicha(int id){
+	return this->fichas->at(id);
+}
+
+void Jugador::setCarta(Carta* carta) {
 	if (this->getCantidadDeCartas() <= MAX_CARTAS) {
-		int* carta = new int();
 		this->cartas->push_back(carta);
 	}
 }
-int* Jugador::getCarta() {
-	int* carta = this->cartas->begin()[0];
+
+Carta* Jugador::getCarta() {
+	Carta* carta = this->cartas->begin()[0];
 	this->cartas->erase(this->cartas->begin());
 	return carta;
 }
-void Jugador::decrementarCantidadDeSoldados() {
-	this->cantidadDeSoldados = this->cantidadDeSoldados - 1;
+
+void Jugador::eliminarFicha(int id){
+	Ficha* ficha = this->getFicha(id);
+	delete ficha;
+}
+
+void Jugador::setEstado(EstadoJugador estado) {
+	this->estado = estado;
 }
