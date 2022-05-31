@@ -221,7 +221,7 @@ void BatallaCampal::moverSoldado(char movimiento){
 void generarCoordenadasSoldados(Coordenada& coordenada){
 	coordenada.setCoordenadaX = rand()%dimension + 1;
 	coordenada.setCoordenadaY = rand()%dimension + 1;
-	coordenada.setCoordenadaZ = rand()%dimension + 1;
+	coordenada.setCoordenadaZ = 0;
 }
 
 
