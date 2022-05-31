@@ -95,8 +95,10 @@ void Ficha::setTipo(char tipo){
 		throw "El tipo de ficha ingresado es erróneo. El tipo debe ser BARCO, AVION, MINA o SOLDADO.";
 	}
 }
+	
 //Este lo vamos a usar para mover al soldado
 //No se recibe la posición Z porque jamás se debería modificar ya que el soldado no puede volar :)
+//Los demás tipos de fichas no se pueden mover
 void Ficha::setCoordenadasSoldado(int posicionX, int posicionY){
 	if(this->tipo != SOLDADO){
 		throw "No deberías cambiar la posición de esta ficha porque no es de soldado :)"
@@ -105,29 +107,4 @@ void Ficha::setCoordenadasSoldado(int posicionX, int posicionY){
 		this->posicionX = posicionX;
 		this->posicionY = posicionY;
 	}
-}
-
-qu
-void Ficha::setCoordenadas(int posicionX, int posicionY, int posicionZ){
-	if(this->tipo == MINA){
-		this->posicionZ = 0; //tiene que estar en el piso
-	}
-	if(this->tipo == BARCO){
-		this->posicionZ = 0;//tiene que estar en el agua, creo que hay que chusmear la casilla acá
-	}
-	if(this->tipo == AVION){
-		this->posicionZ = rand()%;
-
-	}
-	if(this->tipo == SOLDADO){
-		this->posicionY = 1;
-	
-	}
-	//ademas de poner las restricciones, hay que hacer lo que sigue, después lo meto en los if correspondientes
-	/*
-	this->posicionX = rand()%dimension;
-	this->posicionY = rand()%dimension;
-	this->posicionZ = rand()%dimension;
-	*/
-	this->validarFicha();	
 }
