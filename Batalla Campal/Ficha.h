@@ -26,26 +26,27 @@ class Ficha
 		
 		/*
 		 *  Pre:
-		 *  Pos:
+		 *  Post: crea una ficha con el tipo sin definir y posiciones seteadas en -1 (deben cambiarse luego).
 		 */
 		Ficha();
 
 		/*
-			Pre: Ingresa las posiciones donde quiere colocar la ficha, mientras esta sea una ficha valida (S,B,A,M)
-			Pos: Se coloca la ficha
+			Pre: recibe un tipo de ficha, con valores válidos: SOLDADO, AVIÓN, BARCO, MINAS.
+			Post: Se crea una ficha del tipo dado si el valor es válido, sino deja el tipo sin definir.
+			Las posiciones iniciales estarán seteadas en -1, deben actualizarse.
 		*/
 		Ficha(char tipo);
 		
 		
 		/*
 			Pre: -
-			Pos: destruye la ficha
+			Post: destruye la ficha
 		*/
 		virtual ~Ficha();
 		
 		/*
-			pre: - 
-			pos: devuelve la posicion Y
+			Pre: - 
+			Post: devuelve la posicion Y
 		*/
 		int getPosicionY();
 	
