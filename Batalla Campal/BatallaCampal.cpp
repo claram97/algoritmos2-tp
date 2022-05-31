@@ -87,6 +87,80 @@ Jugador* BatallaCampal::getJugador(unsigned int i){
 	return this->jugadores->obtener(i);
 }
 
+//Acá debería entrar a la casilla o al tablero, a este punto ya ni idea
+//Y fijarse si el contenido es INACTIVO
+void BatallaCampal::esPosicionValida(){
+
+}
+
+//Primero chequea si la posición es válida. Si lo es, hace el movimiento. Sino, no hace nada.
+void BatallaCampal::moverSoldado(char movimiento){
+	switch(movimiento){
+		case ADELANTE:
+			if(esPosicionValida){
+				//hago el movimiento
+			}
+			break;
+		case ATRÁS:
+			if(esPosicionValida){
+				//hago el movimiento
+			}
+			break;
+		case IZQUIERDA:
+			if(esPosicionValida){
+				//hago el movimiento
+			}
+			break;
+		case DERECHA:
+			if(esPosicionValida){
+				//hago el movimiento
+			}
+			break;
+	}	
+}
+
+//Luego de mover el soldado, tengo que ver si se pisó con los n-1 restantes.
+void BatallaCampal::chequearCoincidencias(){
+	bool coinciden = false;
+	unsigned int jugadorActual = this->turno;
+	for(int i = 1; i < this->cantidadDeJugadores; i++){
+		//Acá evito que se compare consigo mismo
+		if(this->jugadores->obtener(i)->getId() == jugadorActual){
+			i++;
+		}
+		
+		//No sé cómo entrar a la lista de fichas acá xD
+		//Lo intento y cualquier cosa ustedes lo arreglan
+		//La onda acá es ver si las posiciones X e Y del jugador actual y de los demás coinciden o no
+		//Si coinciden hay que poner inactiva la casilla
+		
+		//Dejo pseudo-código acá y si puedo intento implementarlo
+		
+		//Recorro la lista del jugador actual
+		//Cuando encuentro un soldado, empiezo a buscar los soldados del otro jugador y miro si coinciden
+		//Sigo recorriendo la lista del jugador actual
+		//Cuando encuentro otro soldado, vuelvo a buscar los soldados del otro jugador y miro si coinciden
+		//Se recorren ambas listas en tanto y en cuanto que el cursor no sea NULL
+		//Esa es la idea pero no sé si lo implementé bien o si la sintaxis en sí está bien
+		
+			for(int j = 1; j < this->jugadores->obtener(i)->getCursor() == NULL; j++){
+				for(int k = 1; k < this->jugadores->obtener(jugadorActual)->getCursor() == NULL; j++){
+					if(this->jugadores->obtener(i)->getCursor()->getPosicionX() == this->jugadores->obtener(jugadorActual)->getCursor()->getPosicionX()
+					   && this->jugadores->obtener(i)->getCursor()->getPosicionY() == this->jugadores->obtener(jugadorActual)->getCursor()->getPosicionY()
+					   && this->jugadores->obtener(jugadorActual)->getCursor()->getTipo() == SOLDADO
+					   && this->jugadores->obtener(i)->getCursor()->getTipo() == SOLDADO){
+						coinciden = true;
+					}
+					this->jugadores->obtener(jugadorActual)->avanzarCursor();
+				}
+				this->jugadores->obtener(i)->avanzarCursor();
+			}	
+		}
+		
+		
+	}
+}
+
 Tablero* BatallaCampal::getTablero(){
 
 	return this->tablero;
