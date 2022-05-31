@@ -101,15 +101,6 @@ void realizarDisparo(){
 	eliminarSoldado();
 }
 
-
-//Acá debería entrar a la casilla o al tablero, a este punto ya ni idea
-//Y fijarse si el contenido es INACTIVO
-bool BatallaCampal::esPosicionValida(){
-	bool posicionValida = true;
-	//chequeo, si no es true, lo cambio a false.
-	return posicionValida;
-}
-
 //Luego de mover el soldado, tengo que ver si se pisó con los n-1 restantes.
 bool BatallaCampal::soldadosCoinciden(){
 	bool coinciden = false;
