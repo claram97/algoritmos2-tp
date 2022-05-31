@@ -27,10 +27,29 @@ BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantid
 
 	this->jugadores = new Vector<Jugador*>(cantidadJugadores, NULL);
 
+	//No es hasta cantidad de jugadores?
 	for(int i = 1; i <= jugadores->getLongitud(); i++){
 		this->jugadores->agregar(i, new Jugador(i, cantidadSoldados));
 	}
 
+	//creo la lista para cada jugador con sus respectivas fichas, pero las posiciones para las distintas fichas cambian asi que
+	//primero inicializo todas en 0 y después las modifico
+	for(int i = 1; i <= cantidadDeJugadores; i++){
+		this->jugadores->obtener(i)->soldados->Lista();
+		for(int j = 1; j < this->cantidadDeSoldados; j++){
+			this->jugadores->obtener(i)->soldados->Add(new Ficha(SOLDADO,0,0,0));
+		}
+	}
+	
+	//Falta chequear que no se superpongan coordenadas
+	for(int i = 1; i < this->cantidadDeSoldados; i++){
+		Coordenada coordenada_soldado;
+		this->generarCoordenadasSoldados(coordenada_soldado);
+		this->jugadores->obtener(i)->soldados->getCursor()->setPosicionX() = coordenada_soldado.getCoordenadaX();
+		this->jugadores->obtener(i)->soldados->getCursor()->setPosicionY() = coordenada_soldado.getCoordenadaY();
+		this->jugadores->obtener(i)->soldados->getCursor()->setPosicionZ() = coordenada_soldado.getCoordenadaZ();
+	}
+	
 	this->tablero = new Tablero(this->dimensionTablero,this->dimensionTablero,this->dimensionTablero);
 
 }
