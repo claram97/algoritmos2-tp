@@ -1,14 +1,15 @@
 #ifndef FICHA_H
 #define FICHA_H
 
+//Tipos de fichas
 #define AVION 'A'
 #define BARCO 'B'
 #define MINA 'N'
-#define MISIL 'M'
-#define RADAR 'R'
-#define SUPER 'K'
 #define SOLDADO 'S'
 #define SIN_DEFINIR '-'
+
+typedef enum tipoDeCarta{MISIL,RADAR,SUPER,BARCOS,AVIONES,MINAS}
+
 
 class Ficha
 {
