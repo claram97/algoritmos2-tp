@@ -13,6 +13,7 @@ Ficha::Ficha(int posicionX,int posicionY,int posicionZ){
 	
 }
 
+//Se van a recibir las coordenadas generadas aleatoriamente y el tipo
 Ficha::Ficha(char tipo,int posicionX,int posicionY,int posicionZ){
 	if(this->esPosicionValida() && this->esTipoValido()){
 		this->posicionX = posicionX;
