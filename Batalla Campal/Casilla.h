@@ -5,11 +5,12 @@
 #define MAX_ANCHO 100
 #define MAX_ALTO 100
 
-//content
+//contenido de la casilla
 #define VACIO ' '
 #define LLENO '*'
 #define INACTIVO 'X'
-//type
+
+//tipo de la casilla
 #define TIERRA 'T'
 #define AIRE 'A'
 #define AGUA 'W'
