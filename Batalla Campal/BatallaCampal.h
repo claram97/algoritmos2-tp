@@ -10,6 +10,23 @@
 #define MIN_DIMENSION 20
 #define MAX_DIMENSION 100
 
+//Hay que ver donde poner esto pero lo voy a usar para generar las coordenadas aleatorias
+class Coordenadas{
+private:
+	int coordenadaX;
+	int coordenadaY;
+	int coordenadaZ;
+public:
+	Coordenadas();
+	virtual ~Coordenadas();
+	int getCoordenadaX();
+	int getCoordenadaY();
+	int getCoordenadaZ();
+	void setCoordenadaX(int);
+	void setCoordenadaY(int);
+	void setCoordenadaZ(int);
+}
+
 enum estadoJuego{JUGANDO,FINALIZADO};
 
 class BatallaCampal{
