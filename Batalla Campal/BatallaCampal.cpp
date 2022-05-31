@@ -1,7 +1,7 @@
 #include "BatallaCampal.h"
 #include "Jugador.h"
 #include "Tablero.h"
-
+#hola
 BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantidadSoldados,int dimensionTablero){
 
 	if(cantidadJugadores < MIN_JUGADORES || cantidadJugadores > MAX_JUGADORES){
