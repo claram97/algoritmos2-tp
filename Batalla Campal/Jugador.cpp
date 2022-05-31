@@ -6,10 +6,11 @@ using namespace std;
 Jugador::Jugador(int id, int cantidadSoldados) {
 	this->id = id;
 	this->cantidadSoldados = cantidadSoldados;
-	this->fichas = new Lista<Ficha*>();
+	this->herramientas = new Lista<Ficha*>();
+	this->soldados = new Lista<Ficha*>();
 
 	for(int i = 0; i < cantidadSoldados; i++){
-		this->fichas->add(new Ficha(SOLDADO));
+		this->soldados->add(new Ficha(SOLDADO));
 	}
 
 	this->cartas = new Lista<Carta*>();
@@ -31,18 +32,13 @@ Jugador::~Jugador() {
 	}
 }
 
-unsigned int Jugador::getCantidadDeFichas() {
-	return this->fichas->contarElementos();
+unsigned int Jugador::getCantidadDeHerramientas() {
+	return this->herramientas->contarElementos();
 }
 
 unsigned int Jugador::getCantidadDeSoldados() {
-	unsigned int cantidadDeSoldados = 0;
-	for (unsigned int i = 0; i < this->getCantidadDeFichas(); i++) {
-		if (this->fichas->get(i+1)->getTipo() == SOLDADO) {
-			cantidadDeSoldados++;
-		}
-	}
-	return cantidadDeSoldados;
+	return this->soldados->contarElementos();
+
 }
 
 unsigned int Jugador::getCantidadDeCartas() {
@@ -55,8 +51,12 @@ void Jugador::setFicha(Ficha* ficha){
 }
 */
 
-Ficha* Jugador::getFicha(int id){
-	return this->fichas->get(id);
+Ficha* Jugador::getHerramienta(int id){
+	return this->herramientas->get(id);
+}
+
+Ficha* Jugador::getSoldado(int id){
+	return this->soldados->get(id);
 }
 
 /*
@@ -73,8 +73,8 @@ Carta* Jugador::getCarta() {
 }
 */
 
-void Jugador::eliminarFicha(int id){
-	Ficha* ficha = this->getFicha(id);
+void Jugador::eliminarHerramienta(int id){
+	Ficha* ficha = this->getHerramienta(id);  //???
 	delete ficha;
 }
 
@@ -99,3 +99,4 @@ Carta* Jugador::getCarta(unsigned int i){
 unsigned int Jugador::getId(){
 	return this->id;
 }
+
