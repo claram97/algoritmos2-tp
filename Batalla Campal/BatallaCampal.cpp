@@ -44,6 +44,18 @@ void BatallaCampal::siguienteTurno(){
 
 }
 
+BatallaCampal::~BatallaCampal(){
+	if(this->jugadores){
+		for(int i = 1; i < this->jugadores->getLongitud(); i++){
+			delete this->jugadores->obtener(i);
+		}
+	delete [] this->jugadores;
+	}
+	if(tablero){
+		delete tablero;
+	}
+}
+
 
 estadoJuego BatallaCampal::estadoDelJuego(){
 
@@ -73,18 +85,6 @@ unsigned int BatallaCampal::getTurno(){
 Jugador* BatallaCampal::getJugador(unsigned int i){
 
 	return this->jugadores->obtener(i);
-}
-
-BatallaCampal::~BatallaCampal(){
-	if(this->jugadores){
-		for(int i = 1; i < this->jugadores->getLongitud(); i++){
-			delete this->jugadores->obtener(i);
-		}
-	delete [] this->jugadores;
-	}
-	if(tablero){
-		delete tablero;
-	}
 }
 
 Tablero* BatallaCampal::getTablero(){
