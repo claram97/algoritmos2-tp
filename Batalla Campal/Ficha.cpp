@@ -37,7 +37,7 @@ Ficha::~Ficha(){
 
 char Ficha::validarFicha(){
 	
-	if (( this->getPosicionY() == 1) && (this->getPosicionX() < 10) && (this->getTipo() == 'B')) { // agregar las
+	if (( this->getPosicionZ() == 0) && (this->getPosicionX() < 10) && (this->getTipo() == 'B')) { // agregar las
 		
 		this->fichaValida = BARCO;
 		
@@ -108,13 +108,13 @@ void Ficha::setTipo(char tipo){
 
 void Ficha::setCoordenadas(){
 	if(this->tipo == MINA){
-		this->posicionY = 1;//tiene que estar en el piso
+		this->posicionZ = 0; //tiene que estar en el piso
 	}
 	if(this->tipo == BARCO){
-		this->posicionY = 1;//tiene que estar en el agua, creo que hay que chusmear la casilla acá
+		this->posicionZ = 0;//tiene que estar en el agua, creo que hay que chusmear la casilla acá
 	}
 	if(this->tipo == AVION){
-		this->posicionY = 8;
+		this->posicionZ = rand()%;
 
 	}
 	if(this->tipo == SOLDADO){
@@ -123,9 +123,9 @@ void Ficha::setCoordenadas(){
 	}
 	//ademas de poner las restricciones, hay que hacer lo que sigue, después lo meto en los if correspondientes
 	/*
-	this->posicionX = rand()%;
-	this->posicionY = rand()%;
-	this->posicionZ = rand()%;
+	this->posicionX = rand()%dimension;
+	this->posicionY = rand()%dimension;
+	this->posicionZ = rand()%dimension;
 	*/
 	this->validarFicha();	
 }
