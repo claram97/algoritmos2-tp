@@ -105,8 +105,20 @@ void Ficha::setTipo(char tipo){
 		throw "El tipo de ficha ingresado es erróneo. El tipo debe ser BARCO, AVION, MINA o SOLDADO.";
 	}
 }
+//Este lo vamos a usar para mover al soldado
+//No se recibe la posición Z porque jamás se debería modificar ya que el soldado no puede volar :)
+void Ficha::setCoordenadasSoldado(int posicionX, int posicionY){
+	if(this->tipo != SOLDADO){
+		throw "No deberías cambiar la posición de esta ficha porque no es de soldado :)"
+	}
+	else{
+		this->posicionX = posicionX;
+		this->posicionY = posicionY;
+	}
+}
 
-void Ficha::setCoordenadas(){
+qu
+void Ficha::setCoordenadas(int posicionX, int posicionY, int posicionZ){
 	if(this->tipo == MINA){
 		this->posicionZ = 0; //tiene que estar en el piso
 	}
