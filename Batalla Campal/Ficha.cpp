@@ -3,40 +3,49 @@
 #include <iostream>
 
 //Se van a recibir las coordenadas generadas aleatoriamente
-Ficha::Ficha(int posicionX,posicionY,posicionZ){
-	
-	this->fichaValida = SIN_DEFINIR;
-	this->tipo = SIN_DEFINIR; //se van a ir definiendo luego así que las inicializamos en algún valor no más
-				 //como los valores dependen del tipo y el tipo se define cuando tengas una ficha,
-	if(this->posicionX > 0 && this->posicionX < dimension &&)		
-	this->posicionX = -1;
-	this->posicionY = -1; 
-	this->posicionZ = -1;
+Ficha::Ficha(int posicionX,int posicionY,int posicionZ){
+	if(this->esPosicionValida()){
+		this->posicionX = posicionX;
+		this->posicionY = posicionY; 
+		this->posicionZ = posicionZ;
+		this->tipo = SIN_DEFINIR;
+	}
 	
 }
 
-Ficha::Ficha(char tipo){
-
-	this->fichaValida = SIN_DEFINIR;
-	if(tipo == BARCO || tipo == AVION || tipo == MINAS || tipo == SOLDADO){
+Ficha::Ficha(char tipo,int posicionX,int posicionY,int posicionZ){
+	if(this->esPosicionValida() && this->esTipoValido()){
+		this->posicionX = posicionX;
+		this->posicionY = posicionY; 
+		this->posicionZ = posicionZ;
 		this->tipo = tipo;
+		if(!this->tipoConcuerdaConPosicion()){
+			this->tipo = SIN_DEFINIR;
+		}
 	}
 	else{
-		this->tipo = SIN_DEFINIR;
+		if(!this->esPosicionValida()){
+			throw "Error en coordenadas del soldado."
+		}
+		if(!this->esTipoValido()){
+			throw "Tipo inválido de ficha."
+		}
 	}
-	this->posicionX = -1;
-	this->posicionY = -1;
-	this->posicionZ = -1;
-
-
 }
 
 Ficha::~Ficha(){
 	
 }
 
+void Ficha::definirTipo(char tipo){
+	this->tipo = tipo;
+	if(!this->tipoConcuerdaConPosicion()){
+		this->tipo = SIN_DEFINIR;
+	}
+}
+
 //Valida que las coordenadas sean válidas sin tener en cuenta el tipo
-bool esPosicionValida(){
+bool tipoConcuerdaConPosicion(){
 	bool esValida = false;
 	if(this->getPosicionX() > 0 && this->getPosicionX() < dimension
 	   && this->getPosicionY() > 0 && this->getPosicionY() < dimension
@@ -49,7 +58,8 @@ bool esPosicionValida(){
 bool Ficha::esTipoValido(){
 	return (this->getTipo() == BARCO || this->getTipo() == MINA || this->getTipo() == SOLDADO || this->getTipo () == AVION)
 }
-char Ficha::validarFicha(){
+
+bool Ficha::validarFicha(){
 	bool esValida = false;
 	if(this->esPosicionValida() && this->esTipoValido()){
 		if(this->getPosicionZ() == 1){
