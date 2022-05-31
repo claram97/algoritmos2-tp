@@ -16,7 +16,7 @@ class BatallaCampal{
 	
 	private:
 		Vector <Jugador*>* jugadores;
-		unsigned int turno; //le podemos poner jugador actual? xD
+		unsigned int turno;
 		Tablero* tablero;
 		int dimensionTablero;
 		int cantidadJugadores;
