@@ -60,5 +60,10 @@ class Tablero{
 		 * Pos:
 		 */
 		Casilla* getCasilla(int fila, int columna, int profundidad);
+		 /*
+		 * Pre:
+		 * Pos:
+		 */
+		bool esPosicionValida();
 };
 #endif
