@@ -2,12 +2,13 @@
 #include <string>
 #include <iostream>
 
-Ficha::Ficha(){
+//Se van a recibir las coordenadas generadas aleatoriamente
+Ficha::Ficha(int posicionX,posicionY,posicionZ){
 	
 	this->fichaValida = SIN_DEFINIR;
 	this->tipo = SIN_DEFINIR; //se van a ir definiendo luego así que las inicializamos en algún valor no más
 				 //como los valores dependen del tipo y el tipo se define cuando tengas una ficha,
-				 //inicializaremos las posiciones en algo para que no tengan basura no más :)
+	if(this->posicionX > 0 && this->posicionX < dimension &&)		
 	this->posicionX = -1;
 	this->posicionY = -1; 
 	this->posicionZ = -1;
@@ -34,50 +35,39 @@ Ficha::~Ficha(){
 	
 }
 
+//Valida que las coordenadas sean válidas sin tener en cuenta el tipo
+bool esPosicionValida(){
+	bool esValida = false;
+	if(this->getPosicionX() > 0 && this->getPosicionX() < dimension
+	   && this->getPosicionY() > 0 && this->getPosicionY() < dimension
+	   && this->getPosicionZ() > 0 && this->getPosicionZ() < dimension){
+		return true;
+	}
+	return esValida;
+}
 
+bool Ficha::esTipoValido(){
+	return (this->getTipo() == BARCO || this->getTipo() == MINA || this->getTipo() == SOLDADO || this->getTipo () == AVION)
+}
 char Ficha::validarFicha(){
-	
-	if (( this->getPosicionZ() == 0) && (this->getPosicionX() < 10) && (this->getTipo() == 'B')) { // agregar las
-		
-		this->fichaValida = BARCO;
-		
-	}
-	
-	if ((this->getPosicionY() == 0) && (this->getPosicionX() >= 10) && (this->getTipo() == 'S')){ // posiciones
-			
-		this->fichaValida = SOLDADO;
-				
-	}
-
-	
-	if ((this->getPosicionY() == 0) && (this->getTipo() == 'M')){ // X y Z para ver si es agua o tierra
-		
-		this->fichaValida = MINA;
-	}
-		
-	if ((this->getPosicionY() > 0) && (this->getTipo() == 'A')){
-				
-		this->fichaValida = AVION;
-		
-	}
-	
-	else{
-			
-		if( (this->getPosicionY() == 0) && (this->getTipo() == 'A') ){
-			
-			throw "Los aviones no pueden ir en el suelo";
-		}
-		
-		else{
-			if ((this->getPosicionY() != 1) && ((this->getTipo() == 'S') || (this->getTipo() == 'B') || (this->getTipo() == 'M'))){
-				
-				throw "Esa ficha debe ir en el suelo";
+	bool esValida = false;
+	if(this->esPosicionValida() && this->esTipoValido()){
+		if(this->getPosicionZ() == 1){
+			if(this->getTipo() == AVION){
+				esValida = false;
 			}
-				
+			else{
+				esValida = true;
+			}
+		else{
+			if(this->getTipo() == AVION){
+				esValida = true;
+			}
+			else{
+				esValida = false;
+			}
 		}
 	}
-	
-	return this->fichaValida;
 }
 
 int Ficha::getPosicionY(){
