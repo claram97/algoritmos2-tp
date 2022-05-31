@@ -101,6 +101,15 @@ void realizarDisparo(){
 	eliminarSoldado();
 }
 
+
+//Acá debería entrar a la casilla o al tablero, a este punto ya ni idea
+//Y fijarse si el contenido es INACTIVO
+bool BatallaCampal::esPosicionValida(){
+	bool posicionValida = true;
+	//chequeo, si no es true, lo cambio a false.
+	return posicionValida;
+}
+
 //Luego de mover el soldado, tengo que ver si se pisó con los n-1 restantes.
 bool BatallaCampal::soldadosCoinciden(){
 	bool coinciden = false;
@@ -146,35 +155,44 @@ bool BatallaCampal::soldadosCoinciden(){
 //Primero chequea si la posición es válida. Si lo es, hace el movimiento. Sino, no hace nada.
 void BatallaCampal::moverSoldado(char movimiento){
 	switch(movimiento){
+			// fila provisoria y columna provisoria son las coordenadas que pasa el usuario del soldado qeu va a mover
 		case ADELANTE:
 			if(esPosicionValida()){
 				//hago el movimiento
+				this->tablero->modificarPosicion('S', filaProvisoria + 1, columnaProvisoria, profundidad);
 				if(soldadosCoinciden()){
 					//poner inactiva la casilla
+					this->tablero->modificarPosicion('X',filaProvisoria,columnaProvisoria + 1,profundidad);
 				}
 			}
 			break;
 		case ATRÁS:
 			if(esPosicionValida){
 				//hago el movimiento
+				this->tablero->modificarPosicion('S', filaProvisoria - 1, columnaProvisoria, profundidad);
 				if(soldadosCoinciden()){
 					//poner inactiva la casilla
+					this->tablero->modificarPosicion('X', filaProvisoria - 1, columnaProvisoria, profundidad);
 				}
 			}
 			break;
 		case IZQUIERDA:
 			if(esPosicionValida){
 				//hago el movimiento
+				this->tablero->modificarPosicion('S',filaProvisoria,columnaProvisoria - 1,profundidad);
 				if(soldadosCoinciden()){
 					//poner inactiva la casilla
+					this->tablero->modificarPosicion('X',filaProvisoria,columnaProvisoria - 1,profundidad);
 				}
 			}
 			break;
 		case DERECHA:
 			if(esPosicionValida){
 				//hago el movimiento
+				this->tablero->modificarPosicion('S', filaProvisoria,columnaProvisoria + 1,profundidad);
 				if(soldadosCoinciden()){
 					//poner inactiva la casilla
+					this->tablero->modificarPosicion('X', filaProvisoria,columnaProvisoria + 1,profundidad);
 				}
 			}
 			break;
