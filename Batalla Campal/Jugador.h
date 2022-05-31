@@ -15,7 +15,8 @@ class Jugador {
 private:
 	unsigned int id;
 	unsigned int cantidadSoldados;
-	Lista<Ficha*>* fichas;
+	Lista<Ficha*>* herramientas;
+	Lista<Ficha*>* soldados;
 	Lista<Carta*>* cartas;
 	EstadoJugador estado;
 
@@ -29,8 +30,8 @@ public:
 	virtual ~Jugador();
 
 	//Pre: -
-	//Post: devuelve la cantidad de fichas.
-	unsigned int getCantidadDeFichas();
+	//Post: devuelve la cantidad de herramientas.
+	unsigned int getCantidadDeHerramientas();
 
 	//Pre: -
 	//Post: devuelve la cantidad de soldados.
@@ -42,11 +43,19 @@ public:
 
 	//Pre: -
 	//Post: agrega una ficha.
-	void setFicha(Ficha* ficha);
+	void setHerramienta(Ficha* ficha);
 
 	//Pre: recibe un id de ficha
 	//Post: devuelve la ficha.
-	Ficha* getFicha(int id);
+	Ficha* getHerramienta(int id);
+
+	//Pre: -
+	//Post: agrega una ficha.
+	void setSoldado(Ficha* ficha);
+
+	//Pre: recibe un id de soldado
+	//Post: devuelve el soldado.
+	Ficha* getSoldado(int id);
 
 	//Pre: -
 	//Post: de ser posible, agrega la carta al mazo.
@@ -56,9 +65,9 @@ public:
 	//Post: devuelve una carta.
 	Carta* getCarta(unsigned int i);
 
-	//Pre: recibe un id de ficha
-	//Post: elimina la ficha de la lista de fichas del jugador.
-	void eliminarFicha(int id);
+	//Pre: recibe un id de una herramienta
+	//Post: elimina la herramienta de la lista de herramientas del jugador.
+	void eliminarHerramienta(int id);
 
 	//Pre: recibe un estado de jugador
 	//Post: cambiar el estado al jugador
