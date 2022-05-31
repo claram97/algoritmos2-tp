@@ -199,9 +199,12 @@ void BatallaCampal::moverSoldado(char movimiento){
 	}	
 }
 
-void generarCoordenadasAleatorias(){
-	//Se generan según el tipo, ahora lo hago
+void generarCoordenadasSoldados(Coordenada& coordenada){
+	coordenada.setCoordenadaX = rand()%dimension + 1;
+	coordenada.setCoordenadaY = rand()%dimension + 1;
+	coordenada.setCoordenadaZ = rand()%dimension + 1;
 }
+
 
 
 Tablero* BatallaCampal::getTablero(){
