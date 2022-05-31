@@ -39,7 +39,7 @@ Ficha::~Ficha(){
 }
 
 //Valida que las coordenadas sean válidas sin tener en cuenta el tipo
-bool tipoConcuerdaConPosicion(){
+bool esPosicionValida(){
 	bool esValida = false;
 	if(this->getPosicionX() > 0 && this->getPosicionX() < dimension
 	   && this->getPosicionY() > 0 && this->getPosicionY() < dimension
@@ -53,7 +53,7 @@ bool Ficha::esTipoValido(){
 	return (this->getTipo() == BARCO || this->getTipo() == MINA || this->getTipo() == SOLDADO || this->getTipo () == AVION)
 }
 
-bool Ficha::validarFicha(){
+bool Ficha::tipoConcuerdaConPosicion(){
 	bool esValida = false;
 	if(this->esPosicionValida() && this->esTipoValido()){
 		if(this->getPosicionZ() == 1){
