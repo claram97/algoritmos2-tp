@@ -1,7 +1,7 @@
 #include "BatallaCampal.h"
 #include "Jugador.h"
 #include "Tablero.h"
-#hola
+
 BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantidadSoldados,int dimensionTablero){
 
 	if(cantidadJugadores < MIN_JUGADORES || cantidadJugadores > MAX_JUGADORES){
@@ -86,6 +86,21 @@ Jugador* BatallaCampal::getJugador(unsigned int i){
 
 	return this->jugadores->obtener(i);
 }
+
+//Acá dejo dos procedimientos porque hay que:
+//1. Dejar la casilla inactiva
+//2. Ver si había un soldado, del jugador que sea.
+//Si había un soldado, hay que eliminarlo de la lista de fichas.
+
+void eliminarSoldado(){
+}
+
+void realizarDisparo(){
+	//eliminar la casilla
+	//si habia un soldado (recorrer la lista para cada jugador y mirar)
+	eliminarSoldado();
+}
+
 
 //Acá debería entrar a la casilla o al tablero, a este punto ya ni idea
 //Y fijarse si el contenido es INACTIVO
