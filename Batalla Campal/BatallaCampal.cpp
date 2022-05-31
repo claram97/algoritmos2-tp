@@ -190,6 +190,10 @@ void BatallaCampal::moverSoldado(char movimiento){
 	}	
 }
 
+void generarCoordenadasAleatorias(){
+	//Se generan según el tipo, ahora lo hago
+}
+
 
 Tablero* BatallaCampal::getTablero(){
 
