@@ -89,38 +89,14 @@ Jugador* BatallaCampal::getJugador(unsigned int i){
 
 //Acá debería entrar a la casilla o al tablero, a este punto ya ni idea
 //Y fijarse si el contenido es INACTIVO
-void BatallaCampal::esPosicionValida(){
-
-}
-
-//Primero chequea si la posición es válida. Si lo es, hace el movimiento. Sino, no hace nada.
-void BatallaCampal::moverSoldado(char movimiento){
-	switch(movimiento){
-		case ADELANTE:
-			if(esPosicionValida){
-				//hago el movimiento
-			}
-			break;
-		case ATRÁS:
-			if(esPosicionValida){
-				//hago el movimiento
-			}
-			break;
-		case IZQUIERDA:
-			if(esPosicionValida){
-				//hago el movimiento
-			}
-			break;
-		case DERECHA:
-			if(esPosicionValida){
-				//hago el movimiento
-			}
-			break;
-	}	
+bool BatallaCampal::esPosicionValida(){
+	bool posicionValida = true;
+	//chequeo, si no es true, lo cambio a false.
+	return posicionValida;
 }
 
 //Luego de mover el soldado, tengo que ver si se pisó con los n-1 restantes.
-void BatallaCampal::chequearCoincidencias(){
+bool BatallaCampal::soldadosCoinciden(){
 	bool coinciden = false;
 	unsigned int jugadorActual = this->turno;
 	for(int i = 1; i < this->cantidadDeJugadores; i++){
@@ -156,10 +132,49 @@ void BatallaCampal::chequearCoincidencias(){
 				this->jugadores->obtener(i)->avanzarCursor();
 			}	
 		}
-		
-		
 	}
+	return coinciden;
 }
+
+
+//Primero chequea si la posición es válida. Si lo es, hace el movimiento. Sino, no hace nada.
+void BatallaCampal::moverSoldado(char movimiento){
+	switch(movimiento){
+		case ADELANTE:
+			if(esPosicionValida()){
+				//hago el movimiento
+				if(soldadosCoinciden()){
+					//poner inactiva la casilla
+				}
+			}
+			break;
+		case ATRÁS:
+			if(esPosicionValida){
+				//hago el movimiento
+				if(soldadosCoinciden()){
+					//poner inactiva la casilla
+				}
+			}
+			break;
+		case IZQUIERDA:
+			if(esPosicionValida){
+				//hago el movimiento
+				if(soldadosCoinciden()){
+					//poner inactiva la casilla
+				}
+			}
+			break;
+		case DERECHA:
+			if(esPosicionValida){
+				//hago el movimiento
+				if(soldadosCoinciden()){
+					//poner inactiva la casilla
+				}
+			}
+			break;
+	}	
+}
+
 
 Tablero* BatallaCampal::getTablero(){
 
