@@ -37,13 +37,6 @@ Ficha::~Ficha(){
 	
 }
 
-void Ficha::definirTipo(char tipo){
-	this->tipo = tipo;
-	if(!this->tipoConcuerdaConPosicion()){
-		this->tipo = SIN_DEFINIR;
-	}
-}
-
 //Valida que las coordenadas sean válidas sin tener en cuenta el tipo
 bool tipoConcuerdaConPosicion(){
 	bool esValida = false;
@@ -97,12 +90,10 @@ int Ficha::getPosicionZ(){
 	return this->posicionZ;
 }
 
-void Ficha::setTipo(char tipo){
-	if(tipo == BARCO || tipo == AVION || tipo == MINA || tipo ==SOLDADO){
-		this->tipo = tipo;
-	}
-	else{
-		throw "El tipo de ficha ingresado es erróneo. El tipo debe ser BARCO, AVION, MINA o SOLDADO.";
+void Ficha::definirTipo(char tipo){
+	this->tipo = tipo;
+	if(!this->tipoConcuerdaConPosicion()){
+		this->tipo = SIN_DEFINIR;
 	}
 }
 	
