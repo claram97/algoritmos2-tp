@@ -81,3 +81,11 @@ Casilla* Tablero::getCasilla(int fila, int columna, int altura){
 
 	return this->matrizCasillas[fila][columna][altura];
 }
+
+//Acá debería entrar a la casilla o al tablero, a este punto ya ni idea
+//Y fijarse si el contenido es INACTIVO
+bool Tablero::esPosicionValida(){
+	bool posicionValida = true;
+	//chequeo, si no es true, lo cambio a false.
+	return posicionValida;
+}
