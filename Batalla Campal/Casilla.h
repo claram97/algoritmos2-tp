@@ -12,7 +12,7 @@
 //type
 #define TIERRA 'T'
 #define AIRE 'A'
-#define AGUA 'H'
+#define AGUA 'W'
 
 class Casilla{
 
