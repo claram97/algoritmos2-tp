@@ -17,10 +17,12 @@ Ficha::Ficha(){
 Ficha::Ficha(char tipo){
 
 	this->fichaValida = SIN_DEFINIR;
-	this->tipo = tipo; //se van a ir definiendo luego así que las inicializamos en algún valor no más
-				 //como los valores dependen del tipo y el tipo se define cuando tengas una ficha,
-				 //inicializaremos las posiciones en algo para que no tengan basura no más :)
-
+	if(tipo == BARCO || tipo == AVION || tipo == MINAS || tipo == SOLDADO){
+		this->tipo = tipo;
+	}
+	else{
+		this->tipo = SIN_DEFINIR;
+	}
 	this->posicionX = -1;
 	this->posicionY = -1;
 	this->posicionZ = -1;
