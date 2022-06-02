@@ -21,14 +21,12 @@ Tablero::Tablero(int fila, int columna, int profundidad){
     }
 
 	for (int i = 0; i < fila; i++){
-        for (int j = 0; j < columna; j++){
-        	for (int k = 0; k < profundidad; k++){
-        		this->matrizCasillas[i][j][k] = new Casilla(i, j, k, AIRE);
+        	for (int j = 0; j < columna; j++){
+        		for (int k = 0; k < profundidad; k++){
+        			this->matrizCasillas[i][j][k] = new Casilla(i, j, k, AIRE);
+        		}
         	}
-
-        }
-    }
-
+	}
 }
 
 void Tablero::setFilas(int fila){
