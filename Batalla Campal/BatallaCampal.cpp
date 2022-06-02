@@ -214,9 +214,9 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 }
 
 void BatallaCampal::dispararMisil(int x, int y, int z){
-	for (int i = 0; i <= 1; i++){
-		for (int j = 0; j <= 1; j++){
-			for (int k = 0; k <= 1; k++){
+	for (int i = -1; i <= 1; i++){
+		for (int j = -1; j <= 1; j++){
+			for (int k = -1; k <= 1; k++){
 				this->tablero->getCasilla(x+i, y+j, z+k)->setContenido(INACTIVO);
 			}
 		}
@@ -315,6 +315,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			dispararMisil(x, y, z);
 
 	}
+	this->jugadores->obtener(jugadorDeTurno)->eliminarCarta(numero);
 }
 
 
