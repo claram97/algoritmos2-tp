@@ -86,5 +86,13 @@ class BatallaCampal{
 
 		void realizarDisparo(int x, int y, int z);
 
+		void ejecutarCarta(int numero, int turno);
+
+		void dispararMisil(int x, int y, int z);
+
+		int usarRadar(int x, int y, int z);
+
+		void dispararSuperMisil(int x);
+
 };
 
