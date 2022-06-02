@@ -6,6 +6,7 @@
 #define MAX_ALTO 100
 
 //contenido de la casilla
+/*
 #define VACIO ' '
 #define LLENO '*'
 #define INACTIVO 'X'
@@ -14,22 +15,32 @@
 #define TIERRA 'T'
 #define AIRE 'A'
 #define AGUA 'W'
+*/
+
+enum EstadoDelCasillero{
+	Vacio, Inactivo, Lleno
+};
+
+enum TipoDeCasillero{
+	Tierra, Aire, Agua, General
+};
 
 class Casilla{
 
 	private:
 
-		char contenido;
-		char tipoDeCasilla;
 		unsigned int coordenadaX;
 		unsigned int coordenadaY;
 		unsigned int coordenadaZ;
+		EstadoDelCasillero estadoCasilla;
+		TipoDeCasillero tipoDeCasilla;
+		
 
 	public:
 
 		//Pre: recibe las coordenadas del tablero y una cantidad de tokens (fichas).
 		//Post: crea una casilla.
-		Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, char tipo);
+		Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, TipoDeCasillero tipo);
 
 		//Pre: recibe las coordenadas del tablero.
 		//Post: devuelve true si las proporciones del tablero son válidas.
@@ -41,23 +52,24 @@ class Casilla{
 		//Pre: -
 		//Post: elimina la casilla existente.
 		virtual ~Casilla();
-
+/*
 
 		//Pre: recibe un contenido para la casilla (vacío, full o inactiva).
 		//Post: inicializa el contenido de la casilla según su tipo.
-		void setContenido(char contenido);
-
+		void setContenido(EstadoDelCasillero contenido);
+*/
 		//Pre:
 		//Post: devuelve el contenido de la casilla.
-		char getContenido();
+		TipoDeCasillero getContenido();
 
 		//Pre: recibe un tipo para la casilla (mar, tierra o aire).
 		//Post: inicializa el tipo de la casilla según su tipo.
-		void setTipoDeCasilla(char tipoDeCasilla);
-
+/*
+		void setTipoDeCasilla(TipoDeCasillero tipoDeCasilla);
+*/
 		//Pre:
 		//Post: devuelve el tipo de la casilla.
-		char getTipoDeCasilla();
+		TipoDeCasillero getTipoDeCasilla();
 
 		//Pre: recibe el largo (coordenada X), que debe estar entre 0 y 100.
 		//Post: inicializa lenght de la casilla.
@@ -82,6 +94,10 @@ class Casilla{
 		//Pre:
 		//Post: devuelve height de una casilla dada.
 		unsigned int getCoordenadaZ();
+		
+		EstadoDelCasillero getEstado();
+		
+		void setEstado(EstadoDelCasillero estado);
+		
 };
-
 #endif
