@@ -1,6 +1,7 @@
 #ifndef TABLERO_H
 #define TABLERO_H
 #include "Casilla.h"
+#include "Vector.h"
 
 class Tablero{
 	private:
@@ -8,7 +9,7 @@ class Tablero{
 		int columna; // Y
 		int profundidad; // Z
 		Casilla**** matrizCasillas;
-		
+		Vector<Vector<Vector<Casilla *> *> *> * casilleros;
 	public:
 		/*
 		 * Pre:
@@ -65,5 +66,8 @@ class Tablero{
 		 * Pos:
 		 */
 		bool esPosicionValida();
+		/*
+		*/
+		virtual ~Tablero();
 };
 #endif
