@@ -259,6 +259,35 @@ bool BatallaCampal::verificarCoordenadas(int x, int y, int z){
 	}
 }
 
+void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
+	
+	this->tablero = new Tablero(xMax,yMax,zMax);
+	
+	for(int x = 1; x<=xMax; x++){
+		for(int y = 1; y<=yMax; x++){
+			for(int z = 1; z<=zMax; x++){
+				
+				if(x == 1){
+					
+					if(y < z){
+											
+						this->tablero->getCasilla(x,y,z)->setTipo(Tierra);
+					}
+					else{
+						this->tablero->getCasilla(x,y,z)->setTipo(Agua);
+					}
+					
+				}else{
+					this->tablero->getCasilla(x,y,z)->setTipo(Agua);
+				}
+					
+			}
+		}
+	}	
+}
+
+
+
 void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 	int x, y ,z;
 	char filaOColumna;
@@ -272,11 +301,11 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> y;
 			std::cout << "Altura: ";
 			std::cin >> z;
-			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AIRE){
+			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != Aire){
 				throw "Avion debe estar en el aire";
 			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(AVION, x, y, z);
-				this->tablero->getCasilla(x, y, z)->setContenido(LLENO);
+				this->tablero->getCasilla(x, y, z)->setEstado(Lleno)
 			}
 		case 2:
 			std::cout << "Ingrese coordenadas de barco: "<<std::endl;
@@ -284,11 +313,11 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> x;
 			std::cout << "Columna: ";
 			std::cin >> y;
-			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
+			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != Agua){
 				throw "Barco debe estar en el agua";
 			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(BARCO, x, y, 1);
-				this->tablero->getCasilla(x, y, z)->setContenido(LLENO);
+				this->tablero->getCasilla(x, y, z)->setEstado(Lleno);
 			}
 		case 3:
 			std::cout << "Ingrese coordenadas de mina: "<<std::endl;
@@ -296,11 +325,11 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> x;
 			std::cout << "Columna: ";
 			std::cin >> y;
-			if (this->tablero->getCasilla(x, y, 1)->getTipoDeCasilla() != TIERRA){
+			if (this->tablero->getCasilla(x, y, 1)->getTipoDeCasilla() != Tierra){
 				throw "Mina debe estar en la tierra";
 			}else if (verificarCoordenadas(x, y, 1)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(MINA, x, y, 1);
-				this->tablero->getCasilla(x, y, 1)->setContenido(LLENO);
+				this->tablero->getCasilla(x, y, 1)->setEstado(Lleno);
 			}
 		case 4:
 			std::cout << "Ingrese coordenadas de radar: "<<std::endl;
@@ -359,4 +388,3 @@ int BatallaCampal::getCantidadDeSoldados(){
 int BatallaCampal::getDimensionDelTablero(){
 	return this->dimensionTablero;
 }
-
