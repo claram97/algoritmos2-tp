@@ -103,7 +103,7 @@ Jugador* BatallaCampal::getJugador(unsigned int i){
 
 void BatallaCampal::realizarDisparo(int x, int y, int z){
 
-	this->tablero->getCasilla(x, y, z)->setContenido(INACTIVO); //metodo para dejar inactivo
+	this->tablero->getCasilla(x, y, z)->setEstado(Inactivo); //metodo para dejar inactivo
 
 	for(int i = 1; i <= this->jugadores->getLongitud(); i++){
 		for(unsigned int j = 1; j <= this->jugadores->obtener(i)->getCantidadDeSoldados() ; j++){
@@ -132,19 +132,19 @@ bool BatallaCampal::soldadosCoinciden(int x, int y){
 
 	return coinciden;
 
-		//No sé cómo entrar a la lista de fichas acá xD
+		//No sÃ© cÃ³mo entrar a la lista de fichas acÃ¡ xD
 		//Lo intento y cualquier cosa ustedes lo arreglan
-		//La onda acá es ver si las posiciones X e Y del jugador actual y de los demás coinciden o no
+		//La onda acÃ¡ es ver si las posiciones X e Y del jugador actual y de los demÃ¡s coinciden o no
 		//Si coinciden hay que poner inactiva la casilla
 
-		//Dejo pseudo-código acá y si puedo intento implementarlo
+		//Dejo pseudo-cÃ³digo acÃ¡ y si puedo intento implementarlo
 
 		//Recorro la lista del jugador actual
 		//Cuando encuentro un soldado, empiezo a buscar los soldados del otro jugador y miro si coinciden
 		//Sigo recorriendo la lista del jugador actual
 		//Cuando encuentro otro soldado, vuelvo a buscar los soldados del otro jugador y miro si coinciden
 		//Se recorren ambas listas en tanto y en cuanto que el cursor no sea NULL
-		//Esa es la idea pero no sé si lo implementé bien o si la sintaxis en sí está bien
+		//Esa es la idea pero no sÃ© si lo implementÃ© bien o si la sintaxis en sÃ­ estÃ¡ bien
 
 }
 
@@ -161,50 +161,50 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 	switch(movimiento){
 
 		case ARRIBA:
-			if(this->tablero->getCasilla(fila-1, col, 0)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila-1, col, 0)->getContenido() != INACTIVO ||
+			if(this->tablero->getCasilla(fila-1, col, 0)->getTipoDeCasilla() == Tierra || this->tablero->getCasilla(fila-1, col, 0)->getEstado() != Inactivo ||
 				(fila-1) > 0 || fila < this->getDimensionDelTablero() ){
 
 				this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->setCoordenadasSoldado(fila-1, col);
 
 			}else{
-				throw "Movimiento inválido.";
+				throw "Movimiento invÃ¡lido.";
 			}
 			break;
 		case ABAJO:
-			if(this->tablero->getCasilla(fila+1, col, 0)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila+1, col, 0)->getContenido() != INACTIVO ||
+			if(this->tablero->getCasilla(fila+1, col, 0)->getTipoDeCasilla() == Tierra || this->tablero->getCasilla(fila+1, col, 0)->getEstado() != Inactivo ||
 				(fila+1) > 0 || fila < this->getDimensionDelTablero() ){
 
 				this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->setCoordenadasSoldado(fila+1, col);
 
 			}else{
-				throw "Movimiento inválido.";
+				throw "Movimiento invÃ¡lido.";
 			}
 			break;
 		case IZQUIERDA:
-			if(this->tablero->getCasilla(fila, col-1, 0)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila, col-1, 0)->getContenido() != INACTIVO ||
+			if(this->tablero->getCasilla(fila, col-1, 0)->getTipoDeCasilla() == Tierra || this->tablero->getCasilla(fila, col-1, 0)->getEstado() != Inactivo ||
 				(col-1) > 0 || col < this->getDimensionDelTablero() ){
 
 				this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->setCoordenadasSoldado(fila, col-1);
 
 			}else{
-				throw "Movimiento inválido.";
+				throw "Movimiento invÃ¡lido.";
 			}
 			break;
 		case DERECHA:
-			if(this->tablero->getCasilla(fila, col+1, 0)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila, col+1, 0)->getContenido() != INACTIVO ||
+			if(this->tablero->getCasilla(fila, col+1, 0)->getTipoDeCasilla() == Tierra || this->tablero->getCasilla(fila, col+1, 0)->getEstado() != Inactivo ||
 				(col+1) > 0 || col < this->getDimensionDelTablero() ){
 
 				this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->setCoordenadasSoldado(fila, col+1);
 
 			}else{
-				throw "Movimiento inválido.";
+				throw "Movimiento invÃ¡lido.";
 			}
 
 			break;
 	}
 	if(this->soldadosCoinciden(this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionX(), this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionY())){
 
-		this->tablero->getCasilla(this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionX(), this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionY(), 0)->setContenido(INACTIVO);
+		this->tablero->getCasilla(this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionX(), this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionY(), 0)->setEstado(Inactivo);
 	}
 }
 
@@ -213,7 +213,7 @@ void BatallaCampal::dispararMisil(int x, int y, int z){
 	for (int i = -1; i <= 1; i++){
 		for (int j = -1; j <= 1; j++){
 			for (int k = -1; k <= 1; k++){
-				this->tablero->getCasilla(x+i, y+j, z+k)->setContenido(INACTIVO);
+				this->tablero->getCasilla(x+i, y+j, z+k)->setEstado(Inactivo);
 			}
 		}
 	}
@@ -226,7 +226,7 @@ int BatallaCampal::usarRadar(int x, int y, int z){
 		for (int j = 0; j <= 2; j++){
 			for (int k = 0; k <= 2; k++){
 				contenido = this->tablero->getCasilla(x+i, y+j, z+k)->getContenido();
-				if (contenido == LLENO){
+				if (this->tablero->getCasilla(x+i, y+j, z+k)->getEstado() == Lleno){
 					contador++;
 				}
 			}
@@ -239,13 +239,13 @@ void BatallaCampal::dispararSuperMisil(int x, bool filaOColumna){
 	if (filaOColumna){
 		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
 			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
-				this->tablero->getCasilla(i, x, k)->setContenido(INACTIVO);
+				this->tablero->getCasilla(i, x, k)->setEstado(Inactivo);
 			}
 		}
 	}else{
 		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
 			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
-				this->tablero->getCasilla(x, i, k)->setContenido(INACTIVO);
+				this->tablero->getCasilla(x, i, k)->setEstado(Inactivo);
 			}
 		}
 	}
@@ -305,7 +305,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 				throw "Avion debe estar en el aire";
 			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(AVION, x, y, z);
-				this->tablero->getCasilla(x, y, z)->setEstado(Lleno)
+				this->tablero->getCasilla(x, y, z)->setEstado(Lleno);
 			}
 		case 2:
 			std::cout << "Ingrese coordenadas de barco: "<<std::endl;
