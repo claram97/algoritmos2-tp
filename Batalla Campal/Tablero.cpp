@@ -11,8 +11,8 @@ Tablero::Tablero(int fila, int columna, int profundidad){
 	this->columna = columna;
 	this->profundidad = profundidad;
 
-	this->matrizCasillas = new Casilla***[fila];
-	for (int i = 0; i < fila; i++)
+//	this->matrizCasillas = new Casilla***[fila];
+/*	for (int i = 0; i < fila; i++)
     {
         this->matrizCasillas[i] = new Casilla**[columna];	// a cada dirección de "x" le asigna otra dirección con "y" posiciones
         for (int j = 0; j < columna; j++) {
@@ -23,11 +23,39 @@ Tablero::Tablero(int fila, int columna, int profundidad){
 	for (int i = 0; i < fila; i++){
         	for (int j = 0; j < columna; j++){
         		for (int k = 0; k < profundidad; k++){
-        			this->matrizCasillas[i][j][k] = new Casilla(i, j, k, AIRE);
-        		}
-        	}
+        			this->matrizCasillas[i][j][k] = new Casilla(i, j, k, General);   |
+        		}									 |
+												 |
+												 |
+        	}										 |
+	}										<- - - - |
+}*/													
+	this->casilleros = new Vector<Vector<Vector<Casilla *> *> *>(fila, NULL);
+	
+	for(int x = 1; x <= this->casilleros->getLongitud(); x++ ){                                                                        
+		this->casilleros->agregar(x, new Vector<Vector<Casilla *> *> (columna, NULL));
+		for(int y = 1; y <= columna; y++ ){											   
+			this->casilleros->obtener(x)->agregar(y, new Vector<Casilla *> (profundidad, NULL));                               
+			for(int z = 1; z<= profundidad; z++){
+				this->casilleros->obtener(x)->obtener(y)->agregar(z, new Casilla(x,y,z,General));
+			}
+		}
+		
 	}
 }
+Tablero::~Tablero(){
+	for(int x = 1; x <= this->casilleros->getLongitud(); x++ ){
+		for(int y = 1; y <= columna; y++ ){
+			for(int z = 1; z<= profundidad; z++){
+				delete this->casilleros->obtener(x)->obtener(y)->obtener(z);
+			}
+			delete this->casilleros->obtener(x)->obtener(y);
+		}
+		delete this->casilleros->obtener(x);
+	}
+	delete []this->casilleros;
+}
+	
 
 void Tablero::setFilas(int fila){
 	this -> fila = fila;
@@ -43,17 +71,6 @@ void Tablero::setProfundidad(int profundidad){
 }
 
 
-void Tablero::rellenarMatriz(){
-	for (int i = 0; i < this->fila; i++)
-    {
-        for (int j = 0; j < this->columna; j++)
-        {
-            for (int k = 0; k < this->profundidad; k++) {
-                matrizCasillas[i][j][k]->setTipoDeCasilla(TIERRA);
-            }
-        }
-    }
-}
 
 void Tablero::mostrarTablero(){
 	for (int i = 0; i < this->fila; i++)
@@ -70,9 +87,9 @@ void Tablero::mostrarTablero(){
 }
 
 void Tablero::modificarPosicion(char tipo, int fila, int columna, int profundidad){
-	
+	/*
 	matrizCasillas[fila][columna][profundidad]->setContenido(tipo);
-	
+	*/
 }
 
 Casilla* Tablero::getCasilla(int fila, int columna, int altura){
