@@ -21,6 +21,7 @@ int main(){
 		int cantidadJugadores = 2;
 		int cantidadSoldados = 3;
 		int dimensionDelTablero = 20;
+		int numeroCarta;
 
 		cout << "1.Partida rápida (2 jugadores)\n2.Partida personalizada (2 o más jugadores)" <<endl;
 		cout << "Modo de juego: ";
@@ -115,7 +116,12 @@ int main(){
 			cout << "Desea usar una carta? (SI: S, NO: N): ";
 			cin >> opcionUsuarioC;
 			if(opcionUsuarioC == 'S'){
+				cout << "Elegir carta: " <<endl;
+				cin >> numeroCarta;
 				cout << "Ejecutando carta..." <<endl;
+				batalla->ejecutarCarta(numeroCarta, batalla->getTurno());
+				batalla->getJugador(batalla->getTurno())->eliminarCarta(numeroCarta);
+				
 			}
 
 			//batalla->getTablero()->mostrarTablero();
