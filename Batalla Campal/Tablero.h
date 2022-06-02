@@ -10,6 +10,7 @@ class Tablero{
 		int profundidad; // Z
 		//Casilla**** matrizCasillas;
 		Vector<Vector<Vector<Casilla *> *> *> * casilleros;
+		void validarRango(unsigned int x, unsigned int y, unsigned int z);
 	public:
 		/*
 		 * Pre:
