@@ -8,7 +8,7 @@ class Tablero{
 		int fila; // X
 		int columna; // Y
 		int profundidad; // Z
-		Casilla**** matrizCasillas;
+		//Casilla**** matrizCasillas;
 		Vector<Vector<Vector<Casilla *> *> *> * casilleros;
 	public:
 		/*
