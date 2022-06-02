@@ -1,9 +1,4 @@
-#include <iostream>
 #include "BatallaCampal.h"
-#include "Jugador.h"
-#include "Tablero.h"
-#include "Ficha.h"
-#include "Casilla.h"
 
 BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantidadSoldados,int dimensionTablero){
 
@@ -214,6 +209,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 }
 
 void BatallaCampal::dispararMisil(int x, int y, int z){
+
 	for (int i = -1; i <= 1; i++){
 		for (int j = -1; j <= 1; j++){
 			for (int k = -1; k <= 1; k++){
@@ -239,11 +235,27 @@ int BatallaCampal::usarRadar(int x, int y, int z){
 	return contador;
 }
 
-void BatallaCampal::dispararSuperMisil(int x){
-		for (int i = 0; i <= 2; i++){
-			for (int j = 0; j <= 2; j++){
-				this->tablero->getCasilla(x, i, j)->setContenido(INACTIVO);
+void BatallaCampal::dispararSuperMisil(int x, bool filaOColumna){
+	if (filaOColumna){
+		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
+			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
+				this->tablero->getCasilla(i, x, k)->setContenido(INACTIVO);
 			}
+		}
+	}else{
+		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
+			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
+				this->tablero->getCasilla(x, i, k)->setContenido(INACTIVO);
+			}
+		}
+	}
+}
+
+bool BatallaCampal::verificarCoordenadas(int x, int y, int z){
+	if (x < 0 || y < 0 || z < 0 || x > this->getDimensionDelTablero() || y > this->getDimensionDelTablero() || z > this->getDimensionDelTablero()){
+		throw "Coorndeadas no estan en el tablero";
+	}else{
+		return true;
 	}
 }
 
@@ -262,7 +274,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> z;
 			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AIRE){
 				throw "Avion debe estar en el aire";
-			}else{
+			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(AVION, x, y, z);
 				this->tablero->getCasilla(x, y, z)->setContenido(LLENO);
 			}
@@ -274,7 +286,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> y;
 			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
 				throw "Barco debe estar en el agua";
-			}else{
+			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(BARCO, x, y, 1);
 				this->tablero->getCasilla(x, y, z)->setContenido(LLENO);
 			}
@@ -284,11 +296,11 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> x;
 			std::cout << "Columna: ";
 			std::cin >> y;
-			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != TIERRA){
+			if (this->tablero->getCasilla(x, y, 1)->getTipoDeCasilla() != TIERRA){
 				throw "Mina debe estar en la tierra";
-			}else{
+			}else if (verificarCoordenadas(x, y, 1)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(MINA, x, y, 1);
-				this->tablero->getCasilla(x, y, z)->setContenido(LLENO);
+				this->tablero->getCasilla(x, y, 1)->setContenido(LLENO);
 			}
 		case 4:
 			std::cout << "Ingrese coordenadas de radar: "<<std::endl;
@@ -298,11 +310,22 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> y;
 			std::cout << "Altura: ";
 			std::cin >> z;
+			if (verificarCoordenadas(x, y, z) && verificarCoordenadas(x+2, y+2, z+2) && verificarCoordenadas(x-2, y-2, z-2)){
 			cantidadFichas = usarRadar(x, y ,z);
 			std::cout << "En los alrededores se encuentran "<< cantidadFichas << "cantidad de fichas"<<std::endl;
+			}
 		case 5:
 			std::cout << "Elegir Columna: C o Fila: F: "<<std::endl;
 			std::cin >> filaOColumna;
+			if (filaOColumna == 'C'){
+				std::cout << "Ingresar columna: "<<std::endl;
+				std::cin >> x;
+				dispararSuperMisil(x, true);
+			}else if (filaOColumna == 'F'){
+				std::cout << "Ingresar fila: "<<std::endl;
+				std::cin >> x;
+				dispararSuperMisil(x,false);	
+			}
 		case 6:
 			std::cout << "Ingrese coordenadas de disparo del misil: "<<std::endl;
 			std::cout << "Fila: ";
@@ -312,8 +335,9 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cout << "Altura: ";
 			std::cin >> z;
 			std::cout << "Disparando misil..." <<std::endl;
+			if (verificarCoordenadas(x, y, z) && verificarCoordenadas(x+1, y+1, z+1) && verificarCoordenadas(x-1, y-1, z-1)){
 			dispararMisil(x, y, z);
-
+			}
 	}
 	this->jugadores->obtener(jugadorDeTurno)->eliminarCarta(numero);
 }
