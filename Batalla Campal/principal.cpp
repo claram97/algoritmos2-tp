@@ -56,6 +56,7 @@ int main(){
 
 			}
 		}
+		// aca va el terreno que esta en batalla campal
 		cout << "Se estableció la siguiente configuracion: (" << batalla->getCantidadDeJugadores() <<")jugadores | ("<< batalla->getCantidadDeSoldados()<<")soldados por jugador | (" << batalla->getDimensionDelTablero() << ")dimension del tablero" << endl;
 		cout << "--COMIENZA EL JUEGO--" << endl;
 
