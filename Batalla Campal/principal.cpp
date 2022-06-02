@@ -23,7 +23,7 @@ int main(){
 		int dimensionDelTablero = 20;
 		int numeroCarta;
 
-		cout << "1.Partida rápida (2 jugadores)\n2.Partida personalizada (2 o más jugadores)" <<endl;
+		cout << "1.Partida rÃ¡pida (2 jugadores)\n2.Partida personalizada (2 o mÃ¡s jugadores)" <<endl;
 		cout << "Modo de juego: ";
 		cin >> opcionUsuario;
 
@@ -32,7 +32,7 @@ int main(){
 			cin >> cantidadJugadores;
 			cout << "Elige cantidad de soldados por jugador (3 a 8): ";
 			cin >> cantidadSoldados;
-			cout << "Elige elige el tamaño del mapa (20 a 100): ";
+			cout << "Elige elige el tamaÃ±o del mapa (20 a 100): ";
 			cin >> dimensionDelTablero;
 
 
@@ -50,14 +50,14 @@ int main(){
 				if( coordX < batalla->getDimensionDelTablero() && coordY < batalla->getDimensionDelTablero()){
 					batalla->getJugador(i)->nuevoSoldado(coordX, coordY);
 				}else{
-					throw "Coordenada inválida";
+					throw "Coordenada invÃ¡lida";
 				}
-				batalla->getTablero()->getCasilla(coordX, coordY, 1)->setContenido(LLENO);
+				batalla->getTablero()->getCasilla(coordX, coordY, 1)->setEstado(Lleno);
 
 			}
 		}
-		// aca va el terreno que esta en batalla campal
-		cout << "Se estableció la siguiente configuracion: (" << batalla->getCantidadDeJugadores() <<")jugadores | ("<< batalla->getCantidadDeSoldados()<<")soldados por jugador | (" << batalla->getDimensionDelTablero() << ")dimension del tablero" << endl;
+		
+		cout << "Se estableciÃ³ la siguiente configuracion: (" << batalla->getCantidadDeJugadores() <<")jugadores | ("<< batalla->getCantidadDeSoldados()<<")soldados por jugador | (" << batalla->getDimensionDelTablero() << ")dimension del tablero" << endl;
 		cout << "--COMIENZA EL JUEGO--" << endl;
 
 		while( batalla->getEstadoDelJuego() == JUGANDO){
@@ -108,7 +108,7 @@ int main(){
 			cout << "Disparando..." <<endl;
 			batalla->realizarDisparo(coordX, coordY, coordZ);
 
-			cout << "La casilla ahora está: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getContenido() <<endl;
+			cout << "La casilla ahora estÃ¡: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getContenido() <<endl;
 
 			cout << "Cartas disponibles: "<<endl;
 			for(unsigned int i = 1; i <= batalla->getJugador(batalla->getTurno())->getCantidadDeCartas(); i++){
@@ -133,7 +133,7 @@ int main(){
 
 		//batalla->getTablero()->mostrarTablero();
 
-		cout << "Ganó el jugador: " << batalla->getTurno() << endl;
+		cout << "GanÃ³ el jugador: " << batalla->getTurno() << endl;
 
 		return 0;
 
@@ -141,7 +141,6 @@ int main(){
 		cout << "ERROR: " << X <<endl;
 	}
 }
-
 
 
 
