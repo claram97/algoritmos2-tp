@@ -1,6 +1,9 @@
+#include <iostream>
 #include "BatallaCampal.h"
 #include "Jugador.h"
 #include "Tablero.h"
+#include "Ficha.h"
+#include "Casilla.h"
 
 BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantidadSoldados,int dimensionTablero){
 
@@ -207,6 +210,110 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 	if(this->soldadosCoinciden(this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionX(), this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionY())){
 
 		this->tablero->getCasilla(this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionX(), this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionY(), 0)->setContenido(INACTIVO);
+	}
+}
+
+void BatallaCampal::dispararMisil(int x, int y, int z){
+	for (int i = 0; i <= 1; i++){
+		for (int j = 0; j <= 1; j++){
+			for (int k = 0; k <= 1; k++){
+				this->tablero->getCasilla(x+i, y+j, z+k)->setContenido(INACTIVO);
+			}
+		}
+	}
+}
+
+int BatallaCampal::usarRadar(int x, int y, int z){
+	int contador = 0;
+	char contenido;
+	for (int i = 0; i <= 2; i++){
+		for (int j = 0; j <= 2; j++){
+			for (int k = 0; k <= 2; k++){
+				contenido = this->tablero->getCasilla(x+i, y+j, z+k)->getContenido();
+				if (contenido == LLENO){
+					contador++;
+				}
+			}
+		}
+	}
+	return contador;
+}
+
+void BatallaCampal::dispararSuperMisil(int x){
+		for (int i = 0; i <= 2; i++){
+			for (int j = 0; j <= 2; j++){
+				this->tablero->getCasilla(x, i, j)->setContenido(INACTIVO);
+			}
+	}
+}
+
+void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
+	int x, y ,z;
+	char filaOColumna;
+	int cantidadFichas;
+	switch(numero){
+		case 1:
+			std::cout << "Ingrese coordenadas de avion: "<<std::endl;
+			std::cout << "Fila: ";
+			std::cin >> x;
+			std::cout << "Columna: ";
+			std::cin >> y;
+			std::cout << "Altura: ";
+			std::cin >> z;
+			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AIRE){
+				throw "Avion debe estar en el aire";
+			}else{
+				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(AVION, x, y, z);
+				this->tablero->getCasilla(x, y, z)->setContenido(LLENO);
+			}
+		case 2:
+			std::cout << "Ingrese coordenadas de barco: "<<std::endl;
+			std::cout << "Fila: ";
+			std::cin >> x;
+			std::cout << "Columna: ";
+			std::cin >> y;
+			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
+				throw "Barco debe estar en el agua";
+			}else{
+				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(BARCO, x, y, 1);
+				this->tablero->getCasilla(x, y, z)->setContenido(LLENO);
+			}
+		case 3:
+			std::cout << "Ingrese coordenadas de mina: "<<std::endl;
+			std::cout << "Fila: ";
+			std::cin >> x;
+			std::cout << "Columna: ";
+			std::cin >> y;
+			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != TIERRA){
+				throw "Mina debe estar en la tierra";
+			}else{
+				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(MINA, x, y, 1);
+				this->tablero->getCasilla(x, y, z)->setContenido(LLENO);
+			}
+		case 4:
+			std::cout << "Ingrese coordenadas de radar: "<<std::endl;
+			std::cout << "Fila: ";
+			std::cin >> x;
+			std::cout << "Columna: ";
+			std::cin >> y;
+			std::cout << "Altura: ";
+			std::cin >> z;
+			cantidadFichas = usarRadar(x, y ,z);
+			std::cout << "En los alrededores se encuentran "<< cantidadFichas << "cantidad de fichas"<<std::endl;
+		case 5:
+			std::cout << "Elegir Columna: C o Fila: F: "<<std::endl;
+			std::cin >> filaOColumna;
+		case 6:
+			std::cout << "Ingrese coordenadas de disparo del misil: "<<std::endl;
+			std::cout << "Fila: ";
+			std::cin >> x;
+			std::cout << "Columna: ";
+			std::cin >> y;
+			std::cout << "Altura: ";
+			std::cin >> z;
+			std::cout << "Disparando misil..." <<std::endl;
+			dispararMisil(x, y, z);
+
 	}
 }
 
