@@ -1,7 +1,7 @@
 #include "Casilla.h"
 
 Casilla::Casilla(unsigned int largo, unsigned int ancho, unsigned int alto, TipoDeCasillero tipo){
-  //Esto no va acà creo pero lo dejo aca por si se necesita
+  //Esto no va acÃ  creo pero lo dejo aca por si se necesita
     /*if(proporcionesValidasTablero(largo,ancho,alto)){
         this->contenido = VACIO;
         this->tipoDeCasilla = tipo;
@@ -30,7 +30,7 @@ Casilla::~Casilla(){
 	        this->estadoCasilla = contenido;
 	    }
 	    else{
-	        throw "El contenido es inválido, debe ser: VACIO, FULL, INACTIVO";
+	        throw "El contenido es invÃ¡lido, debe ser: VACIO, FULL, INACTIVO";
 	    }
 	}
 */
@@ -48,7 +48,7 @@ void Casilla::setCoordenadaX(unsigned int coordenadaX){
         this->coordenadaX = coordenadaX;
     }
     else{
-        throw "La coordenada X para la casilla no está dentro de un rango de valores válidos.";
+        throw "La coordenada X para la casilla no estÃ¡ dentro de un rango de valores vÃ¡lidos.";
     }
 }
 
@@ -61,7 +61,7 @@ void Casilla::setCoordenadaY(unsigned int coordenadaY){
         this->coordenadaY = coordenadaY;
     }
     else{
-        throw "La coordenada Y para la casilla no está dentro de un rango de valores válidos.";
+        throw "La coordenada Y para la casilla no estÃ¡ dentro de un rango de valores vÃ¡lidos.";
     }
 }
 
@@ -74,10 +74,12 @@ void Casilla::setCoordenadaZ(unsigned int coordenadaZ){
         this->coordenadaZ = coordenadaZ;
     }
     else{
-        throw "La coordenada Z para la casilla no está dentro de un rango de valores válidos.";
+        throw "La coordenada Z para la casilla no estÃ¡ dentro de un rango de valores vÃ¡lidos.";
     }
 }
-
+void Casilla::setTipo(TipoDeCasillero tipo){
+	this->tipoDeCasilla = tipo;
+}
 unsigned int Casilla::getCoordenadaZ(){
     return this->coordenadaZ;
 }
