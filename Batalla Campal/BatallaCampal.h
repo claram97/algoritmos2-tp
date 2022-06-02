@@ -1,7 +1,12 @@
+#ifndef BATALLACAMPAL_H
+#define BATALLACAMPAL_H
 #include "Jugador.h"
 #include "Tablero.h"
 #include "Lista.h"
 #include "Vector.h"
+#include "Casilla.h"
+#include "Ficha.h"
+#include <iostream>
 
 #define MIN_JUGADORES 2
 #define MAX_JUGADORES 20
@@ -92,7 +97,10 @@ class BatallaCampal{
 
 		int usarRadar(int x, int y, int z);
 
-		void dispararSuperMisil(int x);
+		void dispararSuperMisil(int x, bool filaOColumna);
+
+		bool verificarCoordenadas(int x, int y, int z);
 
 };
 
+#endif
