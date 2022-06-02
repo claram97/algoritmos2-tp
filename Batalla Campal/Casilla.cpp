@@ -1,14 +1,15 @@
 #include "Casilla.h"
 
-Casilla::Casilla(unsigned int largo, unsigned int ancho, unsigned int alto, char tipo){
+Casilla::Casilla(unsigned int largo, unsigned int ancho, unsigned int alto, TipoDeCasillero tipo){
   //Esto no va acà creo pero lo dejo aca por si se necesita
-    if(proporcionesValidasTablero(largo,ancho,alto)){
+    /*if(proporcionesValidasTablero(largo,ancho,alto)){
         this->contenido = VACIO;
         this->tipoDeCasilla = tipo;
         this->coordenadaX = largo;
         this->coordenadaY = ancho;
         this->coordenadaZ = alto;
     }
+    */
     if(!proporcionesValidasTablero(largo,ancho,alto)){
         throw "Proporciones invalidas del tablero";
     }
@@ -23,30 +24,22 @@ bool Casilla::proporcionesValidasTablero(unsigned int largo, unsigned int ancho,
 Casilla::~Casilla(){
   
 }
-
-void Casilla::setContenido(char contenido){
-    if(contenido == VACIO || contenido == LLENO || contenido == INACTIVO){
-        this->contenido = contenido;
-    }
-    else{
-        throw "El contenido es inválido, debe ser: VACIO, FULL, INACTIVO";
-    }
+/*
+	void Casilla::setContenido(EstadoDelCasillero contenido){
+	    if(estadoCasilla == Vacio || estadoCasilla == Lleno || estadoCasilla == Inactivo){
+	        this->estadoCasilla = contenido;
+	    }
+	    else{
+	        throw "El contenido es inválido, debe ser: VACIO, FULL, INACTIVO";
+	    }
+	}
+*/
+TipoDeCasillero Casilla::getContenido(){
+    return this->tipoDeCasilla;
 }
 
-char Casilla::getContenido(){
-    return this->contenido;
-}
 
-void Casilla::setTipoDeCasilla(char tipoDeCasilla){
-    if(tipoDeCasilla == TIERRA || tipoDeCasilla == AIRE || tipoDeCasilla == AGUA){
-        this->tipoDeCasilla = tipoDeCasilla;
-    }
-    else{
-        throw "Invalid type.";
-    }
-}
-
-char Casilla::getTipoDeCasilla(){
+TipoDeCasillero Casilla::getTipoDeCasilla(){
     return this->tipoDeCasilla;
 }
 
@@ -87,4 +80,10 @@ void Casilla::setCoordenadaZ(unsigned int coordenadaZ){
 
 unsigned int Casilla::getCoordenadaZ(){
     return this->coordenadaZ;
+}
+void Casilla::setEstado(EstadoDelCasillero estado){
+	this->estadoCasilla = estado;
+}
+EstadoDelCasillero Casilla::getEstado(){
+	return this->estadoCasilla;
 }
