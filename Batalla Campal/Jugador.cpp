@@ -6,10 +6,8 @@ using namespace std;
 Jugador::Jugador(int id, int cantidadSoldados) {
 	this->id = id;
 	this->cantidadSoldados = cantidadSoldados;
-	this->cantidadHerramientas = 0;
 	this->herramientas = new Lista<Ficha*>();
 	this->soldados = new Lista<Ficha*>();
-
 	this->cartas = new Lista<Carta*>();
 	this->estado = EN_BATALLA;
 }
@@ -76,10 +74,6 @@ Carta* Jugador::getCarta() {
 }
 */
 
-void Jugador::eliminarHerramienta(int id){
-	Ficha* ficha = this->getHerramienta(id);  //???
-	delete ficha;
-}
 
 void Jugador::setEstado(EstadoJugador estado) {
 	this->estado = estado;
@@ -103,9 +97,18 @@ unsigned int Jugador::getId(){
 	return this->id;
 }
 
+
 void Jugador::nuevoSoldado(int fila, int columna){
 
 	this->soldados->add(new Ficha(SOLDADO, fila, columna, 1));
+}
+
+void Jugador::nuevaHerramienta(char FICHA, int fila, int columna, int altura){
+	if( this->cartas->contarElementos() < MAX_HERRAMIENTAS){
+		this->herramientas->add(new Ficha(FICHA, fila, columna, altura));
+	}else{
+		throw "No se pueden poner mas herramientas";
+	}
 }
 
 void Jugador::eliminarSoldado(int id){
@@ -116,5 +119,9 @@ void Jugador::eliminarSoldado(int id){
 
 void Jugador::eliminarCarta(int id){
 	this->cartas->remover(id);
+}
+
+void Jugador::eliminarHerramienta(int id){
+	this->herramientas->remover(id);
 }
 
