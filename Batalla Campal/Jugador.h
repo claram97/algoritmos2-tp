@@ -4,6 +4,7 @@
 #include "Ficha.h"
 #include "Carta.h"
 #define MAX_CARTAS 5
+#define MAX_HERRAMIENTAS 7
 
 enum EstadoJugador {
 	ELIMINADO,
@@ -89,6 +90,8 @@ public:
 	void nuevoSoldado(int x, int y);
 
 	void eliminarSoldado(int id);
+
+	void nuevaHerramienta(char FICHA, int fila, int columna, int altura);
 
 	void eliminarCarta(int id);
 
