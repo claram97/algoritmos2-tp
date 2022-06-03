@@ -5,12 +5,15 @@
 
 class Tablero{
 	private:
-		int fila; // X
-		int columna; // Y
-		int profundidad; // Z
-		//Casilla**** matrizCasillas;
+		int maxFila; // X
+		int maxColumna; // Y
+		int maxAltura; // Z
+			
+		//Lista<Lista<Lista<Casila*>*>*>* casilleros;
+	
 		Vector<Vector<Vector<Casilla *> *> *> * casilleros;
 		void validarRango(unsigned int x, unsigned int y, unsigned int z);
+	
 	public:
 		/*
 		 * Pre:
