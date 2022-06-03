@@ -2,11 +2,16 @@
 #define _CASILLA_H
 
 enum EstadoDelCasillero{
-	Vacio, Inactivo, Lleno
+	VACIO,
+	INACTIVO,
+	LLENO
 };
 
 enum TipoDeCasillero{
-	Tierra, Aire, Agua, General
+	TIERRA,
+	AIRE,
+	AGUA,
+	GENERAL
 };
 
 class Casilla{
