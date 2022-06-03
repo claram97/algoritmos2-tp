@@ -21,9 +21,6 @@ bool Casilla::proporcionesValidasTablero(unsigned int largo, unsigned int ancho,
 }
 */
 
-Casilla::~Casilla(){
-  
-}
 
 TipoDeCasillero Casilla::getContenido(){
     return this->tipoDeCasilla;
@@ -68,6 +65,12 @@ void Casilla::setCoordenadaZ(unsigned int coordenadaZ){
         throw "La coordenada Z para la casilla no está dentro de un rango de valores válidos.";
     }
 }
+
+Casilla::Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ){
+	
+	
+}
+
 void Casilla::setTipo(TipoDeCasillero tipo){
 	if(tipo == AVION || tipo == BARCO || tipo == SOLDADO || tipo == GENERAL){
 		this->tipoDeCasilla = tipo;
