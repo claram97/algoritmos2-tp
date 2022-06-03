@@ -24,7 +24,15 @@ class Casilla{
 		EstadoDelCasillero estadoCasilla;
 		TipoDeCasillero tipoDeCasilla;
 		
-
+		void setTipo(TipoDeCasillero tipo);
+		//Pre: recibe una coordenada que se quiere inicializar y el valor al cual se lo quiere inicializar.
+		//Post: inicializa la coordenada.
+		//Opcion 2
+		void setCoordenadas(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ);
+		//Opcion 1
+		void setCoordenada(unsigned int &coordenadaAModificar, unsigned int coordenada);
+	
+		
 	public:
 
 		//Pre: recibe las coordenadas del tablero y una cantidad de tokens (fichas).
@@ -59,26 +67,18 @@ class Casilla{
 		//Pre:
 		//Post: devuelve el tipo de la casilla.
 		TipoDeCasillero getTipoDeCasilla();
-
-		//Pre: recibe una coordenada X.
-		//Post: inicializa la coordenada X.
-		void setCoordenadaX(unsigned int coordenadaX);
-
+	
 		//Pre:
 		//Post: devuelve la coordenada X de la casilla.
 		unsigned int getCoordenadaX();
 
-		//Pre: recibe una coordenada Y.
-		//Post: inicializa la coordenada Y de la casilla.
-		void setCoordenadaY(unsigned int coordenadaY);
 
+	
 		//Pre:
 		//Post: devuelve la coordenada Y de la casilla.
 		unsigned int getCoordenadaY();
 
-		//Pre: recibe la coordenada Z.
-		//Post: inicializa la coordenada Z de la casilla.
-		void setCoordenadaZ(unsigned int coordenadaZ);
+		
 
 		//Pre:
 		//Post: devuelve la coordenada Z de la casilla.
@@ -88,6 +88,6 @@ class Casilla{
 		
 		void setEstado(EstadoDelCasillero estado);
 	
-		void setTipo(TipoDeCasillero tipo);
+		
 };
 #endif
