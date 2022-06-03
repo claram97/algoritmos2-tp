@@ -26,12 +26,12 @@ class Casilla{
 		//Post: crea una casilla.
 		Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, TipoDeCasillero tipo);
 
-		//Pre: recibe las coordenadas del tablero.
+		/*//Pre: recibe las coordenadas del tablero.
 		//Post: devuelve true si las proporciones del tablero son vÃ¡lidas.
 		//(Me parece que esto es mÃ¡s para tablero pero bueno ya lo tenÃ­a hecho asÃ­ que si querÃ©s y si te sirve adaptalo)
 		//(Y sino cambiame las cosas que creas necesarias)
 		bool proporcionesValidasTablero(unsigned int largo, unsigned int ancho, unsigned int alto);
-
+	*/
 
 		//Pre: -
 		//Post: elimina la casilla existente.
