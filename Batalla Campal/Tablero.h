@@ -9,9 +9,9 @@ class Tablero{
 		int maxColumna; // Y
 		int maxAltura; // Z
 			
-		//Lista<Lista<Lista<Casila*>*>*>* casilleros;
+		Lista<Lista<Lista<Casila*>*>*>* casilleros;
 	
-		Vector<Vector<Vector<Casilla *> *> *> * casilleros;
+		//Vector<Vector<Vector<Casilla *> *> *> * casilleros;
 		void validarRango(unsigned int x, unsigned int y, unsigned int z);
 	
 	public:
