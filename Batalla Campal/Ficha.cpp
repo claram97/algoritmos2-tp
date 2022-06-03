@@ -87,7 +87,12 @@ void Ficha::definirTipo(char tipo){
 		this->tipo = SIN_DEFINIR;
 	}
 }
-	
+
+
+//Esta función hay que cambiarla
+//Onda debería poder cambiar cualquier ficha porque sino no sería de uso general
+//Pero la lógica de si se puede mover o no la ficha actual se haría en batalla campal
+
 //Este lo vamos a usar para mover al soldado
 //No se recibe la posición Z porque jamás se debería modificar ya que el soldado no puede volar :)
 //Los demás tipos de fichas no se pueden mover
