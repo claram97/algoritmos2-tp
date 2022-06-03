@@ -24,16 +24,16 @@ bool Casilla::proporcionesValidasTablero(unsigned int largo, unsigned int ancho,
 Casilla::~Casilla(){
   
 }
-/*
-	void Casilla::setContenido(EstadoDelCasillero contenido){
-	    if(estadoCasilla == Vacio || estadoCasilla == Lleno || estadoCasilla == Inactivo){
-	        this->estadoCasilla = contenido;
-	    }
-	    else{
-	        throw "El contenido es invalido, debe ser: VACIO, FULL, INACTIVO";
-	    }
-	}
-*/
+
+void Casilla::setContenido(EstadoDelCasillero contenido){
+    if(estadoCasilla == VACIO || estadoCasilla == LLENO || estadoCasilla == INACTIVO){
+        this->estadoCasilla = contenido;
+    }
+    else{
+        throw "El contenido es invalido, debe ser: VACIO, FULL, INACTIVO";
+    }
+}
+
 TipoDeCasillero Casilla::getContenido(){
     return this->tipoDeCasilla;
 }
@@ -44,11 +44,11 @@ TipoDeCasillero Casilla::getTipoDeCasilla(){
 }
 
 void Casilla::setCoordenadaX(unsigned int coordenadaX){
-    if(coordenadaX > 0 && coordenadaX < MAX_LARGO){
+    if(coordenadaX > 0){
         this->coordenadaX = coordenadaX;
     }
     else{
-        throw "La coordenada X para la casilla no estÃ¡ dentro de un rango de valores vÃ¡lidos.";
+        throw "La coordenada X para la casilla no está dentro de un rango de valores válidos.";
     }
 }
 
