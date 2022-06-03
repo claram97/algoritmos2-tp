@@ -25,15 +25,6 @@ Casilla::~Casilla(){
   
 }
 
-void Casilla::setContenido(EstadoDelCasillero contenido){
-    if(estadoCasilla == VACIO || estadoCasilla == LLENO || estadoCasilla == INACTIVO){
-        this->estadoCasilla = contenido;
-    }
-    else{
-        throw "El contenido es invalido, debe ser: VACIO, FULL, INACTIVO";
-    }
-}
-
 TipoDeCasillero Casilla::getContenido(){
     return this->tipoDeCasilla;
 }
@@ -70,22 +61,35 @@ unsigned int Casilla::getCoordenadaY(){
 }
 
 void Casilla::setCoordenadaZ(unsigned int coordenadaZ){
-    if(coordenadaZ > 0 && coordenadaZ < MAX_ALTO){
+    if(coordenadaZ > 0){
         this->coordenadaZ = coordenadaZ;
     }
     else{
-        throw "La coordenada Z para la casilla no estÃ¡ dentro de un rango de valores vÃ¡lidos.";
+        throw "La coordenada Z para la casilla no está dentro de un rango de valores válidos.";
     }
 }
 void Casilla::setTipo(TipoDeCasillero tipo){
-	this->tipoDeCasilla = tipo;
+	if(tipo == AVION || tipo == BARCO || tipo == SOLDADO || tipo == GENERAL){
+		this->tipoDeCasilla = tipo;
+	}
+	else{
+		throw "El tipo de casilla ingresado es inválida. Puede ser: AVION, BARCO, SOLDADO o de tipo uso GENERAL".
+	}
+	
 }
 unsigned int Casilla::getCoordenadaZ(){
     return this->coordenadaZ;
 }
-void Casilla::setEstado(EstadoDelCasillero estado){
-	this->estadoCasilla = estado;
+
+void Casilla::setEstado(EstadoDelCasillero estadoCasilla){
+    if(estadoCasilla == VACIO || estadoCasilla == LLENO || estadoCasilla == INACTIVO){
+        this->estadoCasilla = estadoCasilla;
+    }
+    else{
+        throw "El contenido es invalido, debe ser: VACIO, FULL, INACTIVO";
+    }
 }
+
 EstadoDelCasillero Casilla::getEstado(){
 	return this->estadoCasilla;
 }
