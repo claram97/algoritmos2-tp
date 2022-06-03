@@ -64,12 +64,7 @@ public:
 	*/
 	int getPosicionZ();
 		
-	/*
-		pre: - 
-		pos: devuelve de qué tipo tendría que ser una ficha dadas sus coordenadas actuales.
-	*/
-	char validarFicha();
-	
+
 	/*
 		pre: - 
 		pos: devuelve el tipo de ficha
@@ -98,6 +93,12 @@ public:
 	bool tipoConcuerdaConPosicion(int x, int y, int z, char tipo);
 
 	void definirTipo(char tipo);
+	
+	/*
+		pre: - 
+		pos: devuelve de qué tipo tendría que ser una ficha dadas sus coordenadas actuales.
+	*/
+	char validarFicha();
 };
 
 
