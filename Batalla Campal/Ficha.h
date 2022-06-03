@@ -1,17 +1,22 @@
 #ifndef FICHA_H
 #define FICHA_H
 
-//Tipos de fichas
-#define AVION 'A'
-#define BARCO 'B'
-#define MINA 'N'
-#define SOLDADO 'S'
-#define SIN_DEFINIR '-'
-#define RADAR 'R'
-#define SUPER 'P'
-#define MISIL 'M'
+typedef enum tipoDeFicha{
+	AVION,
+	BARCO,
+	MINA,
+	SOLDADO,
+	SIN_DEFINIR
+}
 
-//typedef enum tipoDeCarta{MISIL,RADAR,SUPER,BARCOS,AVIONES,MINAS}
+typedef enum tipoDeCarta{
+	MISIL,
+	RADAR,
+	SUPER,
+	BARCOS,
+	AVIONES,
+	MINAS
+}
 
 
 class Ficha{
@@ -22,8 +27,8 @@ private:
 	int posicionY;
 	int posicionZ;
 	
+	Jugador* jugador;
 	char tipo;
-	char fichaValida;
 		
 		
 public:
@@ -41,13 +46,6 @@ public:
 	*/
 	Ficha(char tipo, int x, int y, int z);
 		
-		
-	/*
-	Pre: -
-	Post: destruye la ficha
-	*/
-	virtual ~Ficha();
-	
 	/*
 		Pre: - 
 		Post: devuelve la posicion Y
