@@ -11,7 +11,6 @@ Ficha::Ficha(char tipo,int posicionX,int posicionY,int posicionZ){
 		this->posicionY = posicionY; 
 		this->posicionZ = posicionZ;
 		this->tipo = tipo;
-		this->fichaValida = 'O'; //Nose que es
 
 
 		if(!this->tipoConcuerdaConPosicion(posicionX, posicionY, posicionZ, tipo)){
@@ -28,10 +27,6 @@ Ficha::Ficha(char tipo,int posicionX,int posicionY,int posicionZ){
 	}
 }
 
-Ficha::~Ficha(){
-	
-}
-
 //Valida que las coordenadas sean válidas sin tener en cuenta el tipo
 bool Ficha::esPosicionValida(int x, int y, int z){
 	bool esValida = false;
@@ -45,6 +40,7 @@ bool Ficha::esTipoValido(char tipo){
 	return (tipo == BARCO || tipo == MINA || tipo == SOLDADO || tipo == AVION);
 }
 
+//Esta función iría en batalla campal
 bool Ficha::tipoConcuerdaConPosicion(int posicionX, int posicionY, int posicionZ, char tipo){
 	bool esValida = false;
 	if(this->esPosicionValida(posicionX, posicionY, posicionZ) && this->esTipoValido(tipo)){
