@@ -1,22 +1,6 @@
 #ifndef _CASILLA_H
 #define _CASILLA_H
 
-#define MAX_LARGO 100
-#define MAX_ANCHO 100
-#define MAX_ALTO 100
-
-//contenido de la casilla
-/*
-#define VACIO ' '
-#define LLENO '*'
-#define INACTIVO 'X'
-
-//tipo de la casilla
-#define TIERRA 'T'
-#define AIRE 'A'
-#define AGUA 'W'
-*/
-
 enum EstadoDelCasillero{
 	Vacio, Inactivo, Lleno
 };
@@ -71,33 +55,34 @@ class Casilla{
 		//Post: devuelve el tipo de la casilla.
 		TipoDeCasillero getTipoDeCasilla();
 
-		//Pre: recibe el largo (coordenada X), que debe estar entre 0 y 100.
-		//Post: inicializa lenght de la casilla.
+		//Pre: recibe una coordenada X.
+		//Post: inicializa la coordenada X.
 		void setCoordenadaX(unsigned int coordenadaX);
 
 		//Pre:
-		//Post: devuelve lenght de una casilla dada.
+		//Post: devuelve la coordenada X de la casilla.
 		unsigned int getCoordenadaX();
 
-		//Pre: recibe el ancho (coordenada Y), que debe estar entre 0 y 100.
-		//Post: inicializa wide de la casilla.
+		//Pre: recibe una coordenada Y.
+		//Post: inicializa la coordenada Y de la casilla.
 		void setCoordenadaY(unsigned int coordenadaY);
 
 		//Pre:
-		//Post: devuelve wide de una casilla dada.
+		//Post: devuelve la coordenada Y de la casilla.
 		unsigned int getCoordenadaY();
 
-		//Pre: recibe el alto (coordenada Z), que debe estar entre 0 y 100.
-		//Post: inicializa height de la casilla.
+		//Pre: recibe la coordenada Z.
+		//Post: inicializa la coordenada Z de la casilla.
 		void setCoordenadaZ(unsigned int coordenadaZ);
 
 		//Pre:
-		//Post: devuelve height de una casilla dada.
+		//Post: devuelve la coordenada Z de la casilla.
 		unsigned int getCoordenadaZ();
 		
 		EstadoDelCasillero getEstado();
 		
 		void setEstado(EstadoDelCasillero estado);
+	
 		void setTipo(TipoDeCasillero tipo);
 };
 #endif
