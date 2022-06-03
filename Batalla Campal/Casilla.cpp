@@ -15,11 +15,55 @@
     }
     
 }
-
 bool Casilla::proporcionesValidasTablero(unsigned int largo, unsigned int ancho, unsigned int alto){
     return (largo >= 0 && largo < MAX_LARGO && ancho >= 0 && ancho < MAX_ANCHO && alto >= 0 && alto < MAX_ALTO);
 }
 */
+
+//Opcion 1: me parece la mejor porque reutilizas el código y yadayada
+void setCoordenada(unsigned int &coordenadaAModificar, unsigned int coordenada){
+		if(coordenada > 0){
+			coordenadaAModificar = coordenada;
+		}
+		else{
+			throw "Las coordenadas de un casillero no pueden ser negativas."
+		}
+	}
+//Opcion 2
+void Casilla::setCoordenadas(){
+	if(coordenadaX > 0 && coordenadaY > 0 && coordenadaZ > 0){
+		this->coordenadaX = coordenadaX;
+		this->coordenadaY = coordenadaY;
+		this->coordenadaZ = coordenadaZ;
+	}
+	else{
+		throw "Las coordenadas de un casillero no pueden ser negativas."
+	}
+}	
+
+void Casilla::setTipoDeCasillero(TipoDeCasillero tipo){
+	if(tipo == AVION || tipo == BARCO || tipo == SOLDADO || tipo == GENERAL){
+		this->tipoDeCasilla = tipo;
+	}
+	else{
+		throw "El tipo de casilla ingresado es inválida. Puede ser: AVION, BARCO, SOLDADO o de tipo uso GENERAL".
+	}
+	
+}
+
+//Voy a hacer la lógica del tipo en Batalla Campal y entonces se manda el tipo que va
+Casilla::Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, tipoDeCasillero tipo){
+	//Opcion 1:
+	setCoordenada(this->coordenadaX,coordenadaX);
+	setCoordenada(this->coordenadaY,coordenadaY);
+	setCoordenada(this->coordenadaZ,coordenadaZ);
+	
+	//Opcion 2:
+	setCoordenadas(coordenadaX,coordenadaY,coordenadaZ);
+		
+	setTipoDeCasillero(tipo);
+	estado = VACIO; //se crean vacias y luego se cambian
+}
 
 
 TipoDeCasillero Casilla::getContenido(){
@@ -31,55 +75,15 @@ TipoDeCasillero Casilla::getTipoDeCasilla(){
     return this->tipoDeCasilla;
 }
 
-void Casilla::setCoordenadaX(unsigned int coordenadaX){
-    if(coordenadaX > 0){
-        this->coordenadaX = coordenadaX;
-    }
-    else{
-        throw "La coordenada X para la casilla no está dentro de un rango de valores válidos.";
-    }
-}
-
 unsigned int Casilla::getCoordenadaX(){
     return this->coordenadaX;
-}
-
-void Casilla::setCoordenadaY(unsigned int coordenadaY){
-    if(coordenadaY > 0 && coordenadaY < MAX_ANCHO){
-        this->coordenadaY = coordenadaY;
-    }
-    else{
-        throw "La coordenada Y para la casilla no estÃ¡ dentro de un rango de valores vÃ¡lidos.";
-    }
 }
 
 unsigned int Casilla::getCoordenadaY(){
     return this->coordenadaY;
 }
 
-void Casilla::setCoordenadaZ(unsigned int coordenadaZ){
-    if(coordenadaZ > 0){
-        this->coordenadaZ = coordenadaZ;
-    }
-    else{
-        throw "La coordenada Z para la casilla no está dentro de un rango de valores válidos.";
-    }
-}
 
-Casilla::Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ){
-	
-	
-}
-
-void Casilla::setTipo(TipoDeCasillero tipo){
-	if(tipo == AVION || tipo == BARCO || tipo == SOLDADO || tipo == GENERAL){
-		this->tipoDeCasilla = tipo;
-	}
-	else{
-		throw "El tipo de casilla ingresado es inválida. Puede ser: AVION, BARCO, SOLDADO o de tipo uso GENERAL".
-	}
-	
-}
 unsigned int Casilla::getCoordenadaZ(){
     return this->coordenadaZ;
 }
