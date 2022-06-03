@@ -21,9 +21,23 @@ Tablero::Tablero(int maxFila, int maxColumna, int maxAltura){
 		this->maxColumna = maxColumna;
 		this->maxAltura = maxAltura;
 		
-		this->casilleros = new Vector<Vector<Vector<Casilla *> *> *>(fila, NULL);
-
-		for(int x = 1; x <= this->casilleros->getLongitud(); x++ ){
+		this->casilleros = new Lista<Lista<Lista<Casilla*>*>*>();
+		
+		//this->casilleros = new Vector<Vector<Vector<Casilla*>*>*>(fila, NULL);
+		
+		while(this->casilleros->avanzarCursor()){
+			this->casilleros->add(new Lista<Lista<Casilla*>*>);
+			while(this->casilleros->getCursor()->avanzarCursor()){
+				this->casilleros->getCursor()->add(new Lista<Casilla*>);
+				while(this->casilleros->getCursor()->getCursor()->avanzarCursor()){
+					this->casilleros->getCursor()->getCursor()->add(new Casilla(coordenadaX,coordenadaY,coordenadaZ,GENERAL));
+				}
+			}
+		}
+	
+		//No sé si eso de arriba está bien bien pero intentaría reemplazar a esto que sigue:
+		
+	/*	for(int x = 1; x <= this->casilleros->getLongitud(); x++ ){
 			this->casilleros->agregar(x, new Vector<Vector<Casilla *> *> (columna, NULL));
 			for(int y = 1; y <= columna; y++ ){
 				this->casilleros->obtener(x)->agregar(y, new Vector<Casilla *> (profundidad, NULL));
@@ -33,9 +47,11 @@ Tablero::Tablero(int maxFila, int maxColumna, int maxAltura){
 			}
 
 		}
+	*/
 	}
 }
 Tablero::~Tablero(){
+	//Hay que pasar esto a listas también
 	for(int x = 1; x <= this->casilleros->getLongitud(); x++ ){
 		for(int y = 1; y <= columna; y++ ){
 			for(int z = 1; z<= profundidad; z++){
