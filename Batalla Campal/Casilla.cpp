@@ -1,7 +1,7 @@
 #include "Casilla.h"
 
-Casilla::Casilla(unsigned int largo, unsigned int ancho, unsigned int alto, TipoDeCasillero tipo){
-  //Esto no va acÃ  creo pero lo dejo aca por si se necesita
+/*Casilla::Casilla(unsigned int largo, unsigned int ancho, unsigned int alto, TipoDeCasillero tipo){
+  //Esto no va acá  creo pero lo dejo aca por si se necesita
     /*if(proporcionesValidasTablero(largo,ancho,alto)){
         this->contenido = VACIO;
         this->tipoDeCasilla = tipo;
@@ -9,7 +9,7 @@ Casilla::Casilla(unsigned int largo, unsigned int ancho, unsigned int alto, Tipo
         this->coordenadaY = ancho;
         this->coordenadaZ = alto;
     }
-    */
+    
     if(!proporcionesValidasTablero(largo,ancho,alto)){
         throw "Proporciones invalidas del tablero";
     }
@@ -19,7 +19,7 @@ Casilla::Casilla(unsigned int largo, unsigned int ancho, unsigned int alto, Tipo
 bool Casilla::proporcionesValidasTablero(unsigned int largo, unsigned int ancho, unsigned int alto){
     return (largo >= 0 && largo < MAX_LARGO && ancho >= 0 && ancho < MAX_ANCHO && alto >= 0 && alto < MAX_ALTO);
 }
-
+*/
 
 Casilla::~Casilla(){
   
@@ -30,7 +30,7 @@ Casilla::~Casilla(){
 	        this->estadoCasilla = contenido;
 	    }
 	    else{
-	        throw "El contenido es invÃ¡lido, debe ser: VACIO, FULL, INACTIVO";
+	        throw "El contenido es invalido, debe ser: VACIO, FULL, INACTIVO";
 	    }
 	}
 */
