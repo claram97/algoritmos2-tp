@@ -35,9 +35,7 @@ class Casilla{
 		
 	public:
 
-		//Pre: recibe las coordenadas del tablero y una cantidad de tokens (fichas).
-		//Post: crea una casilla.
-		Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, TipoDeCasillero tipo);
+		
 
 		/*//Pre: recibe las coordenadas del tablero.
 		//Post: devuelve true si las proporciones del tablero son vÃ¡lidas.
@@ -46,24 +44,16 @@ class Casilla{
 		bool proporcionesValidasTablero(unsigned int largo, unsigned int ancho, unsigned int alto);
 	*/
 
-		//Pre: -
-		//Post: elimina la casilla existente.
-		virtual ~Casilla();
-/*
 
-		//Pre: recibe un contenido para la casilla (vacÃ­o, full o inactiva).
-		//Post: inicializa el contenido de la casilla segÃºn su tipo.
-		void setContenido(EstadoDelCasillero contenido);
-*/
-		//Pre:
-		//Post: devuelve el contenido de la casilla.
-		TipoDeCasillero getContenido();
+		//Pre: recibe las coordenadas del tablero y una cantidad de tokens (fichas).
+		//Post: crea una casilla.
+		Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, TipoDeCasillero tipo);
+	
 
 		//Pre: recibe un tipo para la casilla (mar, tierra o aire).
 		//Post: inicializa el tipo de la casilla segÃºn su tipo.
-/*
 		void setTipoDeCasilla(TipoDeCasillero tipoDeCasilla);
-*/
+
 		//Pre:
 		//Post: devuelve el tipo de la casilla.
 		TipoDeCasillero getTipoDeCasilla();
