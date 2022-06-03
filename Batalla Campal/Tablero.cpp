@@ -5,49 +5,34 @@
 using namespace std;
 
 
-Tablero::Tablero(int fila, int columna, int profundidad){
-	if(fila < 1 ){
-		throw " la fila debe ser mayor a 1";
+Tablero::Tablero(int maxFila, int maxColumna, int maxAltura){
+	if(maxFila < 1 ){
+		throw "la fila debe ser mayor a 1";
 	}
-	if(columna < 1 ){
-		throw " la columna debe ser mayor a 1";
+	if(maxColumna < 1 ){
+		throw "la columna debe ser mayor a 1";
 	}
-	if(profundidad < 1 ){
-		throw " la profundidad debe ser mayor a 1";
+	if(maxProfundidad < 1 ){
+		throw "la altura debe ser mayor a 1";
 	}
 	
-	this->fila = fila;
-	this->columna = columna;
-	this->profundidad = profundidad;
-
-//	this->matrizCasillas = new Casilla***[fila];
-/*	for (int i = 0; i < fila; i++)
-    {
-        this->matrizCasillas[i] = new Casilla**[columna];	// a cada dirección de "x" le asigna otra dirección con "y" posiciones
-        for (int j = 0; j < columna; j++) {
-            this->matrizCasillas[i][j] = new Casilla*[profundidad];	// a cada dirección de "y" le asigna otras "z" posiciones
-        }
-    }
-
-	for (int i = 0; i < fila; i++){
-        	for (int j = 0; j < columna; j++){
-        		for (int k = 0; k < profundidad; k++){
-        			this->matrizCasillas[i][j][k] = new Casilla(i, j, k, General);
-        		}
-        	}
-	}
-}*/
-	this->casilleros = new Vector<Vector<Vector<Casilla *> *> *>(fila, NULL);
-	
-	for(int x = 1; x <= this->casilleros->getLongitud(); x++ ){
-		this->casilleros->agregar(x, new Vector<Vector<Casilla *> *> (columna, NULL));
-		for(int y = 1; y <= columna; y++ ){
-			this->casilleros->obtener(x)->agregar(y, new Vector<Casilla *> (profundidad, NULL));
-			for(int z = 1; z<= profundidad; z++){
-				this->casilleros->obtener(x)->obtener(y)->agregar(z, new Casilla(x,y,z,General));
-			}
-		}
+	else{
+		this->maxFila = maxFila;
+		this->maxColumna = maxColumna;
+		this->maxAltura = maxAltura;
 		
+		this->casilleros = new Vector<Vector<Vector<Casilla *> *> *>(fila, NULL);
+
+		for(int x = 1; x <= this->casilleros->getLongitud(); x++ ){
+			this->casilleros->agregar(x, new Vector<Vector<Casilla *> *> (columna, NULL));
+			for(int y = 1; y <= columna; y++ ){
+				this->casilleros->obtener(x)->agregar(y, new Vector<Casilla *> (profundidad, NULL));
+				for(int z = 1; z<= profundidad; z++){
+					this->casilleros->obtener(x)->obtener(y)->agregar(z, new Casilla(x,y,z,General));
+				}
+			}
+
+		}
 	}
 }
 Tablero::~Tablero(){
