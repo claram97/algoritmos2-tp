@@ -118,34 +118,26 @@ void BatallaCampal::realizarDisparo(int x, int y, int z){
 
 bool BatallaCampal::soldadosCoinciden(int x, int y){
 	bool coinciden = false;
-	for(int i = 1; i < this->jugadores->getLongitud(); i++){
-		if(this->jugadores->obtener(i)->getId() == this->jugadores->obtener(this->turno)->getId()){
-			i++;
-		}
-
-		for(unsigned int j = 1; j < this->jugadores->obtener(i)->getCantidadDeSoldados() ; j++){
-			if(this->jugadores->obtener(i)->getSoldado(j)->getPosicionX() == x && this->jugadores->obtener(i)->getSoldado(j)->getPosicionY() == y){
+		for(unsigned int j = 1; j <= this->jugadores->obtener(turno)->getCantidadDeSoldados(); j++){
+			if(this->jugadores->obtener(turno)->getSoldado(j)->getPosicionX() == x && this->jugadores->obtener(turno)->getSoldado(j)->getPosicionY() == y){
 				coinciden = true;
 			}
 		}
+		
+		return coinciden;
+}
+
+// enemyKill como que no funciona, entra a la función y al primer ciclo pero no se que onda
+bool BatallaCampal::enemyKill(int x, int y){
+	bool enemigoMuerto = false;
+	for(unsigned int i = 1; i <= this -> jugadores -> getLongitud(); i++){
+		for(unsigned int j = 1; j <= this->jugadores->obtener(i)->getCantidadDeSoldados(); j++){
+			if(this->jugadores->obtener(i)->getSoldado(j)->getPosicionX() == x && this->jugadores->obtener(i)->getSoldado(j)->getPosicionY() == y && (i != turno)){
+				enemigoMuerto = true;
+			}
+		}
 	}
-
-	return coinciden;
-
-		//No sÃ© cÃ³mo entrar a la lista de fichas acÃ¡ xD
-		//Lo intento y cualquier cosa ustedes lo arreglan
-		//La onda acÃ¡ es ver si las posiciones X e Y del jugador actual y de los demÃ¡s coinciden o no
-		//Si coinciden hay que poner inactiva la casilla
-
-		//Dejo pseudo-cÃ³digo acÃ¡ y si puedo intento implementarlo
-
-		//Recorro la lista del jugador actual
-		//Cuando encuentro un soldado, empiezo a buscar los soldados del otro jugador y miro si coinciden
-		//Sigo recorriendo la lista del jugador actual
-		//Cuando encuentro otro soldado, vuelvo a buscar los soldados del otro jugador y miro si coinciden
-		//Se recorren ambas listas en tanto y en cuanto que el cursor no sea NULL
-		//Esa es la idea pero no sÃ© si lo implementÃ© bien o si la sintaxis en sÃ­ estÃ¡ bien
-
+	return enemigoMuerto;
 }
 
 void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugadorDeTurno){
