@@ -15,6 +15,11 @@
 #define MIN_DIMENSION 20
 #define MAX_DIMENSION 100
 
+enum estadoJuego{
+	JUGANDO,
+	FINALIZADO
+}
+
 #define ARRIBA 'W'
 #define ABAJO 'S'
 #define DERECHA 'D'
