@@ -1,5 +1,6 @@
 #ifndef FICHA_H
 #define FICHA_H
+#include "Jugador.h"
 
 typedef enum tipoDeFicha{
 	AVION,
@@ -7,16 +8,16 @@ typedef enum tipoDeFicha{
 	MINA,
 	SOLDADO,
 	SIN_DEFINIR
-}
+};
 
-typedef enum tipoDeCarta{
+typedef enum tipoCarta{
 	MISIL,
 	RADAR,
 	SUPER,
 	BARCOS,
 	AVIONES,
 	MINAS
-}
+};
 
 
 class Ficha{

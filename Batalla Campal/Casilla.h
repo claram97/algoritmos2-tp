@@ -77,7 +77,10 @@ class Casilla{
 		EstadoDelCasillero getEstado();
 		
 		void setEstado(EstadoDelCasillero estado);
-	
-		
+
+		//pre:
+		//post:
+		TipoDeCasillero getContenido();
+
 };
 #endif
