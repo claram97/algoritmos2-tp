@@ -52,7 +52,7 @@ int main(){
 				}else{
 					throw "Coordenada invÃ¡lida";
 				}
-				batalla->getTablero()->getCasilla(coordX, coordY, 1)->setEstado(Lleno);
+				batalla->getTablero()->getCasilla(coordX, coordY, 1)->setEstado(LLENO);
 
 			}
 		}
@@ -73,7 +73,19 @@ int main(){
 			int aleatorio = rand() %6 +1;
 			batalla->getJugador(batalla->getTurno())->nuevaCarta(aleatorio);
 			cout << "Cartas del jugador: " << batalla->getJugador(batalla->getTurno())->getCantidadDeCartas() <<endl;
-			//preguntar usar carta
+			cout << "Desea usar una carta? (SI: S, NO: N): ";
+			cin >> opcionUsuarioC;
+			if(opcionUsuarioC == 'S'){
+				cout << "Cartas disponibles: "<<endl;
+				for(unsigned int i = 1; i <= batalla->getJugador(batalla->getTurno())->getCantidadDeCartas(); i++){
+				cout << i <<"."<< batalla->getJugador(batalla->getTurno())->getCarta(i)->getDescripcion() <<endl;
+				}
+				cout << "Elegir carta: " <<endl;
+				cin >> numeroCarta;
+				cout << "Ejecutando carta..." <<endl;
+				batalla->ejecutarCarta(numeroCarta, batalla->getTurno());
+				batalla->getJugador(batalla->getTurno())->eliminarCarta(numeroCarta);	
+			}
 			cout << "Cantidad de fichas: "<< batalla->getJugador(batalla->getTurno())->getCantidadDeHerramientas() << endl;
 			cout << "Cantidad de soldados: "<< batalla->getJugador(batalla->getTurno())->getCantidadDeSoldados() << endl;
 
@@ -122,21 +134,6 @@ int main(){
 			
 			cout << "La casilla ahora estÃ¡: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getContenido() <<endl;
 
-			cout << "Cartas disponibles: "<<endl;
-			for(unsigned int i = 1; i <= batalla->getJugador(batalla->getTurno())->getCantidadDeCartas(); i++){
-				cout << i <<"."<< batalla->getJugador(batalla->getTurno())->getCarta(i)->getDescripcion() <<endl;
-			}
-			cout << "Desea usar una carta? (SI: S, NO: N): ";
-			cin >> opcionUsuarioC;
-			if(opcionUsuarioC == 'S'){
-				cout << "Elegir carta: " <<endl;
-				cin >> numeroCarta;
-				cout << "Ejecutando carta..." <<endl;
-				batalla->ejecutarCarta(numeroCarta, batalla->getTurno());
-				batalla->getJugador(batalla->getTurno())->eliminarCarta(numeroCarta);
-				
-			}
-
 			//batalla->getTablero()->mostrarTablero();
 
 			cout << "-----FIN DE TURNO----" << endl;
@@ -153,6 +150,5 @@ int main(){
 		cout << "ERROR: " << X <<endl;
 	}
 }
-
 
 
