@@ -274,84 +274,33 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 	}	
 }
 
-
-
-void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
-	int x, y ,z;
-	char filaOColumna;
-	int cantidadFichas;
+void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno, int x, int y, int z){
+	if (numero < 6 || numero < 1){
+		throw "Numero de carta invalido";
+	}
 	switch(numero){
 		case 1:
-			std::cout << "Ingrese coordenadas de avion: "<<std::endl;
-			std::cout << "Fila: ";
-			std::cin >> x;
-			std::cout << "Columna: ";
-			std::cin >> y;
-			std::cout << "Altura: ";
-			std::cin >> z;
 			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AIRE){
-				throw "Avion debe estar en el AIRE";
+				throw "Avion debe estar en el aire";
 			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(AVION, x, y, z);
 				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 			}
 		case 2:
-			std::cout << "Ingrese coordenadas de barco: "<<std::endl;
-			std::cout << "Fila: ";
-			std::cin >> x;
-			std::cout << "Columna: ";
-			std::cin >> y;
 			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
-				throw "Barco debe estar en el AGUA";
+				throw "Barco debe estar en el agua";
 			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(BARCO, x, y, 1);
 				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 			}
 		case 3:
-			std::cout << "Ingrese coordenadas de mina: "<<std::endl;
-			std::cout << "Fila: ";
-			std::cin >> x;
-			std::cout << "Columna: ";
-			std::cin >> y;
-			if (this->tablero->getCasilla(x, y, 1)->getTipoDeCasilla() != TIERRA){
-				throw "Mina debe estar en la TIERRA";
-			}else if (verificarCoordenadas(x, y, 1)){
+			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != TIERRA){
+				throw "Mina debe estar en la tierra";
+			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(MINA, x, y, 1);
-				this->tablero->getCasilla(x, y, 1)->setEstado(LLENO);
-			}
-		case 4:
-			std::cout << "Ingrese coordenadas de radar: "<<std::endl;
-			std::cout << "Fila: ";
-			std::cin >> x;
-			std::cout << "Columna: ";
-			std::cin >> y;
-			std::cout << "Altura: ";
-			std::cin >> z;
-			if (verificarCoordenadas(x, y, z) && verificarCoordenadas(x+2, y+2, z+2) && verificarCoordenadas(x-2, y-2, z-2)){
-			cantidadFichas = usarRadar(x, y ,z);
-			std::cout << "En los alrededores se encuentran "<< cantidadFichas << "cantidad de fichas"<<std::endl;
-			}
-		case 5:
-			std::cout << "Elegir Columna: C o Fila: F: "<<std::endl;
-			std::cin >> filaOColumna;
-			if (filaOColumna == 'C'){
-				std::cout << "Ingresar columna: "<<std::endl;
-				std::cin >> x;
-				dispararSuperMisil(x, true);
-			}else if (filaOColumna == 'F'){
-				std::cout << "Ingresar fila: "<<std::endl;
-				std::cin >> x;
-				dispararSuperMisil(x,false);	
+				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 			}
 		case 6:
-			std::cout << "Ingrese coordenadas de disparo del misil: "<<std::endl;
-			std::cout << "Fila: ";
-			std::cin >> x;
-			std::cout << "Columna: ";
-			std::cin >> y;
-			std::cout << "Altura: ";
-			std::cin >> z;
-			std::cout << "Disparando misil..." <<std::endl;
 			if (verificarCoordenadas(x, y, z) && verificarCoordenadas(x+1, y+1, z+1) && verificarCoordenadas(x-1, y-1, z-1)){
 			dispararMisil(x, y, z);
 			}
