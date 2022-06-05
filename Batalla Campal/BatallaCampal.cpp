@@ -5,25 +5,25 @@ BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantid
 	estadoDelJuegoActual = JUGANDO;
 
 	if(cantidadJugadores < MIN_JUGADORES || cantidadJugadores > MAX_JUGADORES){
-		this->cantidadJugadores = MIN_JUGADORES;
+		throw "La cantidad de jugadores elegida es inválida."
 	}
 	else{
 		this->cantidadJugadores = cantidadJugadores;
 	}
 	if(cantidadSoldados < MIN_SOLDADOS || cantidadSoldados > MAX_SOLDADOS){
-		this->cantidadSoldados = MIN_SOLDADOS;
+		throw "La cantidad de soldados elegida es inválida."
 	}
 	else{
 		this->cantidadSoldados = cantidadSoldados;
 	}
 	if(dimensionTablero < MIN_DIMENSION || dimensionTablero > MAX_DIMENSION){
-		this->dimensionTablero = MIN_DIMENSION;
+		throw "La dimensión elegida para el tablero es inválida."
 	}
 	else{
 		this->dimensionTablero = dimensionTablero;
 	}
 
-	this->turno = 0;
+	this->turno = 1;
 
 	this->jugadores = new Vector<Jugador*>(cantidadJugadores, NULL);
 
