@@ -57,12 +57,9 @@ Casilla::Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned in
 	setCoordenada(this->coordenadaX,coordenadaX);
 	setCoordenada(this->coordenadaY,coordenadaY);
 	setCoordenada(this->coordenadaZ,coordenadaZ);
-	
-	//Opcion 2:
-	setCoordenadas(coordenadaX,coordenadaY,coordenadaZ);
 		
 	setTipoDeCasillero(tipo);
-	estado = VACIO; //se crean vacias y luego se cambian
+	setEstado(VACIO);
 }
 
 

@@ -6,6 +6,7 @@ using namespace std;
 Jugador::Jugador(int id, int cantidadSoldados) {
 	this->id = id;
 	this->cantidadSoldados = cantidadSoldados;
+	this->cantidadHerramientas = cantidadHerramientas;
 	this->herramientas = new Lista<Ficha*>();
 	this->soldados = new Lista<Ficha*>();
 	this->cartas = new Lista<Carta*>();
