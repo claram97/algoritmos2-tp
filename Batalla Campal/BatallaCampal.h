@@ -15,10 +15,10 @@
 #define MIN_DIMENSION 20
 #define MAX_DIMENSION 100
 
-enum estadoJuego{
+enum estadoDelJuego{
 	JUGANDO,
 	FINALIZADO
-}
+};
 
 #define ARRIBA 'W'
 #define ABAJO 'S'
@@ -102,6 +102,10 @@ class BatallaCampal{
 		void dispararSuperMisil(int x, bool filaOColumna);
 
 		bool verificarCoordenadas(int x, int y, int z);
+
+		bool enemyKill(int x, int y);
+		
+		void iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
 
 };
 
