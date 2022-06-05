@@ -93,7 +93,7 @@ class BatallaCampal{
 
 		void realizarDisparo(int x, int y, int z);
 
-		void ejecutarCarta(int numero, int turno);
+		void ejecutarCarta(int numero, int turno, int x, int y, int z);
 
 		void dispararMisil(int x, int y, int z);
 
@@ -104,7 +104,7 @@ class BatallaCampal{
 		bool verificarCoordenadas(int x, int y, int z);
 
 		bool enemyKill(int x, int y);
-		
+
 		void iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
 
 };
