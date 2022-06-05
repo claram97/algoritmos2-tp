@@ -14,6 +14,7 @@ int main(){
 
 		int opcionUsuario;
 		char opcionUsuarioC;
+		char filaOColumna;
 		int coordX;
 		int coordY;
 		int coordZ;
@@ -82,8 +83,33 @@ int main(){
 				}
 				cout << "Elegir carta: " <<endl;
 				cin >> numeroCarta;
+				cout << "Ingrese coordenadas: "<<endl;
+				cout << "Fila: ";
+				cin >> coordX;
+				cout << "Columna: ";
+				cin >> coordY;
+				cout << "Altura: ";
+				cin >> coordZ;
 				cout << "Ejecutando carta..." <<endl;
-				batalla->ejecutarCarta(numeroCarta, batalla->getTurno());
+				if (numeroCarta == 4){
+					if (batalla->verificarCoordenadas(coordX, coordY, coordZ) && batalla->verificarCoordenadas(coordX+2, coordY+2, coordZ+2) && batalla->verificarCoordenadas(coordX-2, coordY-2, coordZ-2)){
+					cout << "En los alrededores se encuentran "<< batalla->usarRadar(coordX, coordY, coordZ) << "cantidad de fichas"<<endl;
+					}	
+				}else if(numeroCarta == 5){
+					cout << "Elegir Columna (C) o Fila (F): "<<endl;
+					cin >> filaOColumna;
+					if (filaOColumna == 'C'){
+						cout << "Ingresar columna: "<<endl;
+						cin >> coordY;
+						batalla->dispararSuperMisil(coordY, true);
+					}else if (filaOColumna == 'F'){
+						cout << "Ingresar fila: "<<endl;
+						cin >> coordX;
+						batalla->dispararSuperMisil(coordX,false);	
+					}
+				}else{
+					batalla->ejecutarCarta(numeroCarta, batalla->getTurno(), coordX, coordY, coordZ);
+				}
 				batalla->getJugador(batalla->getTurno())->eliminarCarta(numeroCarta);	
 			}
 			cout << "Cantidad de fichas: "<< batalla->getJugador(batalla->getTurno())->getCantidadDeHerramientas() << endl;
@@ -134,6 +160,9 @@ int main(){
 			
 			cout << "La casilla ahora estÃ¡: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getContenido() <<endl;
 
+			if (batalla->getJugador(batalla->getTurno())->getCantidadDeHerramientas() < 0){
+
+			}
 			//batalla->getTablero()->mostrarTablero();
 
 			cout << "-----FIN DE TURNO----" << endl;
