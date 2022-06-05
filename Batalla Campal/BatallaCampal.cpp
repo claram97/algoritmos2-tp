@@ -5,21 +5,18 @@ BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantid
 	estadoDelJuegoActual = JUGANDO;
 
 	if(cantidadJugadores < MIN_JUGADORES || cantidadJugadores > MAX_JUGADORES){
-		throw "La cantidad de jugadores elegida es inválida."
-	}
-	else{
+		throw "La cantidad de jugadores elegida es inválida.";
+	}else{
 		this->cantidadJugadores = cantidadJugadores;
 	}
 	if(cantidadSoldados < MIN_SOLDADOS || cantidadSoldados > MAX_SOLDADOS){
-		throw "La cantidad de soldados elegida es inválida."
-	}
-	else{
+		throw "La cantidad de soldados elegida es inválida.";
+	}else{
 		this->cantidadSoldados = cantidadSoldados;
 	}
 	if(dimensionTablero < MIN_DIMENSION || dimensionTablero > MAX_DIMENSION){
-		throw "La dimensión elegida para el tablero es inválida."
-	}
-	else{
+		throw "La dimensión elegida para el tablero es inválida.";
+	}else{
 		this->dimensionTablero = dimensionTablero;
 	}
 
@@ -103,7 +100,7 @@ Jugador* BatallaCampal::getJugador(unsigned int i){
 
 void BatallaCampal::realizarDisparo(int x, int y, int z){
 
-	this->tablero->getCasilla(x, y, z)->setEstado(Inactivo); //metodo para dejar inactivo
+	this->tablero->getCasilla(x, y, z)->setEstado(INACTIVO); //metodo para dejar INACTIVO
 
 	for(int i = 1; i <= this->jugadores->getLongitud(); i++){
 		for(unsigned int j = 1; j <= this->jugadores->obtener(i)->getCantidadDeSoldados() ; j++){
@@ -153,7 +150,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 	switch(movimiento){
 
 		case ARRIBA:
-			if(this->tablero->getCasilla(fila-1, col, 0)->getTipoDeCasilla() == Tierra || this->tablero->getCasilla(fila-1, col, 0)->getEstado() != Inactivo ||
+			if(this->tablero->getCasilla(fila-1, col, 0)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila-1, col, 0)->getEstado() != INACTIVO ||
 				(fila-1) > 0 || fila < this->getDimensionDelTablero() ){
 
 				this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->setCoordenadasSoldado(fila-1, col);
@@ -163,7 +160,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 			}
 			break;
 		case ABAJO:
-			if(this->tablero->getCasilla(fila+1, col, 0)->getTipoDeCasilla() == Tierra || this->tablero->getCasilla(fila+1, col, 0)->getEstado() != Inactivo ||
+			if(this->tablero->getCasilla(fila+1, col, 0)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila+1, col, 0)->getEstado() != INACTIVO ||
 				(fila+1) > 0 || fila < this->getDimensionDelTablero() ){
 
 				this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->setCoordenadasSoldado(fila+1, col);
@@ -173,7 +170,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 			}
 			break;
 		case IZQUIERDA:
-			if(this->tablero->getCasilla(fila, col-1, 0)->getTipoDeCasilla() == Tierra || this->tablero->getCasilla(fila, col-1, 0)->getEstado() != Inactivo ||
+			if(this->tablero->getCasilla(fila, col-1, 0)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila, col-1, 0)->getEstado() != INACTIVO ||
 				(col-1) > 0 || col < this->getDimensionDelTablero() ){
 
 				this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->setCoordenadasSoldado(fila, col-1);
@@ -183,7 +180,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 			}
 			break;
 		case DERECHA:
-			if(this->tablero->getCasilla(fila, col+1, 0)->getTipoDeCasilla() == Tierra || this->tablero->getCasilla(fila, col+1, 0)->getEstado() != Inactivo ||
+			if(this->tablero->getCasilla(fila, col+1, 0)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila, col+1, 0)->getEstado() != INACTIVO ||
 				(col+1) > 0 || col < this->getDimensionDelTablero() ){
 
 				this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->setCoordenadasSoldado(fila, col+1);
@@ -196,7 +193,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 	}
 	if(this->soldadosCoinciden(this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionX(), this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionY())){
 
-		this->tablero->getCasilla(this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionX(), this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionY(), 0)->setEstado(Inactivo);
+		this->tablero->getCasilla(this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionX(), this->jugadores->obtener(jugadorDeTurno)->getSoldado(numSoldado)->getPosicionY(), 0)->setEstado(INACTIVO);
 	}
 }
 
@@ -205,7 +202,7 @@ void BatallaCampal::dispararMisil(int x, int y, int z){
 	for (int i = -1; i <= 1; i++){
 		for (int j = -1; j <= 1; j++){
 			for (int k = -1; k <= 1; k++){
-				this->tablero->getCasilla(x+i, y+j, z+k)->setEstado(Inactivo);
+				this->tablero->getCasilla(x+i, y+j, z+k)->setEstado(INACTIVO);
 			}
 		}
 	}
@@ -218,7 +215,7 @@ int BatallaCampal::usarRadar(int x, int y, int z){
 		for (int j = 0; j <= 2; j++){
 			for (int k = 0; k <= 2; k++){
 				contenido = this->tablero->getCasilla(x+i, y+j, z+k)->getContenido();
-				if (this->tablero->getCasilla(x+i, y+j, z+k)->getEstado() == Lleno){
+				if (this->tablero->getCasilla(x+i, y+j, z+k)->getEstado() == LLENO){
 					contador++;
 				}
 			}
@@ -231,13 +228,13 @@ void BatallaCampal::dispararSuperMisil(int x, bool filaOColumna){
 	if (filaOColumna){
 		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
 			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
-				this->tablero->getCasilla(i, x, k)->setEstado(Inactivo);
+				this->tablero->getCasilla(i, x, k)->setEstado(INACTIVO);
 			}
 		}
 	}else{
 		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
 			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
-				this->tablero->getCasilla(x, i, k)->setEstado(Inactivo);
+				this->tablero->getCasilla(x, i, k)->setEstado(INACTIVO);
 			}
 		}
 	}
@@ -260,17 +257,16 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 			for(int z = 1; z<=zMax; x++){
 				
 				if(x == 1){
-					
-					if(y < z){
-											
-						this->tablero->getCasilla(x,y,z)->setTipo(Tierra);
+
+					if(y < z){	
+						this->tablero->getCasilla(x,y,z)->setTipo(TIERRA);
 					}
 					else{
-						this->tablero->getCasilla(x,y,z)->setTipo(Agua);
+						this->tablero->getCasilla(x,y,z)->setTipo(AGUA);
 					}
 					
 				}else{
-					this->tablero->getCasilla(x,y,z)->setTipo(Agua);
+					this->tablero->getCasilla(x,y,z)->setTipo(AGUA);
 				}
 					
 			}
@@ -293,11 +289,11 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> y;
 			std::cout << "Altura: ";
 			std::cin >> z;
-			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != Aire){
-				throw "Avion debe estar en el aire";
+			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AIRE){
+				throw "Avion debe estar en el AIRE";
 			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(AVION, x, y, z);
-				this->tablero->getCasilla(x, y, z)->setEstado(Lleno);
+				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 			}
 		case 2:
 			std::cout << "Ingrese coordenadas de barco: "<<std::endl;
@@ -305,11 +301,11 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> x;
 			std::cout << "Columna: ";
 			std::cin >> y;
-			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != Agua){
-				throw "Barco debe estar en el agua";
+			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
+				throw "Barco debe estar en el AGUA";
 			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(BARCO, x, y, 1);
-				this->tablero->getCasilla(x, y, z)->setEstado(Lleno);
+				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 			}
 		case 3:
 			std::cout << "Ingrese coordenadas de mina: "<<std::endl;
@@ -317,11 +313,11 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 			std::cin >> x;
 			std::cout << "Columna: ";
 			std::cin >> y;
-			if (this->tablero->getCasilla(x, y, 1)->getTipoDeCasilla() != Tierra){
-				throw "Mina debe estar en la tierra";
+			if (this->tablero->getCasilla(x, y, 1)->getTipoDeCasilla() != TIERRA){
+				throw "Mina debe estar en la TIERRA";
 			}else if (verificarCoordenadas(x, y, 1)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(MINA, x, y, 1);
-				this->tablero->getCasilla(x, y, 1)->setEstado(Lleno);
+				this->tablero->getCasilla(x, y, 1)->setEstado(LLENO);
 			}
 		case 4:
 			std::cout << "Ingrese coordenadas de radar: "<<std::endl;
@@ -363,9 +359,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno){
 	this->jugadores->obtener(jugadorDeTurno)->eliminarCarta(numero);
 }
 
-
 Tablero* BatallaCampal::getTablero(){
-
 	return this->tablero;
 }
 
