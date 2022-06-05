@@ -23,8 +23,7 @@ class Casilla{
 		unsigned int coordenadaZ;
 		EstadoDelCasillero estadoCasilla;
 		TipoDeCasillero tipoDeCasilla;
-		
-		void setTipo(TipoDeCasillero tipo);
+
 		//Pre: recibe una coordenada que se quiere inicializar y el valor al cual se lo quiere inicializar.
 		//Post: inicializa la coordenada.
 		//Opcion 2
@@ -35,7 +34,7 @@ class Casilla{
 		
 	public:
 
-		
+		void setTipo(TipoDeCasillero tipo);
 
 		/*//Pre: recibe las coordenadas del tablero.
 		//Post: devuelve true si las proporciones del tablero son vÃ¡lidas.

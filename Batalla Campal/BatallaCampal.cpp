@@ -210,11 +210,11 @@ void BatallaCampal::dispararMisil(int x, int y, int z){
 
 int BatallaCampal::usarRadar(int x, int y, int z){
 	int contador = 0;
-	char contenido;
+	//char contenido;
 	for (int i = 0; i <= 2; i++){
 		for (int j = 0; j <= 2; j++){
 			for (int k = 0; k <= 2; k++){
-				contenido = this->tablero->getCasilla(x+i, y+j, z+k)->getContenido();
+				//contenido = this->tablero->getCasilla(x+i, y+j, z+k)->getContenido();
 				if (this->tablero->getCasilla(x+i, y+j, z+k)->getEstado() == LLENO){
 					contador++;
 				}
@@ -286,6 +286,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno, int x, int y, 
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(AVION, x, y, z);
 				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 		    }
+		break;
 		case 2:
 			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
 				throw "Barco debe estar en el agua";
@@ -293,6 +294,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno, int x, int y, 
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(BARCO, x, y, 1);
 				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 			}
+		break;
 		case 3:
 			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != TIERRA){
 				throw "Mina debe estar en la tierra";
@@ -300,6 +302,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno, int x, int y, 
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(MINA, x, y, 1);
 				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 			}
+		break;
 		case 6:
 			if (verificarCoordenadas(x, y, z) && verificarCoordenadas(x+1, y+1, z+1) && verificarCoordenadas(x-1, y-1, z-1)){
 			dispararMisil(x, y, z);
