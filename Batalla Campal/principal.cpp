@@ -108,6 +108,18 @@ int main(){
 			cout << "Disparando..." <<endl;
 			batalla->realizarDisparo(coordX, coordY, coordZ);
 
+			if (batalla -> soldadosCoinciden(coordX, coordY)){
+				cout << "Fuego amigo!" << endl;
+				cout << "Perdiste el turno..." << endl;
+			}
+			else{
+				batalla -> realizarDisparo(coordX, coordY, coordZ);
+				if (batalla -> enemyKill(coordX, coordY)){
+					cout << "Mataste a un soldado enemigo" << endl;
+				}
+				
+			}
+			
 			cout << "La casilla ahora estÃ¡: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getContenido() <<endl;
 
 			cout << "Cartas disponibles: "<<endl;
