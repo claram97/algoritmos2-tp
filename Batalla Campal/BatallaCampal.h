@@ -42,7 +42,7 @@ class BatallaCampal{
 		 * Pre:
 		 * Pos:
 		 */
-		BatallaCampal(unsigned int cantJugadores, unsigned int cantidadSoldados, int dimensionTablero);
+		BatallaCampal(unsigned int cantJugadores, unsigned int cantidadSoldados,int cantidadHerramientas, int dimensionTablero);
 		/*
 		 * Pre:
 		 * Pos:

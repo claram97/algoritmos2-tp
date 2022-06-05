@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Jugador::Jugador(int id, int cantidadSoldados) {
+Jugador::Jugador(int id, int cantidadSoldados, int cantidadHerramientas) {
 	this->id = id;
 	this->cantidadSoldados = cantidadSoldados;
 	this->cantidadHerramientas = cantidadHerramientas;
@@ -15,7 +15,7 @@ Jugador::Jugador(int id, int cantidadSoldados) {
 
 Jugador::~Jugador() {
 	if (this->soldados) {
-		for (unsigned int i = 1; i < this->getCantidadDeSoldados(); i++) {
+		for (int i = 1; i < this->getCantidadDeSoldados(); i++) {
 			this->soldados->remover(i);
 		}
 		delete[] this->soldados;
@@ -38,6 +38,7 @@ unsigned int Jugador::getCantidadDeHerramientas() {
 	return this->herramientas->contarElementos();
 }
 
+
 int Jugador::getCantidadDeSoldados() {
 	return this->soldados->contarElementos();
 
@@ -57,24 +58,20 @@ Ficha* Jugador::getHerramienta(int id){
 	return this->herramientas->get(id);
 }
 
-Ficha* Jugador::getSoldado(int numSoldado){
-	return this->soldados->get(numSoldado);
+Ficha* Jugador::getSoldado(int id){
+	return this->soldados->get(id);
 }
 
-/*
+
 void Jugador::setCarta(Carta* carta) {
 	if (this->getCantidadDeCartas() <= MAX_CARTAS) {
-		this->cartas->push_back(carta);
+		this->cartas->add(carta);
 	}
 }
 
-Carta* Jugador::getCarta() {
-	Carta* carta = this->cartas->begin()[0];
-	this->cartas->erase(this->cartas->begin());
-	return carta;
+Carta* Jugador::getCarta(unsigned int i) {
+	return this->cartas->get(id);
 }
-*/
-
 
 void Jugador::setEstado(EstadoJugador estado) {
 	this->estado = estado;
@@ -88,10 +85,6 @@ void Jugador::nuevaCarta(int aleatorio){
 	if( this->cartas->contarElementos() < MAX_CARTAS){
 		this->cartas->add(new Carta(aleatorio));
 	}
-}
-
-Carta* Jugador::getCarta(unsigned int i){
-	return this->cartas->get(i);
 }
 
 unsigned int Jugador::getId(){
@@ -125,4 +118,13 @@ void Jugador::eliminarCarta(int id){
 void Jugador::eliminarHerramienta(int id){
 	this->herramientas->remover(id);
 }
+
+void Jugador::setHerramienta(Ficha* ficha){
+     this->herramientas->add(ficha);
+}
+
+void Jugador::setSoldado(Ficha* ficha){
+	this->soldados->add(ficha);
+}
+
 

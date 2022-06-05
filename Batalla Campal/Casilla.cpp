@@ -1,4 +1,5 @@
 #include "Casilla.h"
+#include "Ficha.h"
 
 /*Casilla::Casilla(unsigned int largo, unsigned int ancho, unsigned int alto, TipoDeCasillero tipo){
   //Esto no va acá  creo pero lo dejo aca por si se necesita

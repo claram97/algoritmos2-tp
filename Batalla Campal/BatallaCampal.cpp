@@ -1,6 +1,6 @@
 #include "BatallaCampal.h"
 
-BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantidadSoldados,int dimensionTablero){
+BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantidadSoldados,int cantidadHerramientas,int dimensionTablero){
 
 	estadoDelJuegoActual = JUGANDO;
 
@@ -25,7 +25,7 @@ BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantid
 	this->jugadores = new Vector<Jugador*>(cantidadJugadores, NULL);
 
 	for(int i = 1; i <= jugadores->getLongitud(); i++){
-		this->jugadores->agregar(i, new Jugador(i, cantidadSoldados));
+		this->jugadores->agregar(i, new Jugador(i, cantidadSoldados, cantidadHerramientas));
 	}
 
 	this->tablero = new Tablero(this->dimensionTablero,this->dimensionTablero,this->dimensionTablero);

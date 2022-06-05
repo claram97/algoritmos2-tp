@@ -25,7 +25,7 @@ private:
 public:
 	//Pre: -
 	//Post: crea un jugador con su respectivo id, la cantidad de soldados que posee y las cartas en su mazo.
-	Jugador(int id, int cantidadSoldados);
+	Jugador(int id, int cantidadSoldados, int cantidadHerramientas);
 
 	//Pre: -
 	//Post: destruye la instancia de jugador.

@@ -1,6 +1,5 @@
 #ifndef FICHA_H
 #define FICHA_H
-#include "Jugador.h"
 
 enum tipoDeFicha{
 	AVION,
