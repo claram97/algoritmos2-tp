@@ -37,7 +37,7 @@ public:
 
 	//Pre: -
 	//Post: devuelve la cantidad de soldados.
-	unsigned int getCantidadDeSoldados();
+	int getCantidadDeSoldados();
 
 	//Pre: -
 	//Post: devuelve la cantidad de cartas.

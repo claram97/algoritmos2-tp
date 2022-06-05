@@ -82,5 +82,13 @@ class Casilla{
 		//post:
 		TipoDeCasillero getContenido();
 
+		//pre:
+		//post:
+		void setTipoDeCasillero(TipoDeCasillero tipo);
+
+		//pre:
+		//post:
+		void setCoordenadas ();
+
 };
 #endif

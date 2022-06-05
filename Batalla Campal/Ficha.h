@@ -2,7 +2,7 @@
 #define FICHA_H
 #include "Jugador.h"
 
-typedef enum tipoDeFicha{
+enum tipoDeFicha{
 	AVION,
 	BARCO,
 	MINA,
@@ -10,7 +10,7 @@ typedef enum tipoDeFicha{
 	SIN_DEFINIR
 };
 
-typedef enum tipoCarta{
+ enum tipoCarta{
 	MISIL,
 	RADAR,
 	SUPER,
@@ -28,7 +28,7 @@ private:
 	int posicionY;
 	int posicionZ;
 	
-	Jugador* jugador;
+	//Jugador* jugador;
 	char tipo;
 		
 		

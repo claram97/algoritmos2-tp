@@ -37,7 +37,7 @@ unsigned int Jugador::getCantidadDeHerramientas() {
 	return this->herramientas->contarElementos();
 }
 
-unsigned int Jugador::getCantidadDeSoldados() {
+int Jugador::getCantidadDeSoldados() {
 	return this->soldados->contarElementos();
 
 }

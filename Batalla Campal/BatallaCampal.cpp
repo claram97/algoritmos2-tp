@@ -103,7 +103,7 @@ void BatallaCampal::realizarDisparo(int x, int y, int z){
 	this->tablero->getCasilla(x, y, z)->setEstado(INACTIVO); //metodo para dejar INACTIVO
 
 	for(int i = 1; i <= this->jugadores->getLongitud(); i++){
-		for(unsigned int j = 1; j <= this->jugadores->obtener(i)->getCantidadDeSoldados() ; j++){
+		for(int j = 1; j <= this->jugadores->obtener(i)->getCantidadDeSoldados() ; j++){
 			if(this->jugadores->obtener(i)->getSoldado(j)->getPosicionX() == x && this->jugadores->obtener(i)->getSoldado(j)->getPosicionX() == y){
 				this->jugadores->obtener(i)->eliminarSoldado(j);
 
@@ -115,7 +115,7 @@ void BatallaCampal::realizarDisparo(int x, int y, int z){
 
 bool BatallaCampal::soldadosCoinciden(int x, int y){
 	bool coinciden = false;
-		for(unsigned int j = 1; j <= this->jugadores->obtener(turno)->getCantidadDeSoldados(); j++){
+		for( int j = 1; j <= this->jugadores->obtener(turno)->getCantidadDeSoldados(); j++){
 			if(this->jugadores->obtener(turno)->getSoldado(j)->getPosicionX() == x && this->jugadores->obtener(turno)->getSoldado(j)->getPosicionY() == y){
 				coinciden = true;
 			}
@@ -127,8 +127,8 @@ bool BatallaCampal::soldadosCoinciden(int x, int y){
 // enemyKill como que no funciona, entra a la función y al primer ciclo pero no se que onda
 bool BatallaCampal::enemyKill(int x, int y){
 	bool enemigoMuerto = false;
-	for(unsigned int i = 1; i <= this -> jugadores -> getLongitud(); i++){
-		for(unsigned int j = 1; j <= this->jugadores->obtener(i)->getCantidadDeSoldados(); j++){
+	for(int i = 1; i <= this -> jugadores -> getLongitud(); i++){
+		for(int j = 1; j <= this->jugadores->obtener(i)->getCantidadDeSoldados(); j++){
 			if(this->jugadores->obtener(i)->getSoldado(j)->getPosicionX() == x && this->jugadores->obtener(i)->getSoldado(j)->getPosicionY() == y && (i != turno)){
 				enemigoMuerto = true;
 			}
@@ -141,7 +141,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int col, int jugador
 
 	int numSoldado;
 
-	for(unsigned int i = 1; i <= this->jugadores->obtener(jugadorDeTurno)->getCantidadDeSoldados(); i++){
+	for(int i = 1; i <= this->jugadores->obtener(jugadorDeTurno)->getCantidadDeSoldados(); i++){
 		if(this->jugadores->obtener(jugadorDeTurno)->getSoldado(i)->getPosicionX() == fila && this->jugadores->obtener(jugadorDeTurno)->getSoldado(i)->getPosicionX() == col){
 			numSoldado = i;
 		}
@@ -285,7 +285,7 @@ void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno, int x, int y, 
 			}else if (verificarCoordenadas(x, y, z)){
 				this->jugadores->obtener(jugadorDeTurno)->nuevaHerramienta(AVION, x, y, z);
 				this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
-			}
+		    }
 		case 2:
 			if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
 				throw "Barco debe estar en el agua";

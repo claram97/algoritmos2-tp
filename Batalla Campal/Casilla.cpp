@@ -26,7 +26,7 @@ void setCoordenada(unsigned int &coordenadaAModificar, unsigned int coordenada){
 			coordenadaAModificar = coordenada;
 		}
 		else{
-			throw "Las coordenadas de un casillero no pueden ser negativas."
+			throw "Las coordenadas de un casillero no pueden ser negativas.";
 		}
 	}
 //Opcion 2
@@ -37,7 +37,7 @@ void Casilla::setCoordenadas(){
 		this->coordenadaZ = coordenadaZ;
 	}
 	else{
-		throw "Las coordenadas de un casillero no pueden ser negativas."
+		throw "Las coordenadas de un casillero no pueden ser negativas.";
 	}
 }	
 
@@ -46,13 +46,13 @@ void Casilla::setTipoDeCasillero(TipoDeCasillero tipo){
 		this->tipoDeCasilla = tipo;
 	}
 	else{
-		throw "El tipo de casilla ingresado es inválida. Puede ser: AVION, BARCO, SOLDADO o de tipo uso GENERAL".
+		throw "El tipo de casilla ingresado es inválida. Puede ser: AVION, BARCO, SOLDADO o de tipo uso GENERAL.";
 	}
 	
 }
 
 //Voy a hacer la lógica del tipo en Batalla Campal y entonces se manda el tipo que va
-Casilla::Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, tipoDeCasillero tipo){
+Casilla::Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, TipoDeCasillero tipo){
 	//Opcion 1:
 	setCoordenada(this->coordenadaX,coordenadaX);
 	setCoordenada(this->coordenadaY,coordenadaY);
