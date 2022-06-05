@@ -25,9 +25,6 @@ enum estadoJuego{
 #define DERECHA 'D'
 #define IZQUIERDA 'A'
 
-
-enum estadoDelJuego{JUGANDO,FINALIZADO};
-
 class BatallaCampal{
 	
 	private:
