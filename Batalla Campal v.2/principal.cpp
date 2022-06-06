@@ -146,8 +146,8 @@ int main(){
 						cout << "Perdiste el turno..." << endl;
 					}
 					else{
-						batalla -> realizarDisparo(coordX, coordY, coordZ);
 						if (batalla -> enemyKill(coordX, coordY)){
+							batalla -> realizarDisparo(coordX, coordY, coordZ);
 							cout << "Mataste a un soldado enemigo" << endl;
 						}
 
