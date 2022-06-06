@@ -161,7 +161,7 @@ int main(){
 			cout << "-----FIN DE TURNO----" << endl;
 			batalla->estadoActualDelJuego();
 		}
-
+		cout << "-----FIN DEL JUEGO----" << endl;
 		cout << "Gana el jugador: " << batalla->getTurno() << endl;
 
 		return 0;
