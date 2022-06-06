@@ -27,7 +27,7 @@ public:
 	 *  Pre: Necesita el id, la cantidad de soldados, y la cantidad de herramientas
 	 *  Post: Crea una instancia de jugador 
 	 */
-	Jugador(int id, int cantidadSoldados, int cantidadHerramientas);
+	Jugador(unsigned int id, int cantidadSoldados);
 	/*
 	 *  Post: Destruye la instancia de jugador
 	 */
