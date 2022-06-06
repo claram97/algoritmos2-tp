@@ -5,15 +5,12 @@
 
 class Carta{
 
-
 	private:
 
 		char tipoDeCarta;
 		std::string descripcion;
 
-
 	public:
-
 		/*
 		 * Pre: Necesita un numero para el tipo de carta
 		 * Post: Crea un tipo de carta
@@ -32,9 +29,7 @@ class Carta{
 		 */
 		~Carta();
 
-
 };
-
 
 
 #endif
