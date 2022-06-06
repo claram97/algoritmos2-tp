@@ -24,56 +24,49 @@ class Casilla{
 		EstadoDelCasillero estadoCasilla;
 		TipoDeCasillero tipoDeCasilla;
 
-
-
 	public:
-
 		/*
 		 * Pre: Recibe las coordenadas del tablero y una cantidad de tokens (fichas)
-		 * Pos: Crea una casilla
+		 * Post: Crea una instancia de casilla
 		 */
 		Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, TipoDeCasillero tipo);
-
 		/*
 		 *Pre: recibe una coordenada que se quiere inicializar y el valor al cual se lo quiere inicializar.
 		 *Post: inicializa la coordenada.
 		 */
 		void setCoordenada(unsigned int &coordenadaAModificar, unsigned int coordenada);
-		
 		/*
 		 * Pre: Recibe un tipo para la casilla (mar, tierra o aire)
-		 * Pos: Inicializa el tipo de la casilla segÃºn su tipo
+		 * Post: Inicializa el tipo de la casilla segÃºn su tipo
 		 */
 		void setTipoDeCasillero(TipoDeCasillero tipoDeCasilla);
 		/*
-		* Pos: Devuelve el tipo de casilla
-		*/
+		 * Post: Devuelve el tipo de casilla
+		 */
 		TipoDeCasillero getTipoDeCasilla();
 		/*
-		 * Pos: Devuelve la coordenada X/fila de la casilla
+		 * Post: Devuelve la coordenada X/fila de la casilla
 		 */
 		unsigned int getCoordenadaX();
-
 		/*
-		 * Pos: Devuelve la coordenada Y/columna de la casilla
+		 * Post: Devuelve la coordenada Y/columna de la casilla
 		 */
 		unsigned int getCoordenadaY();
-
 		/*
-		 * Pos: Devuelve la coordenada Z/altura de la casilla
+		 * Post: Devuelve la coordenada Z/altura de la casilla
 		 */
 		unsigned int getCoordenadaZ();
 		/*
-		 * Pos: Devuelve el estado del casillero
+		 * Post: Devuelve el estado del casillero
 		 */
 		EstadoDelCasillero getEstado();
 		/*
 		 * Pre: Necesita un tipo de estado
-		 * Pos: Setea el estado del casillero al tipo usado
+		 * Post: Setea el estado del casillero al tipo usado
 		 */
 		void setEstado(EstadoDelCasillero estado);
 		/*
-		 * Pos: Setea las coordenadas al casillero si estas son válidas
+		 * Post: Setea las coordenadas al casillero si estas son válidas
 		 */
 		void setCoordenadas ();
 
