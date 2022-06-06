@@ -141,8 +141,6 @@ int main(){
 					cout << "Altura: ";
 					cin >> coordZ;
 					cout << "Disparando..." <<endl;
-					batalla->realizarDisparo(coordX, coordY, coordZ);
-
 					if (batalla -> soldadosCoinciden(coordX, coordY)){
 						cout << "Fuego amigo!" << endl;
 						cout << "Perdiste el turno..." << endl;
