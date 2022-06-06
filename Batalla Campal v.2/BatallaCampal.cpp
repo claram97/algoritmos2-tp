@@ -55,9 +55,18 @@ BatallaCampal::~BatallaCampal(){
 }
 
 
-void BatallaCampal::estadoActualDelJuego(){             // ACTUALMENTE NO FUNCIONA, FALTA CHEQUEAR ESTADO DE LOS JUGADORES Y ELIMINARLOS
+void BatallaCampal::estadoActualDelJuego(){
 	if(this->jugadores){
+		
+		int id = 0;
 
+		this->jugadores->reiniciarCursor();
+		while(this->jugadores->avanzarCursor()){
+			id++;
+			if(this->jugadores->getCursor()->getCantidadDeSoldados() == 0){
+				this->jugadores->remover(id);
+			}
+		}
 		if(this->jugadores->contarElementos() == 1){
 			this->estadoDelJuegoActual = FINALIZADO;
 
