@@ -91,7 +91,9 @@ Lista <Jugador*>* BatallaCampal::getJugador(){
 }
 
 void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
-
+	if(!verificarCoordenadas(fila,columna,altura)){
+		throw "Las dimensiones ingresadas para el disparo no están en un rango válido.";
+	}
 	this->tablero->getCasilla(fila, columna, altura)->setEstado(INACTIVO);
 
 	this->jugadores->reiniciarCursor();
@@ -103,7 +105,10 @@ void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
 }
 
 bool BatallaCampal::soldadosCoinciden(int fila, int columna){
-
+	if(!verificarCoordenadas(fila,columna)){
+		throw "Las dimensiones ingresadas para el soldado no están en un rango válido.";
+	}
+	
 	bool coinciden = false;
 	bool corte = false;
 	this->jugadores->reiniciarCursor();
@@ -122,8 +127,11 @@ bool BatallaCampal::soldadosCoinciden(int fila, int columna){
 }
 
 // enemyKill como que no funciona, entra a la función y al primer ciclo pero no se que onda
-bool BatallaCampal::enemyKill(int fila, int columna){
-
+//le puse eliminarEnemigo no sean chetos manga de putos (?)
+bool BatallaCampal::eliminarEnemigo(int fila, int columna){
+	if(!verificarCoordenadas(fila,columna)){
+		throw "Las dimensiones ingresadas para eliminar al enemigo no están en un rango válido.";
+	}
 	bool enemigoMuerto = false;
 	this->jugadores->reiniciarCursor();
 	while(this->jugadores->avanzarCursor()){
@@ -140,7 +148,12 @@ bool BatallaCampal::enemyKill(int fila, int columna){
 }
 
 void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
-
+	if(!verificarCoordenadas(fila,columna)){
+		throw "Las dimensiones ingresadas para mover al soldado no están en un rango válido.";
+	}
+	if(movimiento != ARRIBA && movimiento != ABAJO && movimiento != IZQUIERDA && movimiento != DERECHA){
+		throw "El movimiento ingresado para mover al soldado no es válido.";
+	}
 	bool corte = false;
 	this->jugadores->reiniciarCursor();
 	while(this->jugadores->avanzarCursor() && (!corte)){
@@ -207,7 +220,9 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 }
 
 void BatallaCampal::dispararMisil(int fila, int columna, int altura){
-
+	if(!verificarCoordenadas(fila,columna,altura)){
+		throw "Las dimensiones ingresadas para disparar el misil no están en un rango válido.";
+	}
 	for (int i = -1; i <= 1; i++){
 		for (int j = -1; j <= 1; j++){
 			for (int k = -1; k <= 1; k++){
@@ -218,6 +233,9 @@ void BatallaCampal::dispararMisil(int fila, int columna, int altura){
 }
 
 int BatallaCampal::usarRadar(int fila, int columna, int altura){
+	if(!verificarCoordenadas(fila,columna,altura)){
+		throw "Las dimensiones ingresadas para usar el radar no están en un rango válido.";
+	}
 	int contador = 0;
 	//char contenido;
 	for (int i = 0; i <= 2; i++){
@@ -234,6 +252,9 @@ int BatallaCampal::usarRadar(int fila, int columna, int altura){
 }
 
 void BatallaCampal::dispararSuperMisil(int fila, bool filaOColumna){
+	if(fila < 1 || fila > this->dimensionTablero){
+		throw "Las dimensiones ingresadas para disparar el super misil no están en un rango válido.";
+	}
 	if (filaOColumna){
 		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
 			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
@@ -249,16 +270,10 @@ void BatallaCampal::dispararSuperMisil(int fila, bool filaOColumna){
 	}
 }
 
-bool BatallaCampal::verificarCoordenadas(int fila, int columna, int altura){
-	if (fila < 0 || columna < 0 || altura < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero() || altura > this->getDimensionDelTablero()){
-		throw "Coordenadas no estan en el tablero";
-	}else{
-		return true;
-	}
-}
-
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
-	
+	if(!verificarCoordenadas(xMax,yMax,zMax){
+		throw "Las dimensiones ingresadas para disparar el misil no están en un rango válido.";
+	}
 	for(unsigned int x = 1; x<=xMax; x++){
 		for(unsigned int y = 1; y<=yMax; x++){
 			for(unsigned int z = 1; z<=zMax; x++){
@@ -280,10 +295,31 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 		}
 	}	
 }
+	   
+bool BatallaCampal::verificarCoordenadas(int fila, int columna){
+	if (fila < 0 || columna < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero()){
+		return false;
+	}else{
+		return true;
+	}
+}
+bool BatallaCampal::verificarCoordenadas(int fila, int columna, int altura){
+	if (fila < 0 || columna < 0 || altura < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero() || altura > this->getDimensionDelTablero()){
+		return false;
+	}else{
+		return true;
+	}
+}
 
-void BatallaCampal::ejecutarCarta(int numero, int x, int y, int z){
+void BatallaCampal::usarCarta(int numero, int x, int y, int z){
 
-
+	if(numero < 1 || numero > 6){
+		throw "La carta elegida es inválida.";
+	}
+	if(!verificarCoordenadas(x,y,z)){
+		throw "Las dimensiones ingresadas para utilizar las cartas son inválidas";
+	}
+	
 	bool corte = false;
 	this->jugadores->reiniciarCursor();
 	while(this->jugadores->avanzarCursor() && (!corte)){
