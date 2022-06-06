@@ -7,8 +7,7 @@
 #define MAX_HERRAMIENTAS 7
 
 enum EstadoJugador {
-	ELIMINADO,
-	EN_BATALLA
+	ELIMINADO, EN_BATALLA
 };
 
 class Jugador {
@@ -75,18 +74,32 @@ public:
 	//Post:
 	unsigned int getId();
 
+	//Pre:
+	//Post:
 	void nuevoSoldado(int x, int y);
 
+	//Pre:
+	//Post:
 	void eliminarSoldado(int fila, int columna);
 
+	//Pre:
+	//Post:
 	void nuevaHerramienta(char FICHA, int fila, int columna, int altura);
 
+	//Pre:
+	//Post:
 	void eliminarCarta(int id);
 
+	//Pre:
+	//Post:
 	bool esPosicionValida(int x, int y, int z);
 
+	//Pre:
+	//Post:
 	bool buscarSoldado(int fila, int columna);
 
+	//Pre:
+	//Post:
 	unsigned int buscarIdSoldado(int fila, int columna);
 };
 
