@@ -16,20 +16,19 @@ class Carta{
 
 		/*
 		* Pre: Necesita un numero para el tipo de carta
-		* Pos: Crea un tipo de carta
+		* Post: Crea un tipo de carta
 		*/
 		Carta(int aleatorio);
-
 		/*
-		 * Pos: Devuelve el tipo de carta
+		 * Post: Devuelve el tipo de carta
 		 */
 		char getTipoDeCarta();
 		/*
-		* Pos: Devuelve la descripcion de la carta
+		* Post: Devuelve la descripcion de la carta
 		*/
 		std::string getDescripcion();
 		/*
-		 * Pos: Destruye la carta
+		 * Post: Destruye instancia de carta
 		 */
 		~Carta();
 
