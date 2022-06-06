@@ -248,31 +248,6 @@ bool BatallaCampal::verificarCoordenadas(int x, int y, int z){
 	}
 }
 
-void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
-	
-	this->tablero = new Tablero(xMax,yMax,zMax);
-	
-	for(int x = 1; x<=xMax; x++){
-		for(int y = 1; y<=yMax; x++){
-			for(int z = 1; z<=zMax; x++){
-				
-				if(x == 1){
-
-					if(y < z){	
-						this->tablero->getCasilla(x,y,z)->setTipo(TIERRA);
-					}
-					else{
-						this->tablero->getCasilla(x,y,z)->setTipo(AGUA);
-					}
-					
-				}else{
-					this->tablero->getCasilla(x,y,z)->setTipo(AGUA);
-				}
-					
-			}
-		}
-	}	
-}
 
 void BatallaCampal::ejecutarCarta(int numero, int jugadorDeTurno, int x, int y, int z){
 	if (numero < 6 || numero < 1){
