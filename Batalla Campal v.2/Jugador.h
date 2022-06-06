@@ -25,7 +25,7 @@ private:
 public:
 	/*
 	 *  Pre: Necesita el id, la cantidad de soldados, y la cantidad de herramientas
-	 *  Post: Crea un jugador 
+	 *  Post: Crea una instancia de jugador 
 	 */
 	Jugador(int id, int cantidadSoldados, int cantidadHerramientas);
 	/*
@@ -43,38 +43,35 @@ public:
 	/*
 	 *  Post: Devuelve la cantidad de cartas
 	 */
-	//Post: .
 	unsigned int getCantidadDeCartas();
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
-	//Pre: -
-	//Post: agrega una ficha.
 	void setHerramienta(Ficha* ficha);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	//Pre: recibe un id de ficha
 	//Post: devuelve la ficha.
 	Ficha* getHerramienta(int id);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	//Post: agrega una ficha.
 	void setSoldado(Ficha* ficha);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	//Pre: recibe un id de soldado
 	//Post: devuelve el soldado.
 	Ficha* getSoldado(int id);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 
 	//Pre: -
@@ -82,63 +79,63 @@ public:
 	void setCarta(Carta* carta);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	//Pre: (habria que poner alguna condicion, tipo el tipo de carta o algo)
 	//Post: devuelve una carta.
 	Carta* getCarta(unsigned int i);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	//Pre: recibe un id de una herramienta
 	//Post: elimina la herramienta de la lista de herramientas del jugador.
 	void eliminarHerramienta(int id);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	//Pre: recibe un estado de jugador
 	//Post: cambiar el estado al jugador
 	void setEstado(EstadoJugador estado);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	EstadoJugador getEstadoJugador();
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	void nuevaCarta(int aleatorio);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	unsigned int getId();
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	void nuevoSoldado(int x, int y);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	void eliminarSoldado(int id);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	void nuevaHerramienta(char FICHA, int fila, int columna, int altura);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	void eliminarCarta(int id);
 	/*
 	 *  Pre: 
-	 *  Pos: 
+	 *  Post: 
 	 */
 	bool esPosicionValida(int x, int y, int z);
 };
