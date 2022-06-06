@@ -23,132 +23,71 @@ private:
 	EstadoJugador estado;
 
 public:
-	/*
-	 *  Pre: Necesita el id, la cantidad de soldados, y la cantidad de herramientas
-	 *  Post: Crea una instancia de jugador 
-	 */
+	//Pre: -
+	//Post: crea un jugador con su respectivo id, la cantidad de soldados que posee y las cartas en su mazo.
 	Jugador(unsigned int id, int cantidadSoldados);
-	/*
-	 *  Post: Destruye la instancia de jugador
-	 */
+
+	//Pre: -
+	//Post: destruye la instancia de jugador.
 	virtual ~Jugador();
-	/*
-	 *  Post: Devuelve la cantidad de herramientas.
-	 */
+
+	//Pre: -
+	//Post: devuelve la cantidad de herramientas.
 	unsigned int getCantidadDeHerramientas();
-	/*
-	 *  Post: Devuelve la cantidad de soldados
-	 */
+
+	//Pre: -
+	//Post: devuelve la cantidad de soldados.
 	int getCantidadDeSoldados();
-	/*
-	 *  Post: Devuelve la cantidad de cartas
-	 */
+
+	//Pre: -
+	//Post: devuelve la cantidad de cartas.
 	unsigned int getCantidadDeCartas();
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	void setHerramienta(Ficha* ficha);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
+
 	//Pre: recibe un id de ficha
 	//Post: devuelve la ficha.
 	Ficha* getHerramienta(int id);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	//Post: agrega una ficha.
-	void setSoldado(Ficha* ficha);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
+
 	//Pre: recibe un id de soldado
 	//Post: devuelve el soldado.
-	Ficha* getSoldado(int id);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
+	Lista<Ficha*>* getSoldado();
 
-	//Pre: -
-	//Post: de ser posible, agrega la carta al mazo.
-	void setCarta(Carta* carta);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
 	//Pre: (habria que poner alguna condicion, tipo el tipo de carta o algo)
 	//Post: devuelve una carta.
-	Carta* getCarta(unsigned int i);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
+	Lista<Carta*>* getCarta();
+
 	//Pre: recibe un id de una herramienta
 	//Post: elimina la herramienta de la lista de herramientas del jugador.
 	void eliminarHerramienta(int id);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
+
 	//Pre: recibe un estado de jugador
 	//Post: cambiar el estado al jugador
 	void setEstado(EstadoJugador estado);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	EstadoJugador getEstadoJugador();
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	void nuevaCarta(int aleatorio);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	unsigned int getId();
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	void nuevoSoldado(int x, int y);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	void eliminarSoldado(int id);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	void nuevaHerramienta(char FICHA, int fila, int columna, int altura);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	void eliminarCarta(int id);
-	/*
-	 *  Pre: 
-	 *  Post: 
-	 */
-	bool esPosicionValida(int x, int y, int z);
-	/*
-	 *  Pre:
-	 *  Post:
-	 */
-    bool buscarSoldado(int fila, int columna);
-    /*
-    *  Pre:
-    *  Post:
-    */
-    void eliminarSoldado(int fila, int columna);
 
+	//Pre:
+	//Post:
+	EstadoJugador getEstadoJugador();
+
+	//Pre:
+	//Post:
+	void nuevaCarta(int aleatorio);
+
+	//Pre:
+	//Post:
+	unsigned int getId();
+
+	void nuevoSoldado(int x, int y);
+
+	void eliminarSoldado(int fila, int columna);
+
+	void nuevaHerramienta(char FICHA, int fila, int columna, int altura);
+
+	void eliminarCarta(int id);
+
+	bool esPosicionValida(int x, int y, int z);
+
+	bool buscarSoldado(int fila, int columna);
+
+	unsigned int buscarIdSoldado(int fila, int columna);
 };
 
 #endif
