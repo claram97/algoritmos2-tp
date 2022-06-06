@@ -1,7 +1,10 @@
 #ifndef FICHA_H
 #define FICHA_H
+#include "jugador.h"
+#include <string>
+#include <iostream>
 
-enum tipoDeFicha{
+typedef enum tipoDeFicha{
 	AVION,
 	BARCO,
 	MINA,
@@ -9,7 +12,7 @@ enum tipoDeFicha{
 	SIN_DEFINIR
 };
 
- enum tipoCarta{
+typedef enum tipoDeCarta{
 	MISIL,
 	RADAR,
 	SUPER,
@@ -27,78 +30,63 @@ private:
 	int posicionY;
 	int posicionZ;
 	
-	//Jugador* jugador;
+	Jugador* jugador;
 	char tipo;
 		
 		
 public:
 		
 	/*
-	 *  Pre:
-	 *  Post: crea una ficha con el tipo sin definir y posiciones seteadas en -1 (deben cambiarse luego).
+	 *  Post: Crea una ficha con el tipo sin definir y posiciones seteadas en -1 (deben cambiarse luego).
 	 */
 	Ficha();
-
 	/*
-		Pre: recibe un tipo de ficha, con valores válidos: SOLDADO, AVIÓN, BARCO, MINAS.
-		Post: Se crea una ficha del tipo dado si el valor es válido, sino deja el tipo sin definir.
-		Las posiciones iniciales estarán seteadas en -1, deben actualizarse.
-	*/
-	Ficha(char tipo, int x, int y, int z);
-		
-	/*
-		Pre: - 
-		Post: devuelve la posicion Y
-	*/
-	int getPosicionY();
-	
-	/*
-		pre: - 
-		pos: devuelve la posicion X
-	*/
-	int getPosicionX();
-	
-	/*
-		pre: - 
-		pos: devuelve la posicion Z
-	*/
-	int getPosicionZ();
-		
-
-	/*
-		pre: - 
-		pos: devuelve el tipo de ficha
-	*/
-	char getTipo();
-	
-	/*
-		pre: el tipo tiene que ser soldado, avion, barco o mina.
-		post: setea el tipo de la ficha actual según el tipo recibido.
-	*/
-	void setTipo(char tipo);
-	
-	/*
-	 *  pre:
-	 *  pos:
+	 *	Pre: Recibe un tipo de ficha, con valores válidos: SOLDADO, AVIÓN, BARCO, MINAS
+	 *	Post: Se crea una ficha del tipo dado si el valor es válido, sino deja el tipo sin definir,
+	 *		  las posiciones iniciales estarán seteadas en -1, deben actualizarse
 	 */
-	void setCoordenadas(int x, int y);
-		
-
-	void setCoordenadasSoldado(int posicionX, int posicionY);
-
-	bool esPosicionValida(int x, int y, int z);
-
-	bool esTipoValido(char tipo);
-
-	bool tipoConcuerdaConPosicion(int x, int y, int z, char tipo);
-
-	void definirTipo(char tipo);
-	
+	Ficha(char tipo, int x, int y, int z);
 	/*
-		pre: - 
-		pos: devuelve de qué tipo tendría que ser una ficha dadas sus coordenadas actuales.
-	*/
-	char validarFicha();
+	 *  Pos: Devuelve la posicion X/fila
+	 */
+	int getPosicionX();	
+	/*
+	 *  Pos: Devuelve la posicion Y/columna
+	 */
+	int getPosicionY();
+	/*
+	 *  Pos: Devuelve la posicion Z/altura
+	 */
+	int getPosicionZ();
+	/*
+	 *  Pos: Devuelve el tipo de ficha
+	 */
+	char getTipo();	
+	/*
+	 *  Pre: Necesita las coordenadas de la fila y la columna
+	 *  Pos: Si es soldado, cambia su posicion
+	 */
+	void setCoordenadasSoldado(int posicionX, int posicionY);
+	/*
+	 *  Pre: Necesita las coordenadas de la casilla
+	 *  Pos: Devuelve true si la casilla es valida
+	 */
+	bool esPosicionValida(int x, int y, int z);
+	/*
+	 *  Pre: Necesita un tipo de ficha
+	 *  Pos: Devuelve true si el tipo de ficha es valido
+	 */
+	bool esTipoValido(char tipo);
+	/*
+	 *  Pre: Necesita las coordenadas y un tipo de ficha
+	 *  Pos:
+	 */
+	bool tipoConcuerdaConPosicion(int x, int y, int z, char tipo);
+	/*
+	 *  Pre: Necesita un tipo de ficha
+	 *  Pos: Setea la ficha al tipo dado
+	 */
+	void definirTipo(char tipo);
 };
 
 
