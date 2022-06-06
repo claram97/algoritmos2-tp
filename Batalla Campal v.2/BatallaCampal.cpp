@@ -192,7 +192,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila-1, columna);
 
 							}else{
-								throw "Movimiento invÃ¡lido.";
+								throw "Movimiento invalido.";
 							}
 							break;
 						case ABAJO:
@@ -202,7 +202,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila+1, columna);
 
 							}else{
-								throw "Movimiento invÃ¡lido.";
+								throw "Movimiento invalido.";
 							}
 							break;
 						case IZQUIERDA:
@@ -212,7 +212,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila, columna-1);
 
 							}else{
-								throw "Movimiento invÃ¡lido.";
+								throw "Movimiento invalido.";
 							}
 							break;
 						case DERECHA:
@@ -222,7 +222,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila, columna+1);
 
 							}else{
-								throw "Movimiento invÃ¡lido.";
+								throw "Movimiento invalido.";
 							}
 
 							break;
@@ -336,7 +336,7 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 void BatallaCampal::ejecutarCarta(int numero, int x, int y, int z){
 
 	if(numero < 1 || numero > 6){
-		throw "La carta especificada no existe."
+		throw "La carta especificada no existe.";
 	}
 	if(x < 1 || x > this->dimensionTablero || y < 1 || y > this->dimensionTablero || z < 1 || z > this->dimensionTablero){
 		throw "Error al intentar utilizar la carta";
