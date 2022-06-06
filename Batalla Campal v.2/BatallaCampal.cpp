@@ -103,7 +103,7 @@ bool BatallaCampal::soldadosCoinciden(int fila, int columna){
 			corte = true;
 			this->jugadores->getCursor()->getSoldado()->reiniciarCursor();
 			while(this->jugadores->getCursor()->getSoldado()->avanzarCursor()){
-				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == columna){
+				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY() == columna){
 					coinciden = true;
 				}
 			}
@@ -121,7 +121,7 @@ bool BatallaCampal::enemyKill(int fila, int columna){
 		if(this->jugadores->getCursor()->getId() != this->turno){
 			this->jugadores->getCursor()->getSoldado()->reiniciarCursor();
 			while(this->jugadores->getCursor()->getSoldado()->avanzarCursor()){
-				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == columna){
+				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY() == columna){
 					enemigoMuerto = true;
 				}
 			}
@@ -139,7 +139,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 			corte = true;
 			this->jugadores->getCursor()->getSoldado()->reiniciarCursor();
 			while(this->jugadores->getCursor()->getSoldado()->avanzarCursor()){
-				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == columna){
+				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY() == columna){
 
 					switch(movimiento){
 
