@@ -55,9 +55,18 @@ BatallaCampal::~BatallaCampal(){
 }
 
 
-void BatallaCampal::estadoActualDelJuego(){             // ACTUALMENTE NO FUNCIONA, FALTA CHEQUEAR ESTADO DE LOS JUGADORES Y ELIMINARLOS
+void BatallaCampal::estadoActualDelJuego(){
 	if(this->jugadores){
+		
+		int id = 0;
 
+		this->jugadores->reiniciarCursor();
+		while(this->jugadores->avanzarCursor()){
+			id++;
+			if(this->jugadores->getCursor()->getCantidadDeSoldados() == 0){
+				this->jugadores->remover(id);
+			}
+		}
 		if(this->jugadores->contarElementos() == 1){
 			this->estadoDelJuegoActual = FINALIZADO;
 
@@ -103,7 +112,7 @@ bool BatallaCampal::soldadosCoinciden(int fila, int columna){
 			corte = true;
 			this->jugadores->getCursor()->getSoldado()->reiniciarCursor();
 			while(this->jugadores->getCursor()->getSoldado()->avanzarCursor()){
-				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == columna){
+				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY() == columna){
 					coinciden = true;
 				}
 			}
@@ -121,7 +130,7 @@ bool BatallaCampal::enemyKill(int fila, int columna){
 		if(this->jugadores->getCursor()->getId() != this->turno){
 			this->jugadores->getCursor()->getSoldado()->reiniciarCursor();
 			while(this->jugadores->getCursor()->getSoldado()->avanzarCursor()){
-				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == columna){
+				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY() == columna){
 					enemigoMuerto = true;
 				}
 			}
@@ -139,7 +148,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 			corte = true;
 			this->jugadores->getCursor()->getSoldado()->reiniciarCursor();
 			while(this->jugadores->getCursor()->getSoldado()->avanzarCursor()){
-				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == columna){
+				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY() == columna){
 
 					switch(movimiento){
 
@@ -249,8 +258,6 @@ bool BatallaCampal::verificarCoordenadas(int fila, int columna, int altura){
 }
 
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
-	
-	this->tablero = new Tablero(xMax,yMax,zMax);
 	
 	for(unsigned int x = 1; x<=xMax; x++){
 		for(unsigned int y = 1; y<=yMax; x++){
