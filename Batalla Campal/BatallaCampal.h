@@ -130,11 +130,6 @@ class BatallaCampal{
 		 * Pos: Devuelve true si se eliminó un soldado
 		 */
 		bool enemyKill(int x, int y);
-		/*
-		 * Pre: Necesita los tamaños de las filas, las columnas y la altura
-		 * Pos: Crea un tipo de tablero
-		 */
-		void iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
 
 };
 
