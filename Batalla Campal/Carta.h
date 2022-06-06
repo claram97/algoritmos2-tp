@@ -5,60 +5,32 @@
 
 class Carta{
 
-
 	private:
 
 		char tipoDeCarta;
 		std::string descripcion;
 
-
 	public:
 
-		/*
-		 * Pre:
-		 * Pos:
-		 */
-		Carta();
-		/*
-		 * Pre:
-		 * Pos:
+	/*
+		 * Pre: Necesita un numero para el tipo de carta
+		 * Pos: Crea un tipo de carta
 		 */
 		Carta(int aleatorio);
-
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Devuelve el tipo de carta
 		 */
 		char getTipoDeCarta();
 		/*
-		 * Pre:
-		 * Pos:
-		 */
-		void setTipoDeCarta(char);
-		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Devuelve la descripcion de la carta
 		 */
 		std::string getDescripcion();
 		/*
-		 * Pre:
-		 * Pos:
-		 */
-		void setDescripcion(std::string);
-		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Destruye la carta
 		 */
 		~Carta();
-		/*
-		 * Pre:
-		 * Pos:
-		 */
-		void removerCarta();
-
 
 };
-
 
 
 #endif
