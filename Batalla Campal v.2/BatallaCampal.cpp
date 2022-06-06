@@ -259,8 +259,6 @@ bool BatallaCampal::verificarCoordenadas(int fila, int columna, int altura){
 
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
 	
-	this->tablero = new Tablero(xMax,yMax,zMax);
-	
 	for(unsigned int x = 1; x<=xMax; x++){
 		for(unsigned int y = 1; y<=yMax; x++){
 			for(unsigned int z = 1; z<=zMax; x++){
