@@ -39,72 +39,101 @@ class BatallaCampal{
 	public:
 
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pre: Necesita la cantidad de jugadores, de soldados, de herramientas y la dimension del tablero
+		 * Pos: Si las cantidades son validas, crea una partida de batalla con las especificaciones mencionadas
 		 */
-		BatallaCampal(unsigned int cantJugadores, unsigned int cantidadSoldados,int cantidadHerramientas, int dimensionTablero);
+		BatallaCampal(unsigned int cantidadJugadores, unsigned int cantidadSoldados,int cantidadHerramientas,int dimensionTablero);
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Pasa el turno al siguiente jugador
 		 */
 		void siguienteTurno();
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Dependiendo del estado del juego, decide continuarlo o finalizarlo (cambia el estado)
 		 */
 		void estadoActualDelJuego();
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Devuelve el estado del juego actual
 		 */
 		estadoDelJuego getEstadoDelJuego();
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Devuelve de quien es turno
 		 */
 		int getTurno();
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pre: Necesita el numero/id del jugador
+		 * Pos: Devuelve el jugador
 		 */
 		Jugador* getJugador(unsigned int jugador);
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Devuelve el tablero
 		 */
 		Tablero* getTablero();
 		/*
-		 * Pre:
-		 * Pos:
+		 * Pos: Destruye el TDA BatallaCampal
 		 */
 		virtual ~BatallaCampal();
-
+		/*
+		 * Pre: Necesita el tipo de movimento, las coordenadas de la fila y la columna, y el turno
+		 * Pos: Si el movimiento es valido, mueve un soldado a una casilla de distancia
+		 */
 		void moverSoldado(char movimiento, int x, int y, int turno);
-
+		/*
+		 * Pos: Devuelve la cantidad de jugadores que hay en la batalla
+		 */
 		int getCantidadDeJugadores();
-
+		/*
+		 * Pos: Devuelve la cantidad de soldados que hay en la batalla
+		 */
 		int getCantidadDeSoldados();
-
-		void eliminarSoldado();
-
+		/*
+		 * Pre: Necesita las coordenadas de la fila y la columna
+		 * Pos: Devuelve true si hay dos soldados en una misma casilla
+		 */
 		bool soldadosCoinciden(int x, int y);
-
+		/*
+		 * Pos: Devuelve la dimension del tablero
+		 */
 		int getDimensionDelTablero();
-
+		/*
+		 * Pre: Necesita las coordenadas de la casilla
+		 * Pos: Inactiva la casilla, y si hay una ficha en la casilla, esta se elimina
+		 */
 		void realizarDisparo(int x, int y, int z);
-
+		/*
+		 * Pre: Necesita las coordenadas de la casilla y el numero de la carta
+		 * Pos: Se activa la carta del numero usado
+		 */
 		void ejecutarCarta(int numero, int turno, int x, int y, int z);
-
+		/*
+		 * Pre: Necesita las coordenadas de la casilla
+		 * Pos: Inactiva la casillas y sus alrededores a una casilla de distancia, si hay fichas es algunas de las casillas,
+		 * 		se eliminan
+		 */
 		void dispararMisil(int x, int y, int z);
-
+		/*
+		 * Pre: Necesita las coordenadas de la casilla
+		 * Pos: Devuelve la cantidad de fichas que hay en los alrededores la casilla seleccionada a 2 casillas de distancia
+		 */
 		int usarRadar(int x, int y, int z);
-
+		/*
+		 * Pre: Necesita la coordenada de la fila o columna y si es una fila o columna
+		 * Pos: Inactiva toda la fila o columna y elimina todas las fichas que se encuentran en la fila o columna
+		 */
 		void dispararSuperMisil(int x, bool filaOColumna);
-
+		/*
+		 * Pre: Necesita las coordenadas de la casilla
+		 * Pos: Verifica si la casilla se encuentra en el tablero
+		 */
 		bool verificarCoordenadas(int x, int y, int z);
-
+		/*
+		 * Pre: Necesita las coordenadas de la casilla
+		 * Pos: Devuelve true si se eliminó un soldado
+		 */
 		bool enemyKill(int x, int y);
-
+		/*
+		 * Pre: Necesita los tamaños de las filas, las columnas y la altura
+		 * Pos: Crea un tipo de tablero
+		 */
 		void iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
 
 };
