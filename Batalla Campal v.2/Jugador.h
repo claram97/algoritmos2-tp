@@ -138,6 +138,17 @@ public:
 	 *  Post: 
 	 */
 	bool esPosicionValida(int x, int y, int z);
+	/*
+	 *  Pre:
+	 *  Post:
+	 */
+    bool buscarSoldado(int fila, int columna);
+    /*
+    *  Pre:
+    *  Post:
+    */
+    void eliminarSoldado(int fila, int columna);
+
 };
 
 #endif
