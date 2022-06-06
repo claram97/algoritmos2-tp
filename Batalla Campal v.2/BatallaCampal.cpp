@@ -92,6 +92,16 @@ Lista <Jugador*>* BatallaCampal::getJugador(){
 
 void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
 
+	if(fila < 1 || fila > this->dimensionTablero){
+		throw "La fila ingresada para el disparo no está en un rango válido.";
+	}
+	if(columna < 1 || columna > this->dimensionTablero){
+		throw "La columna ingresada para el disparo no está en un rango válido.";
+	}
+	if(altura < 1 || altura > this->dimensionTablero){
+		throw "La altura ingresada para el disparo no está en un rango válido.";
+	}
+
 	this->tablero->getCasilla(fila, columna, altura)->setEstado(INACTIVO);
 
 	this->jugadores->reiniciarCursor();
@@ -103,6 +113,13 @@ void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
 }
 
 bool BatallaCampal::soldadosCoinciden(int fila, int columna){
+
+	if(fila < 1 || fila > this->dimensionTablero){
+		throw "La fila ingresada no corresponde a un rango válido.";
+	}
+	if(columna < 1 || columna > this->dimensionTablero){
+		throw "La columna ingresada no corresponde a un rango válido.";
+	}
 
 	bool coinciden = false;
 	bool corte = false;
@@ -123,6 +140,12 @@ bool BatallaCampal::soldadosCoinciden(int fila, int columna){
 
 // enemyKill como que no funciona, entra a la función y al primer ciclo pero no se que onda
 bool BatallaCampal::enemyKill(int fila, int columna){
+	if(fila < 1 || fila > this->dimensionTablero){
+		throw "La fila ingresada no corresponde a un rango válido.";
+	}
+	if(columna < 1 || columna > this->dimensionTablero){
+		throw "La columna ingresada no corresponde a un rango válido.";
+	}
 
 	bool enemigoMuerto = false;
 	this->jugadores->reiniciarCursor();
@@ -140,6 +163,16 @@ bool BatallaCampal::enemyKill(int fila, int columna){
 }
 
 void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
+
+	if(movimiento != ARRIBA && movimiento != ABAJO && movimiento != IZQUIERDA && movimiento != DERECHA){
+		throw "La próxima vez que quieras mover un soldado deberías ingresar un movimiento válido.";
+	}
+	if(fila < 1 || fila > this->dimensionTablero){
+		throw "La fila ingresada para mover al soldado no corresponde a un rango válido.";
+	}
+	if(columna < 1 || columna > this->dimensionTablero){
+		throw "La columna ingresada para mover al soldado no corresponde a un rango válido.";
+	}
 
 	bool corte = false;
 	this->jugadores->reiniciarCursor();
@@ -207,6 +240,15 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 }
 
 void BatallaCampal::dispararMisil(int fila, int columna, int altura){
+	if(fila < 1 || fila > this->dimensionTablero){
+		throw "La fila ingresada para disparar el misil no está en un rango válido.";
+	}
+	if(columna < 1 || columna > this->dimensionTablero){
+		throw "La columna ingresada para disparar el misil no está en un rango válido.";
+	}
+	if(altura < 1 || altura > this->dimensionTablero){
+		throw "La altura ingresada para disparar el misil no está en un rango válido.";
+	}
 
 	for (int i = -1; i <= 1; i++){
 		for (int j = -1; j <= 1; j++){
@@ -218,6 +260,16 @@ void BatallaCampal::dispararMisil(int fila, int columna, int altura){
 }
 
 int BatallaCampal::usarRadar(int fila, int columna, int altura){
+	if(fila < 1 || fila > this->dimensionTablero){
+		throw "La fila ingresada para usar el radar no está en un rango válido.";
+	}
+	if(columna < 1 || columna > this->dimensionTablero){
+		throw "La columna ingresada para usar el radar no está en un rango válido.";
+	}
+	if(altura < 1 || altura > this->dimensionTablero){
+		throw "La altura ingresada para usar el radar no está en un rango válido.";
+	}
+
 	int contador = 0;
 	//char contenido;
 	for (int i = 0; i <= 2; i++){
@@ -233,32 +285,32 @@ int BatallaCampal::usarRadar(int fila, int columna, int altura){
 	return contador;
 }
 
-void BatallaCampal::dispararSuperMisil(int fila, bool filaOColumna){
-	if (filaOColumna){
-		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
-			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
-				this->tablero->getCasilla(i, fila, k)->setEstado(INACTIVO);
-			}
-		}
-	}else{
-		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
-			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
-				this->tablero->getCasilla(fila, i, k)->setEstado(INACTIVO);
-			}
-		}
-	}
-}
+void BatallaCampal::dispararSuperMisil(int x, bool esFila){
 
-bool BatallaCampal::verificarCoordenadas(int fila, int columna, int altura){
-	if (fila < 0 || columna < 0 || altura < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero() || altura > this->getDimensionDelTablero()){
-		throw "Coordenadas no estan en el tablero";
+	if(x < 1 || x > this->dimensionTablero){
+		throw "La fila o columna a la que quiso disparar su super misil no está en un rango válido.";
+	}
+
+	if(esFila){
+		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
+			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
+				this->tablero->getCasilla(i, x, k)->setEstado(INACTIVO);
+			}
+		}
 	}else{
-		return true;
+		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
+			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
+				this->tablero->getCasilla(x, i, k)->setEstado(INACTIVO);
+			}
+		}
 	}
 }
 
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
-	
+	if(xMax < 1 || xMax > this->dimensionTablero || yMax < 1 || yMax > this->dimensionTablero || zMax < 1 || zMax > this->dimensionTablero){
+		throw "Error al iniciar el escenario uno.";
+	}
+
 	for(unsigned int x = 1; x<=xMax; x++){
 		for(unsigned int y = 1; y<=yMax; x++){
 			for(unsigned int z = 1; z<=zMax; x++){
@@ -283,7 +335,13 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 
 void BatallaCampal::ejecutarCarta(int numero, int x, int y, int z){
 
-
+	if(numero < 1 || numero > 6){
+		throw "La carta especificada no existe."
+	}
+	if(x < 1 || x > this->dimensionTablero || y < 1 || y > this->dimensionTablero || z < 1 || z > this->dimensionTablero){
+		throw "Error al intentar utilizar la carta";
+	}
+	
 	bool corte = false;
 	this->jugadores->reiniciarCursor();
 	while(this->jugadores->avanzarCursor() && (!corte)){
