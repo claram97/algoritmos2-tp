@@ -89,6 +89,21 @@ Lista <Jugador*>* BatallaCampal::getJugador(){
 
 	return this->jugadores;
 }
+	   
+bool BatallaCampal::verificarCoordenadas(int fila, int columna){
+	if (fila < 0 || columna < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero()){
+		return false;
+	}else{
+		return true;
+	}
+}
+bool BatallaCampal::verificarCoordenadas(int fila, int columna, int altura){
+	if (fila < 0 || columna < 0 || altura < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero() || altura > this->getDimensionDelTablero()){
+		return false;
+	}else{
+		return true;
+	}
+}
 
 void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
 	if(!verificarCoordenadas(fila,columna,altura)){
@@ -294,21 +309,6 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 			}
 		}
 	}	
-}
-	   
-bool BatallaCampal::verificarCoordenadas(int fila, int columna){
-	if (fila < 0 || columna < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero()){
-		return false;
-	}else{
-		return true;
-	}
-}
-bool BatallaCampal::verificarCoordenadas(int fila, int columna, int altura){
-	if (fila < 0 || columna < 0 || altura < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero() || altura > this->getDimensionDelTablero()){
-		return false;
-	}else{
-		return true;
-	}
 }
 
 void BatallaCampal::usarCarta(int numero, int x, int y, int z){
