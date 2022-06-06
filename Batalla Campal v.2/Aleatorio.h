@@ -7,7 +7,7 @@
 
 #ifndef SRC_ALEATORIO_H_
 #define SRC_ALEATORIO_H_
-
+#include <iostream>
 //Hay que ver donde poner esto pero lo voy a usar para generar las coordenadas aleatorias
 class Coordenadas{
 
@@ -39,11 +39,11 @@ void random(){
     
     
     for (int p=0;p<10;p++)
-        {cout<<"["<<p<<"]";}
-    cout<<endl;
+        {std::cout<<"["<<p<<"]";}
+    std::cout<<std::endl;
     
     for (int i=0;i<dimension;i++){
-        cout<<"["<<i<<"] ";
+        std::cout<<"["<<i<<"] ";
         
 		for(int j=0;j<dimension;j++){
            
@@ -53,11 +53,11 @@ void random(){
             else{
                 tablero[i][j]= 9 ; // el 9 es una posicion vacia, osea donde no hay ningun jugador
             }
-            cout<<tablero[i][j]<<"  "; 
+            std::cout<<tablero[i][j]<<"  "; 
             }
-        cout<<"\n"; 
+        std::cout<<"\n"; 
         }
 
 }
-}
+};
 #endif /* SRC_ALEATORIO_H_ */
