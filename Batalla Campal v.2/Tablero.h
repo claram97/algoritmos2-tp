@@ -32,11 +32,10 @@ class Tablero{
 		 * Pre:
 		 * Pos:
 		 */
-		bool esPosicionValida();
+		bool esRangoValido(int x,int y,int z);
 		/*
 		*/
 		virtual ~Tablero();
 
-		void validarRango(int x, int y, int z);
 };
 #endif
