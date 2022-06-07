@@ -71,13 +71,13 @@ void Tablero::validarRango(int x, int y, int z){
 	}
 	
 	if(x > this->maxFila ){
-		throw " el x debe ser menor que " + this->maxFila;
+		throw " el x es invalido " ;
 	}
 	if(y > this->maxColumna ){
-		throw " el y debe ser menor que " + this->maxColumna;
+		throw " el y es invalido " ;
 	}
 	if(z > this->maxAltura ){
-		throw " el z debe ser menor que " + this->maxAltura;
+		throw " el z es invalido " ;
 	}
 	
 }
