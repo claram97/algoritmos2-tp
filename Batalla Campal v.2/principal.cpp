@@ -21,6 +21,7 @@ int main(){
 		char movimiento;
 		int numeroCarta;
 		bool encontrado;
+		int i;
 
 		Pantalla* pantalla = new Pantalla();
 		pantalla->nuevaPartida();
@@ -73,10 +74,11 @@ int main(){
 					cin >> opcionUsuarioC;
 					if(opcionUsuarioC == 'S'){
 						cout << "Cartas disponibles: "<<endl;
-
-						batalla->getJugador()->getCursor()->getCarta()->reiniciarCursor();
-						while(batalla->getJugador()->getCursor()->getCarta()->avanzarCursor()){
-							cout << "1" <<"."<< batalla->getJugador()->getCursor()->getCarta()->getCursor()->getDescripcion() << endl;
+						i = 1;
+						batalla->getJugador()->getCursor()->getCartas()->reiniciarCursor();
+						while(batalla->getJugador()->getCursor()->getCartas()->avanzarCursor()){
+							cout << i <<"."<< batalla->getJugador()->getCursor()->getCartas()->getCursor()->getDescripcion() << endl;
+							i++;
 						}
 						cout << "Elegir carta: " <<endl;
 						cin >> numeroCarta;
@@ -88,24 +90,28 @@ int main(){
 						cout << "Altura: ";
 						cin >> coordZ;
 						cout << "Ejecutando carta..." <<endl;
-						if (numeroCarta == 4){
-							if (batalla->verificarCoordenadas(coordX, coordY, coordZ) && batalla->verificarCoordenadas(coordX+2, coordY+2, coordZ+2) && batalla->verificarCoordenadas(coordX-2, coordY-2, coordZ-2)){
+						batalla->getJugador()->getCursor()->getCartas()->reiniciarCursor();
+						for (int i = 0; i <= numeroCarta; i++){
+							batalla->getJugador()->getCursor()->getCartas()->avanzarCursor();
+						}
+						if (batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == RADAR){
+							if (batalla->esCoordenadaValida(coordX, coordY, coordZ) && batalla->esCoordenadaValida(coordX+2, coordY+2, coordZ+2) && batalla->esCoordenadaValida(coordX-2, coordY-2, coordZ-2)){
 							cout << "En los alrededores se encuentran "<< batalla->usarRadar(coordX, coordY, coordZ) << "cantidad de fichas"<<endl;
 							}
-						}else if(numeroCarta == 5){
+						}else if (batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == SUPER){
 							cout << "Elegir Columna (C) o Fila (F): "<<endl;
 							cin >> filaOColumna;
 							if (filaOColumna == 'C'){
 								cout << "Ingresar columna: "<<endl;
 								cin >> coordY;
-								batalla->dispararSuperMisil(coordY, true);
+								batalla->dispararSuperMisil(coordY, filaOColumna);
 							}else if (filaOColumna == 'F'){
 								cout << "Ingresar fila: "<<endl;
 								cin >> coordX;
-								batalla->dispararSuperMisil(coordX,false);
+								batalla->dispararSuperMisil(coordX, filaOColumna);
 							}
 						}else{
-							batalla->ejecutarCarta(numeroCarta, coordX, coordY, coordZ);
+							batalla->usarCarta(numeroCarta, coordX, coordY, coordZ);
 						}
 						batalla->getJugador()->getCursor()->eliminarCarta(numeroCarta);
 					}
