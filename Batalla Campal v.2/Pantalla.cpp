@@ -17,7 +17,9 @@ void Pantalla::nuevaPartida(){
 	cout << "1.Partida rÃƒÂ¡pida (2 jugadores)\n2.Partida personalizada (2 o mÃƒÂ¡s jugadores)" <<endl;
 	cout << "Modo de juego: ";
 	cin >> this->opcionUsuario;
-
+	
+	cout<<"Toco el mapa: "<<mapaElegido()<<endl;
+	
 	if( this->opcionUsuario == 2){
 		cout << "Elige cantidad de jugadores (2 a 20): ";
 		cin >> this->cantidadJugadores;
@@ -27,7 +29,7 @@ void Pantalla::nuevaPartida(){
 		cin >> this->dimensionDelTablero;
 	}
 	
-	cout<<"Toco el mapa: "<<mapaElegido()<<endl;
+	
 }
 
 int Pantalla::mapaElegido(){
