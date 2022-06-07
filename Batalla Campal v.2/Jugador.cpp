@@ -82,7 +82,7 @@ bool Jugador::buscarSoldado(int fila, int columna) {
 	return encontrado;
 }
 
-Lista<Carta*>* Jugador::getCarta() {
+Lista<Carta*>* Jugador::getCartas() {
 	return this->cartas;
 }
 
