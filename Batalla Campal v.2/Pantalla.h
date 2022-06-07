@@ -1,6 +1,7 @@
 #ifndef SRC_PANTALLA_H_
 #define SRC_PANTALLA_H_
-
+#include <stdlib.h>
+   
 class Pantalla{
 
 	private:
@@ -9,13 +10,17 @@ class Pantalla{
 		int cantidadJugadores;
 		int cantidadSoldados;
 		int dimensionDelTablero;
-
+		int mapaOpcion;
 
 	public:
 
 	Pantalla();
 
 	void nuevaPartida();
+	
+	void seleccionarMapa();
+	
+	int mapaElegido();
 
 	int getCantidadJugadores();
 
