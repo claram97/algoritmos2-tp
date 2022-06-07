@@ -128,11 +128,13 @@ class BatallaCampal{
 		bool esCoordenadaValida(int fila, int columna);
 		/*
 		 * Pre: Necesita las coordenadas de la casilla
-		 * Post: Devuelve true si se eliminó un soldado
+		 * Post: Devuelve true si se eliminÃ³ un soldado
 		 */
 		bool eliminarEnemigo(int x, int y);
 
 		void iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
+		void iniciarEscenarioDos(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
+		void iniciarEscenarioTres(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
 
 };
 
