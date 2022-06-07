@@ -119,7 +119,7 @@ class BatallaCampal{
 		 * Pre: Necesita la coordenada de la fila o columna y si es una fila o columna
 		 * Post: Inactiva toda la fila o columna y elimina todas las fichas que se encuentran en la fila o columna
 		 */
-		void dispararSuperMisil(int x, bool filaOColumna);
+		void dispararSuperMisil(int x, char tipoDeCasilla);
 		/*
 		 * Pre: Necesita las coordenadas de la casilla
 		 * Post: Verifica si la casilla se encuentra en el tablero
