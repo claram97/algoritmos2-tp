@@ -59,11 +59,3 @@ bool Tablero::esRangoValido(int x, int y, int z){
 Casilla* Tablero::getCasilla(int fila, int columna, int altura){
 	return this->casilleros->get(fila)->get(columna)->get(altura);
 }
-
-//Acá debería entrar a la casilla o al tablero, a este punto ya ni idea
-//Y fijarse si el contenido es INACTIVO
-bool Tablero::esPosicionValida(){
-	bool posicionValida = true;
-	//chequeo, si no es true, lo cambio a false.
-	return posicionValida;
-}
