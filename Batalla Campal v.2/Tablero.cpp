@@ -42,14 +42,14 @@ Tablero::~Tablero(){
 	
 void Tablero::mostrarTablero(){
 	for (int x = 1; x <= this->maxFila; x++){
-        for (int y = 1; y <= this->maxColumna; y++){
-            for (int z = 1; z <= this->maxAltura; z++){
-                std::cout << this->casilleros->get(x)->get(y)->get(z)->getEstado();
-            }
-            std::cout << std::endl;
-        }
+        	for (int y = 1; y <= this->maxColumna; y++){
+            		for (int z = 1; z <= this->maxAltura; z++){
+                		std::cout << this->casilleros->get(x)->get(y)->get(z)->getEstado();
+            		}
+            	std::cout << std::endl;
+        	}
         std::cout << std::endl;
-    }
+    	}
 }
 
 bool Tablero::esRangoValido(int x, int y, int z){
