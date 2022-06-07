@@ -57,7 +57,6 @@ bool Tablero::esRangoValido(int x, int y, int z){
 }
 
 Casilla* Tablero::getCasilla(int fila, int columna, int altura){
-	validarRango(fila,columna,altura);
 	return this->casilleros->get(fila)->get(columna)->get(altura);
 }
 
