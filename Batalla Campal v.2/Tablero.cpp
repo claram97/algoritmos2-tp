@@ -6,16 +6,9 @@ using namespace std;
 
 
 Tablero::Tablero(int maxFila, int maxColumna, int maxAltura){
-	if(maxFila < 1 ){
-		throw "la fila debe ser mayor a 1";
-	}
-	if(maxColumna < 1 ){
-		throw "la columna debe ser mayor a 1";
-	}
-	if(maxAltura < 1 ){
-		throw "la altura debe ser mayor a 1";
-	}
-	
+	if(maxFila < 1 || maxColumna < 1 || maxAltura <1){
+		throw "Las coordenadas ingresadas para crear el tablero son inválidas";
+	}	
 	else{
 		this->maxFila = maxFila;
 		this->maxColumna = maxColumna;
@@ -59,27 +52,8 @@ void Tablero::mostrarTablero(){
     }
 }
 
-void Tablero::validarRango(int x, int y, int z){
-	if(x < 1 ){
-		throw " el x debe ser mayor a 1";
-	}
-	if(y < 1 ){
-		throw " el y debe ser mayor a 1";
-	}
-	if(z < 1 ){
-		throw " el z debe ser mayor a 1";
-	}
-	
-	if(x > this->maxFila ){
-		throw " el x es invalido " ;
-	}
-	if(y > this->maxColumna ){
-		throw " el y es invalido " ;
-	}
-	if(z > this->maxAltura ){
-		throw " el z es invalido " ;
-	}
-	
+bool Tablero::esRangoValido(int x, int y, int z){
+	return(x < 1 || y < 1 || z < 1 || x > this->maxFila || y > this->maxColumna || z > this->maxAltura);	
 }
 
 Casilla* Tablero::getCasilla(int fila, int columna, int altura){
