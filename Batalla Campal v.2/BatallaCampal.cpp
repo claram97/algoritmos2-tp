@@ -90,7 +90,19 @@ Lista <Jugador*>* BatallaCampal::getJugador(){
 	return this->jugadores;
 }
 
+bool BatallaCampal::esCoordenadaValida(int fila, int columna){
+	return(fila < 0 || columna < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero());
+}
+
+bool BatallaCampal::esCoordenadaValida(int fila, int columna, int altura){
+	return(fila < 0 || columna < 0 || altura < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero() || altura > this->getDimensionDelTablero());
+}
+
+
 void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
+	if(!esCoordenadaValida(fila,columna,altura)){
+		throw "Las magnitudes elegidas para realizar el disparo no son válidas.";
+	}
 
 	this->tablero->getCasilla(fila, columna, altura)->setEstado(INACTIVO);
 
@@ -103,7 +115,10 @@ void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
 }
 
 bool BatallaCampal::soldadosCoinciden(int fila, int columna){
-
+	if(!esCoordenadaValida(fila,columna)){
+		throw "Las magnitudes elegidas para comparar a los soldados no son válidas.";
+	}
+	
 	bool coinciden = false;
 	bool corte = false;
 	this->jugadores->reiniciarCursor();
@@ -122,8 +137,12 @@ bool BatallaCampal::soldadosCoinciden(int fila, int columna){
 }
 
 // enemyKill como que no funciona, entra a la función y al primer ciclo pero no se que onda
-bool BatallaCampal::enemyKill(int fila, int columna){
-
+//le cambié el nombre pq era de puto lo de enemyKill aparte está mal la sintaxis en inglés ahre
+bool BatallaCampal::eliminarEnemigo(int fila, int columna){
+	if(!esCoordenadaValida(fila,columna)){
+		throw "Las magnitudes elegidas para eliminar al soldado enemigo no son válidas.";
+	}
+	
 	bool enemigoMuerto = false;
 	this->jugadores->reiniciarCursor();
 	while(this->jugadores->avanzarCursor()){
@@ -140,7 +159,13 @@ bool BatallaCampal::enemyKill(int fila, int columna){
 }
 
 void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
-
+	if(!esCoordenadaValida(fila,columna)){
+		throw "Las magnitudes elegidas para mover al soldado no son válidas.";
+	}
+	if(movimiento != ARRIBA && movimiento != ABAJO && movimiento != IZQUIERDA && movimiento != DERECHA){
+		throw "El movimiento elegido no es válido";
+	}
+	
 	bool corte = false;
 	this->jugadores->reiniciarCursor();
 	while(this->jugadores->avanzarCursor() && (!corte)){
@@ -207,7 +232,9 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 }
 
 void BatallaCampal::dispararMisil(int fila, int columna, int altura){
-
+	if(!esCoordenadaValida(fila,columna,altura)){
+		throw "Las magnitudes elegidas para disparar el misil no son válidas.";
+	}
 	for (int i = -1; i <= 1; i++){
 		for (int j = -1; j <= 1; j++){
 			for (int k = -1; k <= 1; k++){
@@ -218,6 +245,10 @@ void BatallaCampal::dispararMisil(int fila, int columna, int altura){
 }
 
 int BatallaCampal::usarRadar(int fila, int columna, int altura){
+	if(!esCoordenadaValida(fila,columna,altura)){
+		throw "Las magnitudes elegidas para usar el radar no son válidas.";
+	}
+
 	int contador = 0;
 	//char contenido;
 	for (int i = 0; i <= 2; i++){
@@ -234,6 +265,10 @@ int BatallaCampal::usarRadar(int fila, int columna, int altura){
 }
 
 void BatallaCampal::dispararSuperMisil(int fila, bool filaOColumna){
+	if(fila < 1 || fila > this->dimensionTablero){
+		throw "La fila o columna elegida para disparar el super misil no es válida.";
+	}
+
 	if (filaOColumna){
 		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
 			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
@@ -249,16 +284,10 @@ void BatallaCampal::dispararSuperMisil(int fila, bool filaOColumna){
 	}
 }
 
-bool BatallaCampal::verificarCoordenadas(int fila, int columna, int altura){
-	if (fila < 0 || columna < 0 || altura < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero() || altura > this->getDimensionDelTablero()){
-		throw "Coordenadas no estan en el tablero";
-	}else{
-		return true;
-	}
-}
-
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
-	
+	if(!esCoordenadaValida(xMax,yMax,zMax)){
+		throw "Las magnitudes elegidas para iniciar el primer escenario no son válidas.";
+	}
 	for(unsigned int x = 1; x<=xMax; x++){
 		for(unsigned int y = 1; y<=yMax; x++){
 			for(unsigned int z = 1; z<=zMax; x++){
@@ -281,22 +310,24 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 	}	
 }
 
-void BatallaCampal::ejecutarCarta(int numero, int x, int y, int z){
-
+void BatallaCampal::usarCarta(int numero, int x, int y, int z){
+	if(numero < 1 || numero > 6){
+		throw "El número de carta no corresponde a una carta existente.";
+	}
+	if(!esCoordenadaValida(x,y,z)){
+		throw "Las magnitudes elegidas para usar la carta elegida no son válidas.";
+	}
 	bool corte = false;
 	this->jugadores->reiniciarCursor();
 	while(this->jugadores->avanzarCursor() && (!corte)){
 		if(this->jugadores->getCursor()->getId() == this->turno){
 			corte = true;
 
-			if (numero < 6 || numero < 1){
-				throw "Numero de carta invalido";
-			}
 			switch(numero){
 				case 1:
 					if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AIRE){
 						throw "Avion debe estar en el aire";
-					}else if (verificarCoordenadas(x, y, z)){
+					}else if (esCoordenadaValida(x, y, z)){
 						this->jugadores->getCursor()->nuevaHerramienta(AVION, x, y, z);
 						this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 					}
@@ -304,7 +335,7 @@ void BatallaCampal::ejecutarCarta(int numero, int x, int y, int z){
 				case 2:
 					if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
 						throw "Barco debe estar en el agua";
-					}else if (verificarCoordenadas(x, y, z)){
+					}else if (esCoordenadaValida(x, y, z)){
 						this->jugadores->getCursor()->nuevaHerramienta(BARCO, x, y, 1);
 						this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 					}
@@ -312,13 +343,13 @@ void BatallaCampal::ejecutarCarta(int numero, int x, int y, int z){
 				case 3:
 					if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != TIERRA){
 						throw "Mina debe estar en la tierra";
-					}else if (verificarCoordenadas(x, y, z)){
+					}else if (esCoordenadaValida(x, y, z)){
 						this->jugadores->getCursor()->nuevaHerramienta(MINA, x, y, 1);
 						this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 					}
 				break;
 				case 6:
-					if (verificarCoordenadas(x, y, z) && verificarCoordenadas(x+1, y+1, z+1) && verificarCoordenadas(x-1, y-1, z-1)){
+					if (esCoordenadaValida(x, y, z) && esCoordenadaValida(x+1, y+1, z+1) && esCoordenadaValida(x-1, y-1, z-1)){
 					dispararMisil(x, y, z);
 					}
 			}
