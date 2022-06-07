@@ -6,17 +6,17 @@ BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantid
 	this->turno = 0;
 
 	if(cantidadJugadores < MIN_JUGADORES || cantidadJugadores > MAX_JUGADORES){
-		throw "La cantidad de jugadores elegida es invÃ¡lida.";
+		throw "La cantidad de jugadores elegida es invalida.";
 	}else{
 		this->cantidadJugadores = cantidadJugadores;
 	}
 	if(cantidadSoldados < MIN_SOLDADOS || cantidadSoldados > MAX_SOLDADOS){
-		throw "La cantidad de soldados elegida es invÃ¡lida.";
+		throw "La cantidad de soldados elegida es invalida.";
 	}else{
 		this->cantidadSoldados = cantidadSoldados;
 	}
 	if(dimensionTablero < MIN_DIMENSION || dimensionTablero > MAX_DIMENSION){
-		throw "La dimensiÃ³n elegida para el tablero es invÃ¡lida.";
+		throw "La dimension elegida para el tablero es invalida.";
 	}else{
 		this->dimensionTablero = dimensionTablero;
 	}
@@ -101,7 +101,7 @@ bool BatallaCampal::esCoordenadaValida(int fila, int columna, int altura){
 
 void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
 	if(!esCoordenadaValida(fila,columna,altura)){
-		throw "Las magnitudes elegidas para realizar el disparo no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para realizar el disparo no son validas.";
 	}
 
 	this->tablero->getCasilla(fila, columna, altura)->setEstado(INACTIVO);
@@ -116,7 +116,7 @@ void BatallaCampal::realizarDisparo(int fila, int columna, int altura){
 
 bool BatallaCampal::soldadosCoinciden(int fila, int columna){
 	if(!esCoordenadaValida(fila,columna)){
-		throw "Las magnitudes elegidas para comparar a los soldados no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para comparar a los soldados no son validas.";
 	}
 	
 	bool coinciden = false;
@@ -138,7 +138,7 @@ bool BatallaCampal::soldadosCoinciden(int fila, int columna){
 
 bool BatallaCampal::eliminarEnemigo(int fila, int columna){
 	if(!esCoordenadaValida(fila,columna)){
-		throw "Las magnitudes elegidas para eliminar al soldado enemigo no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para eliminar al soldado enemigo no son validas.";
 	}
 	
 	bool enemigoMuerto = false;
@@ -158,10 +158,10 @@ bool BatallaCampal::eliminarEnemigo(int fila, int columna){
 
 void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 	if(!esCoordenadaValida(fila,columna)){
-		throw "Las magnitudes elegidas para mover al soldado no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para mover al soldado no son validas.";
 	}
 	if(movimiento != ARRIBA && movimiento != ABAJO && movimiento != IZQUIERDA && movimiento != DERECHA){
-		throw "El movimiento elegido no es vÃ¡lido";
+		throw "El movimiento elegido no es valido";
 	}
 	
 	bool corte = false;
@@ -182,7 +182,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila-1, columna);
 
 							}else{
-								throw "Movimiento invÃƒÂ¡lido.";
+								throw "Movimiento invalido.";
 							}
 							break;
 						case ABAJO:
@@ -192,7 +192,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila+1, columna);
 
 							}else{
-								throw "Movimiento invÃƒÂ¡lido.";
+								throw "Movimiento invalido.";
 							}
 							break;
 						case IZQUIERDA:
@@ -202,7 +202,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila, columna-1);
 
 							}else{
-								throw "Movimiento invÃƒÂ¡lido.";
+								throw "Movimiento invalido.";
 							}
 							break;
 						case DERECHA:
@@ -212,7 +212,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila, columna+1);
 
 							}else{
-								throw "Movimiento invÃƒÂ¡lido.";
+								throw "Movimiento invalido.";
 							}
 
 							break;
@@ -231,7 +231,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 
 void BatallaCampal::dispararMisil(int fila, int columna, int altura){
 	if(!esCoordenadaValida(fila,columna,altura)){
-		throw "Las magnitudes elegidas para disparar el misil no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para disparar el misil no son validas.";
 	}
 	for (int i = -1; i <= 1; i++){
 		for (int j = -1; j <= 1; j++){
@@ -244,7 +244,7 @@ void BatallaCampal::dispararMisil(int fila, int columna, int altura){
 
 int BatallaCampal::usarRadar(int fila, int columna, int altura){
 	if(!esCoordenadaValida(fila,columna,altura)){
-		throw "Las magnitudes elegidas para usar el radar no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para usar el radar no son validas.";
 	}
 
 	int contador = 0;
@@ -264,7 +264,7 @@ int BatallaCampal::usarRadar(int fila, int columna, int altura){
 
 void BatallaCampal::dispararSuperMisil(int filaOcolumna, char tipoDeCasilla){
 	if(filaOcolumna < 1 || filaOcolumna > this->dimensionTablero){
-		throw "La fila o columna elegida para disparar el super misil no es vÃ¡lida.";
+		throw "La fila o columna elegida para disparar el super misil no es valida.";
 	}
 	if (tipoDeCasilla == 'C'){
 		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
@@ -283,7 +283,7 @@ void BatallaCampal::dispararSuperMisil(int filaOcolumna, char tipoDeCasilla){
 
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
 	if(!esCoordenadaValida(xMax,yMax,zMax)){
-		throw "Las magnitudes elegidas para iniciar el primer escenario no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
 	}
 	for(unsigned int x = 1; x<=xMax; x++){
 		for(unsigned int y = 1; y<=yMax; x++){
@@ -309,7 +309,7 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 
 void BatallaCampal::iniciarEscenarioDos(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
 	if(!esCoordenadaValida(xMax,yMax,zMax)){
-		throw "Las magnitudes elegidas para iniciar el primer escenario no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
 	}
 	for(unsigned int x = 1; x<=xMax; x++){
 		for(unsigned int y = 1; y<=yMax; x++){
@@ -335,7 +335,7 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMax ,unsigned int yMax, un
 
 void BatallaCampal::iniciarEscenarioTres(unsigned int xMax ,unsigned int yMax, unsigned int zMax){
 	if(!esCoordenadaValida(xMax,yMax,zMax)){
-		throw "Las magnitudes elegidas para iniciar el primer escenario no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
 	}
 	for(unsigned int x = 1; x<=xMax; x++){
 		for(unsigned int y = 1; y<=yMax; x++){
@@ -363,10 +363,10 @@ void BatallaCampal::iniciarEscenarioTres(unsigned int xMax ,unsigned int yMax, u
 
 void BatallaCampal::usarCarta(int numero, int x, int y, int z){
 	if(numero < 1 || numero > 6){
-		throw "El nÃºmero de carta no corresponde a una carta existente.";
+		throw "El numero de carta no corresponde a una carta existente.";
 	}
 	if(!esCoordenadaValida(x,y,z)){
-		throw "Las magnitudes elegidas para usar la carta elegida no son vÃ¡lidas.";
+		throw "Las magnitudes elegidas para usar la carta elegida no son validas.";
 	}
 	bool corte = false;
 	this->jugadores->reiniciarCursor();

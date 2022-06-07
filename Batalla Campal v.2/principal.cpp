@@ -52,14 +52,14 @@ int main(){
 				if( coordX < batalla->getDimensionDelTablero() && coordY < batalla->getDimensionDelTablero()){
 					batalla->getJugador()->getCursor()->nuevoSoldado(coordX, coordY);
 				}else{
-					throw "Coordenada invÃ¡lida";
+					throw "Coordenada invalida";
 				}
 				batalla->getTablero()->getCasilla(coordX, coordY, 1)->setEstado(LLENO);
 
 			}
 		}
 		
-		cout << "Se estableciÃ³ la siguiente configuracion: (" << batalla->getCantidadDeJugadores() <<")jugadores | ("<< batalla->getCantidadDeSoldados()<<")soldados por jugador | (" << batalla->getDimensionDelTablero() << ")dimension del tablero" << endl;
+		cout << "Se establecida la siguiente configuracion: (" << batalla->getCantidadDeJugadores() <<")jugadores | ("<< batalla->getCantidadDeSoldados()<<")soldados por jugador | (" << batalla->getDimensionDelTablero() << ")dimension del tablero" << endl;
 		cout << "--COMIENZA EL JUEGO--" << endl;
 
 		batalla->getTablero()->mostrarTablero();
@@ -171,7 +171,7 @@ int main(){
 
 					}
 
-					cout << "La casilla ahora estÃ¡: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getEstado() <<endl;
+					cout << "La casilla ahora esta: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getEstado() <<endl;
 
 				}
 			}
