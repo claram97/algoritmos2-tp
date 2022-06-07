@@ -136,8 +136,6 @@ bool BatallaCampal::soldadosCoinciden(int fila, int columna){
 	return coinciden;
 }
 
-// enemyKill como que no funciona, entra a la función y al primer ciclo pero no se que onda
-//le cambié el nombre pq era de puto lo de enemyKill aparte está mal la sintaxis en inglés ahre
 bool BatallaCampal::eliminarEnemigo(int fila, int columna){
 	if(!esCoordenadaValida(fila,columna)){
 		throw "Las magnitudes elegidas para eliminar al soldado enemigo no son válidas.";
