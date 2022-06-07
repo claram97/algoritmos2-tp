@@ -46,60 +46,56 @@ public:
 	//Post: devuelve la ficha.
 	Ficha* getHerramienta(int id);
 
-	//Pre: recibe un id de soldado
-	//Post: devuelve el soldado.
+	//Pre: -
+	//Post: devuelve un soldado de la lista de soldados.
 	Lista<Ficha*>* getSoldado();
 
-	//Pre: (habria que poner alguna condicion, tipo el tipo de carta o algo)
-	//Post: devuelve una carta.
+	//Pre:
+	//Post: devuelve una carta de la lista de cartas.
 	Lista<Carta*>* getCarta();
 
 	//Pre: recibe un id de una herramienta
 	//Post: elimina la herramienta de la lista de herramientas del jugador.
 	void eliminarHerramienta(int id);
 
-	//Pre: recibe un estado de jugador
+	//Pre: recibe un estado
 	//Post: cambiar el estado al jugador
 	void setEstado(EstadoJugador estado);
 
 	//Pre:
-	//Post:
+	//Post: devuelve el estado actual del jugador
 	EstadoJugador getEstadoJugador();
 
-	//Pre:
-	//Post:
+	//Pre: recibe un id aleatorio
+	//Post: agrega una carta a la lista de cartas
 	void nuevaCarta(int aleatorio);
 
 	//Pre:
-	//Post:
+	//Post: devuelve el id del jugador
 	unsigned int getId();
 
-	//Pre:
-	//Post:
+	//Pre: recibe una coordenada en X e Y
+	//Post: agrega un nuevo soldado a la lista
 	void nuevoSoldado(int x, int y);
 
-	//Pre:
-	//Post:
+	//Pre: recibe posicion de ficha y columna
+	//Post: elimina un soldado de la lista
 	void eliminarSoldado(int fila, int columna);
 
-	//Pre:
-	//Post:
+	//Pre: recibe una ficha y su posicion en fila,columna y altura
+	//Post: agrega una nueva herramienta a la lista de herramienta del jugador
 	void nuevaHerramienta(char FICHA, int fila, int columna, int altura);
 
-	//Pre:
-	//Post:
+	//Pre: recibe un id
+	//Post: elimina una carta de la lista de cartas
 	void eliminarCarta(int id);
 
-	//Pre:
-	//Post:
-	bool esPosicionValida(int x, int y, int z);
-
-	//Pre:
-	//Post:
+	//Pre: recibe posicion de fila y columna
+	//Post: si encuentra un soldado coincidente con las coordenadas devuelve true
 	bool buscarSoldado(int fila, int columna);
 
-	//Pre:
-	//Post:
+	//Pre: recibe posicion de fila y columna
+	//Post: si encuentra un id coincidente con las coordenadas devuelve unsigned int
 	unsigned int buscarIdSoldado(int fila, int columna);
 };
 
