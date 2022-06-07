@@ -52,7 +52,7 @@ public:
 
 	//Pre:
 	//Post: devuelve una carta de la lista de cartas.
-	Lista<Carta*>* getCarta();
+	Lista<Carta*>* getCartas();
 
 	//Pre: recibe un id de una herramienta
 	//Post: elimina la herramienta de la lista de herramientas del jugador.
