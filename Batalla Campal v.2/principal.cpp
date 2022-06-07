@@ -27,6 +27,18 @@ int main(){
 		pantalla->nuevaPartida();
 
 		BatallaCampal* batalla = new BatallaCampal(pantalla->getCantidadJugadores(), pantalla->getCantidadSoldados(), pantalla->getDimensionDelTablero());
+		
+		if (pantalla->mapaElegido() == 1){
+			batalla->iniciarEscenarioUno(coordX,coordY,coordZ);
+		}else{
+			if(pantalla->mapaElegido() == 2){
+				batalla->iniciarEscenarioDos(coordX,coordY,coordZ);
+			}else{
+				batalla->iniciarEscenarioTres(coordX,coordY,coordZ);
+			}
+		}
+
+
 
 		batalla->getJugador()->reiniciarCursor();
 		while(batalla->getJugador()->avanzarCursor()){
@@ -40,14 +52,14 @@ int main(){
 				if( coordX < batalla->getDimensionDelTablero() && coordY < batalla->getDimensionDelTablero()){
 					batalla->getJugador()->getCursor()->nuevoSoldado(coordX, coordY);
 				}else{
-					throw "Coordenada inválida";
+					throw "Coordenada invÃ¡lida";
 				}
 				batalla->getTablero()->getCasilla(coordX, coordY, 1)->setEstado(LLENO);
 
 			}
 		}
 		
-		cout << "Se estableció la siguiente configuracion: (" << batalla->getCantidadDeJugadores() <<")jugadores | ("<< batalla->getCantidadDeSoldados()<<")soldados por jugador | (" << batalla->getDimensionDelTablero() << ")dimension del tablero" << endl;
+		cout << "Se estableciÃ³ la siguiente configuracion: (" << batalla->getCantidadDeJugadores() <<")jugadores | ("<< batalla->getCantidadDeSoldados()<<")soldados por jugador | (" << batalla->getDimensionDelTablero() << ")dimension del tablero" << endl;
 		cout << "--COMIENZA EL JUEGO--" << endl;
 
 		batalla->getTablero()->mostrarTablero();
@@ -159,7 +171,7 @@ int main(){
 
 					}
 
-					cout << "La casilla ahora está: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getEstado() <<endl;
+					cout << "La casilla ahora estÃ¡: "<< batalla->getTablero()->getCasilla(coordX, coordY, coordZ)->getEstado() <<endl;
 
 				}
 			}
@@ -176,5 +188,3 @@ int main(){
 		cout << "ERROR: " << X <<endl;
 	}
 }
-
-
