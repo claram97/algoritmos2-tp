@@ -46,7 +46,8 @@ void Pantalla::seleccionarMapa(){
 	else{
 		if(this->mapaElegido() == 2){
 			// mapa 2
-		}else{
+		}
+		else{
 			//mapa 3
 		}
 	}
