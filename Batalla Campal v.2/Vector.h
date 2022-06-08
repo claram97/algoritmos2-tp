@@ -1,7 +1,7 @@
 #ifndef VECTOR_H_
 #define VECTOR_H_
 
-template<class T> class Vector {
+template<class T> class Vector{
 private:
 		T * datos;
 		int longitud;
@@ -12,7 +12,7 @@ public:
 	 * pre: la longitud es mayor o igual a 1. Y el dato inicial puede ser NULL si es un puntero
 	 * pos: deja un vector con las posiciones solicitadas
 	 */
-	Vector(int longitud, T datoInicial) {
+	Vector(int longitud, T datoInicial){
 		if (longitud < 1) {
 			throw "La longitud debe ser mayor o igual a 1";
 		}
@@ -27,7 +27,7 @@ public:
 	 * pre:
 	 * post: libera la memoria
 	 */
-	virtual ~Vector() {
+	virtual ~Vector(){
 		delete [] this->datos;
 	}
 
@@ -35,7 +35,7 @@ public:
 	 * pre:
 	 * post: devuelve la longitud actual del vector
 	 */
-	int getLongitud() {
+	int getLongitud(){
 		return this->longitud;
 	}
 
@@ -43,7 +43,7 @@ public:
 	 * pre: la posicion esta entre 1 y n (inclusive)
 	 * pos: guarda el dato en la posicion indicada, sino devuelve error
 	 */
-	void agregar(int posicion, T dato) {
+	void agregar(int posicion, T dato){
 		if ((posicion < 1) ||
 		   (posicion > this->longitud)) {
 			throw "La  posicion  no esta en el rango 1 y longitud inclusive";
@@ -55,7 +55,7 @@ public:
 	 * pre: la posicion esta entre 1 y n (inclusive)
 	 * pos: guarda el dato en la posicion indicada, sino devuelve error
 	 */
-	T& obtener(int posicion) {
+	T& obtener(int posicion){
 		if ((posicion < 1) ||
 		   (posicion > this->longitud)) {
 			throw "La posicion no esta en el rango 1 y longitud inclusive";
