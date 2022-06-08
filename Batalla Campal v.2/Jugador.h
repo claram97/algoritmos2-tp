@@ -6,11 +6,11 @@
 #define MAX_CARTAS 5
 #define MAX_HERRAMIENTAS 7
 
-enum EstadoJugador {
+enum estadoJugador{
 	ELIMINADO, EN_BATALLA
 };
 
-class Jugador {
+class Jugador{
 
 private:
 	unsigned int id;
@@ -60,7 +60,7 @@ public:
 
 	//Pre: recibe un estado
 	//Post: cambiar el estado al jugador
-	void setEstado(EstadoJugador estado);
+	void setEstado(estadoJugador estado);
 
 	//Pre:
 	//Post: devuelve el estado actual del jugador
