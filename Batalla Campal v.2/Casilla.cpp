@@ -3,7 +3,6 @@
 
 Casilla::Casilla(unsigned int coordenadaX, unsigned int coordenadaY, unsigned int coordenadaZ, TipoDeCasillero tipo){
 
-	//verificar
 	setCoordenada(this->coordenadaX,coordenadaX);
 	setCoordenada(this->coordenadaY,coordenadaY);
 	setCoordenada(this->coordenadaZ,coordenadaZ);
