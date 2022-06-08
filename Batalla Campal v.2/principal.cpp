@@ -30,10 +30,12 @@ int main(){
 		
 		if (pantalla->mapaElegido() == 1){
 			batalla->iniciarEscenarioUno(coordX,coordY,coordZ);
-		}else{
+		}
+		else{
 			if(pantalla->mapaElegido() == 2){
 				batalla->iniciarEscenarioDos(coordX,coordY,coordZ);
-			}else{
+			}
+			else{
 				batalla->iniciarEscenarioTres(coordX,coordY,coordZ);
 			}
 		}
@@ -51,7 +53,8 @@ int main(){
 				cin >> coordY;
 				if( coordX < batalla->getDimensionDelTablero() && coordY < batalla->getDimensionDelTablero()){
 					batalla->getJugador()->getCursor()->nuevoSoldado(coordX, coordY);
-				}else{
+				}
+				else{
 					throw "Coordenada invalida";
 				}
 				batalla->getTablero()->getCasilla(coordX, coordY, 1)->setEstado(LLENO);
@@ -106,23 +109,25 @@ int main(){
 						for (int i = 0; i <= numeroCarta; i++){
 							batalla->getJugador()->getCursor()->getCartas()->avanzarCursor();
 						}
-						if (batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == RADAR){
+						if(batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == RADAR){
 							if (batalla->esCoordenadaValida(coordX, coordY, coordZ) && batalla->esCoordenadaValida(coordX+2, coordY+2, coordZ+2) && batalla->esCoordenadaValida(coordX-2, coordY-2, coordZ-2)){
 							cout << "En los alrededores se encuentran "<< batalla->usarRadar(coordX, coordY, coordZ) << "cantidad de fichas"<<endl;
 							}
-						}else if (batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == SUPER){
+						}else if(batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == SUPER){
 							cout << "Elegir Columna (C) o Fila (F): "<<endl;
 							cin >> filaOColumna;
-							if (filaOColumna == 'C'){
+							if(filaOColumna == 'C'){
 								cout << "Ingresar columna: "<<endl;
 								cin >> coordY;
 								batalla->dispararSuperMisil(coordY, filaOColumna);
-							}else if (filaOColumna == 'F'){
+							}
+							else if(filaOColumna == 'F'){
 								cout << "Ingresar fila: "<<endl;
 								cin >> coordX;
 								batalla->dispararSuperMisil(coordX, filaOColumna);
 							}
-						}else{
+						}
+						else{
 							batalla->usarCarta(numeroCarta, coordX, coordY, coordZ);
 						}
 						batalla->getJugador()->getCursor()->eliminarCarta(numeroCarta);
