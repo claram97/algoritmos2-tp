@@ -37,7 +37,8 @@ BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantid
 void BatallaCampal::siguienteTurno(){
 	if(this->turno < this->jugadores->contarElementos()){
 		this->turno++;
-	}else{
+	}
+	else{
 		this->turno = 1;
 	}
 
@@ -73,7 +74,8 @@ void BatallaCampal::estadoActualDelJuego(){
 		if(this->jugadores->contarElementos() == 1){
 			this->estadoDelJuegoActual = FINALIZADO;
 
-		}else{
+		}
+		else{
 			this->estadoDelJuegoActual = JUGANDO;
 		}
 	}
@@ -84,12 +86,10 @@ estadoDelJuego BatallaCampal::getEstadoDelJuego(){
 }
 
 int BatallaCampal::getTurno(){
-
 	return this->turno;
 }
 
 Lista <Jugador*>* BatallaCampal::getJugador(){
-
 	return this->jugadores;
 }
 
