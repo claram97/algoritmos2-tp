@@ -184,7 +184,8 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila-1, columna);
 
-							}else{
+							}
+							else{
 								throw "Movimiento invalido.";
 							}
 							break;
@@ -194,7 +195,8 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila+1, columna);
 
-							}else{
+							}
+							else{
 								throw "Movimiento invalido.";
 							}
 							break;
@@ -204,7 +206,8 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila, columna-1);
 
-							}else{
+							}
+							else{
 								throw "Movimiento invalido.";
 							}
 							break;
@@ -214,7 +217,8 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila, columna+1);
 
-							}else{
+							}
+							else{
 								throw "Movimiento invalido.";
 							}
 
@@ -275,7 +279,8 @@ void BatallaCampal::dispararSuperMisil(int filaOcolumna, char tipoDeCasilla){
 				this->tablero->getCasilla(i, filaOcolumna, k)->setEstado(INACTIVO);
 			}
 		}
-	}else if (tipoDeCasilla == 'F'){
+	}
+	else if (tipoDeCasilla == 'F'){
 		for (int i = 1; i <= this->getDimensionDelTablero(); i++){
 			for (int k = 1; k <= this->getDimensionDelTablero(); k++){
 				this->tablero->getCasilla(filaOcolumna, i, k)->setEstado(INACTIVO);
@@ -386,7 +391,8 @@ void BatallaCampal::usarCarta(int numero, int x, int y, int z){
 			if(this->jugadores->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == AVION){
 					if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AIRE){
 						throw "Avion debe estar en el aire";
-					}else if (esCoordenadaValida(x, y, z)){
+					}
+					else if (esCoordenadaValida(x, y, z)){
 						this->jugadores->getCursor()->nuevaHerramienta(AVION, x, y, z);
 						this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 					}
@@ -394,7 +400,8 @@ void BatallaCampal::usarCarta(int numero, int x, int y, int z){
 			if (this->jugadores->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == BARCO){
 				if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != AGUA){
 					throw "Barco debe estar en el agua";
-					}else if (esCoordenadaValida(x, y, z)){
+					}
+					else if (esCoordenadaValida(x, y, z)){
 						this->jugadores->getCursor()->nuevaHerramienta(BARCO, x, y, 1);
 						this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 					}
@@ -402,7 +409,8 @@ void BatallaCampal::usarCarta(int numero, int x, int y, int z){
 			if (this->jugadores->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == MINA){
 				if (this->tablero->getCasilla(x, y, z)->getTipoDeCasilla() != TIERRA){
 						throw "Mina debe estar en la tierra";
-					}else if (esCoordenadaValida(x, y, z)){
+					}
+					else if (esCoordenadaValida(x, y, z)){
 						this->jugadores->getCursor()->nuevaHerramienta(MINA, x, y, 1);
 						this->tablero->getCasilla(x, y, z)->setEstado(LLENO);
 				}
