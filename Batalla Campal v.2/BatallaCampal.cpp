@@ -7,17 +7,20 @@ BatallaCampal::BatallaCampal(unsigned int cantidadJugadores, unsigned int cantid
 
 	if(cantidadJugadores < MIN_JUGADORES || cantidadJugadores > MAX_JUGADORES){
 		throw "La cantidad de jugadores elegida es invalida.";
-	}else{
+	}
+	else{
 		this->cantidadJugadores = cantidadJugadores;
 	}
 	if(cantidadSoldados < MIN_SOLDADOS || cantidadSoldados > MAX_SOLDADOS){
 		throw "La cantidad de soldados elegida es invalida.";
-	}else{
+	}
+	else{
 		this->cantidadSoldados = cantidadSoldados;
 	}
 	if(dimensionTablero < MIN_DIMENSION || dimensionTablero > MAX_DIMENSION){
 		throw "La dimension elegida para el tablero es invalida.";
-	}else{
+	}
+	else{
 		this->dimensionTablero = dimensionTablero;
 	}
 
@@ -298,7 +301,8 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 						this->tablero->getCasilla(x,y,z)->setTipoDeCasillero(AGUA);
 					}
 					
-				}else{
+				}
+				else{
 					this->tablero->getCasilla(x,y,z)->setTipoDeCasillero(AIRE);
 				}
 					
@@ -324,7 +328,8 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMax ,unsigned int yMax, un
 						this->tablero->getCasilla(x,y,z)->setTipoDeCasillero(AGUA);
 					}
 					
-				}else{
+				}
+				else{
 					this->tablero->getCasilla(x,y,z)->setTipoDeCasillero(AIRE);
 				}
 					
@@ -350,7 +355,8 @@ void BatallaCampal::iniciarEscenarioTres(unsigned int xMax ,unsigned int yMax, u
 						this->tablero->getCasilla(x,y,z)->setTipoDeCasillero(AGUA);
 					}
 					
-				}else{
+				}
+				else{
 					this->tablero->getCasilla(x,y,z)->setTipoDeCasillero(AIRE);
 				}
 					
