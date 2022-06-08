@@ -33,7 +33,7 @@ public:
 		
 	/*
 	 *  Pre:
-	 *  Post: crea una ficha con el tipo sin definir y posiciones seteadas en -1 (deben cambiarse luego).
+	 *  Post: crea una ficha con el tipo sin definir.
 	 */
 	Ficha();
 
