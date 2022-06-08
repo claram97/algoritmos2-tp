@@ -6,7 +6,7 @@ using namespace std;
 
 
 Tablero::Tablero(int maxFila, int maxColumna, int maxAltura){
-	if(maxFila < 1 || maxColumna < 1 || maxAltura <1){
+	if(maxFila < 1 || maxColumna < 1 || maxAltura < 1){
 		throw "Las coordenadas ingresadas para crear el tablero son inválidas";
 	}	
 	else{
