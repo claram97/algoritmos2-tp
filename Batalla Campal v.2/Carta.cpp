@@ -2,7 +2,10 @@
 #include "Jugador.h"
 
 Carta::Carta(int aleatorio){
-
+	if(aleatorio < 1 || aleatorio > 6){
+		throw "No se puede crear una carta cuyo identificador no esté entre 1 y 6 inclusive.";
+	}
+	
 	switch (aleatorio){
 		case 1:
 			this->tipoDeCarta = AVION;
