@@ -98,7 +98,7 @@ Lista<Carta*>* Jugador::getCartas(){
 	return this->cartas;
 }
 
-void Jugador::setEstado(EstadoJugador estado){
+void Jugador::setEstado(estadoJugador estado){
 	if(estado != EN_BATALLA && estado != ELIMINADO){
 		throw "El estado del jugador ingresado es inválido";
 	}
