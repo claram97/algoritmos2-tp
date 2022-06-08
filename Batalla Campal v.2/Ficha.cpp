@@ -26,11 +26,7 @@ Ficha::Ficha(char tipo,int posicionX,int posicionY,int posicionZ){
 }
 
 bool Ficha::esPosicionValida(int x, int y, int z){
-	bool esValida = false;
-	if(x > 0 && y > 0 && z > 0){
-		esValida = true;
-	}
-	return esValida;
+	return(x > 0 && y > 0 && z > 0);
 }
 
 bool Ficha::esTipoValido(char tipo){
