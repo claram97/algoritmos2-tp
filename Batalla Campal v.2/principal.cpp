@@ -117,13 +117,9 @@ int main(){
 							cout << "Elegir Columna (C) o Fila (F): "<<endl;
 							cin >> filaOColumna;
 							if(filaOColumna == 'C'){
-								cout << "Ingresar columna: "<<endl;
-								cin >> coordY;
 								batalla->dispararSuperMisil(coordY, filaOColumna);
 							}
 							else if(filaOColumna == 'F'){
-								cout << "Ingresar fila: "<<endl;
-								cin >> coordX;
 								batalla->dispararSuperMisil(coordX, filaOColumna);
 							}
 						}
@@ -131,6 +127,51 @@ int main(){
 							batalla->usarCarta(numeroCarta, coordX, coordY, coordZ);
 						}
 						batalla->getJugador()->getCursor()->eliminarCarta(numeroCarta);
+					}
+					batalla->getJugador()->getCursor()->getHerramienta()->reiniciarCursor();
+					for (int i = 0; i < batalla->getJugador()->getCursor()->getCantidadDeHerramientas() ;i++){
+						if (batalla->getJugador()->getCursor()->getHerramienta()->getCursor()->getTipo() == BARCO){
+							cout << "Usando barco "<<endl;
+							cout << "Ingrese coordenadas : "<<endl;
+							cout << "Fila: ";
+							cin >> coordX;
+							cout << "Columna: ";
+							cin >> coordY;
+							cout << "Altura: ";
+							cin >> coordZ;
+							batalla->dispararMisil(coordX, coordY, coordZ);
+						if (batalla->getJugador()->getCursor()->getHerramienta()->getCursor()->getTipo() == AVION){
+							cout << "Usando avion"<<endl;
+							cout << "Ingrese coordenadas de disparo adicional: "<<endl;
+							cout << "fila: ";
+							cin >> coordX;
+							cout << "columna: ";
+							cin >> coordY;
+							cout << "Altura: ";
+							cin >> coordZ;
+							cout << "Disparando..." <<endl;
+							if (batalla -> soldadosCoinciden(coordX, coordY)){
+								cout << "Fuego amigo!" << endl;
+							}else if(batalla -> eliminarEnemigo(coordX, coordY)){
+									batalla -> realizarDisparo(coordX, coordY, coordZ);
+									cout << "Mataste a un soldado enemigo" << endl;
+								}
+							cout << "Ingrese coordenadas del 2do disparo adicional: "<<endl;
+							cout << "fila: ";
+							cin >> coordX;
+							cout << "columna: ";
+							cin >> coordY;
+							cout << "Altura: ";
+							cin >> coordZ;
+							cout << "Disparando..." <<endl;
+							if (batalla -> soldadosCoinciden(coordX, coordY)){
+								cout << "Fuego amigo!" << endl;
+							}else if(batalla -> eliminarEnemigo(coordX, coordY)){
+									batalla -> realizarDisparo(coordX, coordY, coordZ);
+									cout << "Mataste a un soldado enemigo" << endl;
+								}
+							}
+						}
 					}
 					cout << "Cantidad de Armamento: "<< batalla->getJugador()->getCursor()->getCantidadDeHerramientas() << endl;
 					cout << "Cantidad de soldados: "<< batalla->getJugador()->getCursor()->getCantidadDeSoldados() << endl;
