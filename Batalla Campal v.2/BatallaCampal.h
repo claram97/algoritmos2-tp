@@ -22,6 +22,10 @@ enum estadoDelJuego{
 #define ABAJO 'S'
 #define DERECHA 'D'
 #define IZQUIERDA 'A'
+#define DIAGONAL_SUP_IZQ 'Q'
+#define DIAGONAL_SUP_DER 'E'
+#define DIAGONAL_INF_IZQ 'Z'
+#define DIAGONAL_INF_DER 'C'
 
 class BatallaCampal{
 	
