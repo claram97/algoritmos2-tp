@@ -97,6 +97,10 @@ int main(){
 						}
 						cout << "Elegir carta: " <<endl;
 						cin >> numeroCarta;
+						batalla->getJugador()->getCursor()->getCartas()->reiniciarCursor();
+						for (int i = 0; i <= numeroCarta; i++){
+							batalla->getJugador()->getCursor()->getCartas()->avanzarCursor();
+						}
 						cout << "Ingrese coordenadas: "<<endl;
 						cout << "Fila: ";
 						cin >> coordX;
@@ -104,27 +108,17 @@ int main(){
 						cin >> coordY;
 						cout << "Altura: ";
 						cin >> coordZ;
-						cout << "Ejecutando carta..." <<endl;
-						batalla->getJugador()->getCursor()->getCartas()->reiniciarCursor();
-						for (int i = 0; i <= numeroCarta; i++){
-							batalla->getJugador()->getCursor()->getCartas()->avanzarCursor();
+						if (batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == SUPER){
+							cout << "Elegir Columna (C) o Fila (F): "<<endl;
+							cin >> filaOColumna;
 						}
-						if(batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == RADAR){
+						cout << "Ejecutando carta..." <<endl;
+						if (batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == RADAR){
 							if (batalla->esCoordenadaValida(coordX, coordY, coordZ) && batalla->esCoordenadaValida(coordX+2, coordY+2, coordZ+2) && batalla->esCoordenadaValida(coordX-2, coordY-2, coordZ-2)){
 							cout << "En los alrededores se encuentran "<< batalla->usarRadar(coordX, coordY, coordZ) << "cantidad de fichas"<<endl;
 							}
-						}else if(batalla->getJugador()->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == SUPER){
-							cout << "Elegir Columna (C) o Fila (F): "<<endl;
-							cin >> filaOColumna;
-							if(filaOColumna == 'C'){
-								batalla->dispararSuperMisil(coordY, filaOColumna);
-							}
-							else if(filaOColumna == 'F'){
-								batalla->dispararSuperMisil(coordX, filaOColumna);
-							}
-						}
-						else{
-							batalla->usarCarta(numeroCarta, coordX, coordY, coordZ);
+						}else{
+							batalla->usarCarta(numeroCarta, coordX, coordY, coordZ,  filaOColumna);
 						}
 						batalla->getJugador()->getCursor()->eliminarCarta(numeroCarta);
 					}
