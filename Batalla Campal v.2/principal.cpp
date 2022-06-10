@@ -15,9 +15,9 @@ int main(){
 
 		char opcionUsuarioC;
 		char filaOColumna;
-		int coordX;
-		int coordY;
-		int coordZ;
+		unsigned int coordX;
+		unsigned int coordY;
+		unsigned int coordZ;
 		char movimiento;
 		int numeroCarta;
 		bool encontrado;
@@ -28,6 +28,10 @@ int main(){
 
 		BatallaCampal* batalla = new BatallaCampal(pantalla->getCantidadJugadores(), pantalla->getCantidadSoldados(), pantalla->getDimensionDelTablero());
 		
+		coordX = batalla->getDimensionDelTablero();
+		coordY = batalla->getDimensionDelTablero();
+		coordZ = batalla->getDimensionDelTablero();
+
 		if (pantalla->mapaElegido() == 1){
 			batalla->iniciarEscenarioUno(coordX,coordY,coordZ);
 		}

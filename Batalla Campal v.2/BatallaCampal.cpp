@@ -94,11 +94,11 @@ Lista <Jugador*>* BatallaCampal::getJugador(){
 }
 
 bool BatallaCampal::esCoordenadaValida(int fila, int columna){
-	return(fila > 0 && columna > 0 && fila < this->getDimensionDelTablero() && columna < this->getDimensionDelTablero());
+	return(fila >= 0 && columna >= 0 && fila <= this->getDimensionDelTablero() && columna <= this->getDimensionDelTablero());
 }
 
 bool BatallaCampal::esCoordenadaValida(int fila, int columna, int altura){
-	return(fila > 0 && columna > 0 && altura > 0 && fila < this->getDimensionDelTablero() && columna < this->getDimensionDelTablero() && altura < this->getDimensionDelTablero());
+	return(fila >= 0 && columna >= 0 && altura >= 0 && fila <= this->getDimensionDelTablero() && columna <= this->getDimensionDelTablero() && altura <= this->getDimensionDelTablero());
 }
 
 
@@ -294,8 +294,8 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, un
 		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
 	}
 	for(unsigned int x = 1; x<=xMax; x++){
-		for(unsigned int y = 1; y<=yMax; x++){
-			for(unsigned int z = 1; z<=zMax; x++){
+		for(unsigned int y = 1; y<=yMax; y++){
+			for(unsigned int z = 1; z<=zMax; z++){
 				
 				if(z == 1){
 
@@ -321,8 +321,8 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMax ,unsigned int yMax, un
 		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
 	}
 	for(unsigned int x = 1; x<=xMax; x++){
-		for(unsigned int y = 1; y<=yMax; x++){
-			for(unsigned int z = 1; z<=zMax; x++){
+		for(unsigned int y = 1; y<=yMax; y++){
+			for(unsigned int z = 1; z<=zMax; z++){
 				
 				if(z == 1){
 
@@ -348,8 +348,8 @@ void BatallaCampal::iniciarEscenarioTres(unsigned int xMax ,unsigned int yMax, u
 		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
 	}
 	for(unsigned int x = 1; x<=xMax; x++){
-		for(unsigned int y = 1; y<=yMax; x++){
-			for(unsigned int z = 1; z<=zMax; x++){
+		for(unsigned int y = 1; y<=yMax; y++){
+			for(unsigned int z = 1; z<=zMax; z++){
 				
 				if(z == 1){
 
