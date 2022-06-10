@@ -107,7 +107,7 @@ class BatallaCampal{
 		 * Pre: Necesita las coordenadas de la casilla y el numero de la carta
 		 * Post: Se activa la carta del numero usado
 		 */
-		void usarCarta(int numero, int x, int y, int z);
+		void usarCarta(int numero, int x, int y, int z, char  filaOColumna);
 		/*
 		 * Pre: Necesita las coordenadas de la casilla
 		 * Post: Inactiva la casillas y sus alrededores a una casilla de distancia, si hay fichas es algunas de las casillas,
