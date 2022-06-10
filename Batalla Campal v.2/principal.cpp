@@ -27,20 +27,16 @@ int main(){
 		pantalla->nuevaPartida();
 
 		BatallaCampal* batalla = new BatallaCampal(pantalla->getCantidadJugadores(), pantalla->getCantidadSoldados(), pantalla->getDimensionDelTablero());
-		
-		coordX = batalla->getDimensionDelTablero();
-		coordY = batalla->getDimensionDelTablero();
-		coordZ = batalla->getDimensionDelTablero();
 
 		if (pantalla->mapaElegido() == 1){
-			batalla->iniciarEscenarioUno(coordX,coordY,coordZ);
+			batalla->iniciarEscenarioUno();
 		}
 		else{
 			if(pantalla->mapaElegido() == 2){
-				batalla->iniciarEscenarioDos(coordX,coordY,coordZ);
+				batalla->iniciarEscenarioDos();
 			}
 			else{
-				batalla->iniciarEscenarioTres(coordX,coordY,coordZ);
+				batalla->iniciarEscenarioTres();
 			}
 		}
 
