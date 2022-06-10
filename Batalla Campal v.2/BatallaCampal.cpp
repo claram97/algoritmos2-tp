@@ -290,9 +290,6 @@ void BatallaCampal::dispararSuperMisil(int filaOcolumna, char tipoDeCasilla){
 }
 
 void BatallaCampal::iniciarEscenarioUno(){
-	if(!esCoordenadaValida(this->getDimensionDelTablero(),this->getDimensionDelTablero(),this->getDimensionDelTablero())){
-		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
-	}
 	for(int x = 1; x<=this->getDimensionDelTablero(); x++){
 		for(int y = 1; y<=this->getDimensionDelTablero(); y++){
 			for(int z = 1; z<=this->getDimensionDelTablero(); z++){
@@ -317,9 +314,6 @@ void BatallaCampal::iniciarEscenarioUno(){
 }
 
 void BatallaCampal::iniciarEscenarioDos(){
-	if(!esCoordenadaValida(this->getDimensionDelTablero(),this->getDimensionDelTablero(),this->getDimensionDelTablero())){
-		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
-	}
 	for(int x = 1; x<=this->getDimensionDelTablero(); x++){
 		for(int y = 1; y<=this->getDimensionDelTablero(); y++){
 			for(int z = 1; z<=this->getDimensionDelTablero(); z++){
@@ -344,9 +338,6 @@ void BatallaCampal::iniciarEscenarioDos(){
 }
 
 void BatallaCampal::iniciarEscenarioTres(){
-	if(!esCoordenadaValida(this->getDimensionDelTablero(),this->getDimensionDelTablero(),this->getDimensionDelTablero())){
-		throw "Las magnitudes elegidas para iniciar el primer escenario no son validas.";
-	}
 	for(int x = 1; x<=this->getDimensionDelTablero(); x++){
 		for(int y = 1; y<=this->getDimensionDelTablero(); y++){
 			for(int z = 1; z<=this->getDimensionDelTablero(); z++){
