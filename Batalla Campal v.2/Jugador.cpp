@@ -53,8 +53,8 @@ unsigned int Jugador::getCantidadDeCartas(){
 	return this->cartas->contarElementos();
 }
 
-Ficha* Jugador::getHerramienta(int id){
-	return this->herramientas->get(id);
+Lista<Ficha*>* Jugador::getHerramienta(){
+	return this->herramientas;
 }
 
 Lista<Ficha*>* Jugador::getSoldado(){
