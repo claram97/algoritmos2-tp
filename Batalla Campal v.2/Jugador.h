@@ -44,7 +44,7 @@ public:
 
 	//Pre: recibe un id de ficha
 	//Post: devuelve la ficha.
-	Ficha* getHerramienta(int id);
+	Lista<Ficha*>* getHerramienta();
 
 	//Pre: -
 	//Post: devuelve un soldado de la lista de soldados.
