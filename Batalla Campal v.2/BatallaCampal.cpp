@@ -163,7 +163,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 	if(!esCoordenadaValida(fila,columna)){
 		throw "Las magnitudes elegidas para mover al soldado no son validas.";
 	}
-	if(movimiento != ARRIBA && movimiento != ABAJO && movimiento != IZQUIERDA && movimiento != DERECHA){
+	if(movimiento != ARRIBA && movimiento != ABAJO && movimiento != IZQUIERDA && movimiento != DERECHA && movimiento != DIAGONAL_SUP_IZQ && movimiento != DIAGONAL_SUP_DER && movimiento != DIAGONAL_INF_IZQ && movimiento != DIAGONAL_INF_DER){
 		throw "El movimiento elegido no es valido";
 	}
 	
@@ -179,8 +179,8 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 					switch(movimiento){
 
 						case ARRIBA:
-							if(this->tablero->getCasilla(fila-1, columna, 1)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila-1, columna, 1)->getEstado() != INACTIVO ||
-								(fila-1) > 0 || fila < this->getDimensionDelTablero() ){
+							if(this->tablero->getCasilla(fila-1, columna, 1)->getTipoDeCasilla() == TIERRA && this->tablero->getCasilla(fila-1, columna, 1)->getEstado() != INACTIVO &&
+								(fila-1) > 0 && fila < this->getDimensionDelTablero() ){
 
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila-1, columna);
 
@@ -190,8 +190,8 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 							}
 							break;
 						case ABAJO:
-							if(this->tablero->getCasilla(fila+1, columna, 1)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila+1, columna, 1)->getEstado() != INACTIVO ||
-								(fila+1) > 0 || fila < this->getDimensionDelTablero() ){
+							if(this->tablero->getCasilla(fila+1, columna, 1)->getTipoDeCasilla() == TIERRA && this->tablero->getCasilla(fila+1, columna, 1)->getEstado() != INACTIVO &&
+								(fila+1) > 0 && fila < this->getDimensionDelTablero() ){
 
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila+1, columna);
 
@@ -201,8 +201,8 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 							}
 							break;
 						case IZQUIERDA:
-							if(this->tablero->getCasilla(fila, columna-1, 1)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila, columna-1, 1)->getEstado() != INACTIVO ||
-								(columna-1) > 0 || columna < this->getDimensionDelTablero() ){
+							if(this->tablero->getCasilla(fila, columna-1, 1)->getTipoDeCasilla() == TIERRA && this->tablero->getCasilla(fila, columna-1, 1)->getEstado() != INACTIVO &&
+								(columna-1) > 0 && columna < this->getDimensionDelTablero() ){
 
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila, columna-1);
 
@@ -212,10 +212,58 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 							}
 							break;
 						case DERECHA:
-							if(this->tablero->getCasilla(fila, columna+1, 1)->getTipoDeCasilla() == TIERRA || this->tablero->getCasilla(fila, columna+1, 1)->getEstado() != INACTIVO ||
-								(columna+1) > 0 || columna < this->getDimensionDelTablero() ){
+							if(this->tablero->getCasilla(fila, columna+1, 1)->getTipoDeCasilla() == TIERRA && this->tablero->getCasilla(fila, columna+1, 1)->getEstado() != INACTIVO &&
+								(columna+1) > 0 && columna < this->getDimensionDelTablero() ){
 
 								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila, columna+1);
+
+							}
+							else{
+								throw "Movimiento invalido.";
+							}
+
+							break;
+						case DIAGONAL_SUP_IZQ:
+							if((this->tablero->getCasilla(fila-1, columna-1, 1)->getTipoDeCasilla() == TIERRA) && (this->tablero->getCasilla(fila-1, columna-1, 1)->getEstado() != INACTIVO) &&
+								((columna-1) > 0) && ((columna-1) < this->getDimensionDelTablero()) && ((fila-1) > 0) && ((fila-1) < this->getDimensionDelTablero())){
+
+								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila-1, columna-1);
+
+							}
+							else{
+								throw "Movimiento invalido.";
+							}
+
+							break;
+						case DIAGONAL_SUP_DER:
+							if(this->tablero->getCasilla(fila+1, columna-1, 1)->getTipoDeCasilla() == TIERRA && this->tablero->getCasilla(fila+1, columna-1, 1)->getEstado() != INACTIVO &&
+								(columna-1) > 0 && columna-1 < this->getDimensionDelTablero() && (fila+1 > 0) && (fila+1) < this->getDimensionDelTablero() ){
+
+								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila+1, columna-1);
+
+							}
+							else{
+								throw "Movimiento invalido.";
+							}
+
+							break;
+						case DIAGONAL_INF_IZQ:
+							if(this->tablero->getCasilla(fila-1, columna+1, 1)->getTipoDeCasilla() == TIERRA && this->tablero->getCasilla(fila-1, columna+1, 1)->getEstado() != INACTIVO &&
+								(columna+1) > 0 && columna+1 < this->getDimensionDelTablero() && (fila-1 > 0) && (fila-1) < this->getDimensionDelTablero() ){
+
+								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila-1, columna+1);
+
+							}
+							else{
+								throw "Movimiento invalido.";
+							}
+
+							break;
+						case DIAGONAL_INF_DER:
+							if(this->tablero->getCasilla(fila+1, columna+1, 1)->getTipoDeCasilla() == TIERRA && this->tablero->getCasilla(fila+1, columna+1, 1)->getEstado() != INACTIVO &&
+								(columna+1) > 0 && columna+1 < this->getDimensionDelTablero() && (fila+1 > 0) && (fila+1) < this->getDimensionDelTablero() ){
+
+								this->jugadores->getCursor()->getSoldado()->getCursor()->setCoordenadasSoldado(fila+1, columna+1);
 
 							}
 							else{
@@ -228,6 +276,7 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna){
 					if(this->soldadosCoinciden(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX(), this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY())){
 
 						this->tablero->getCasilla(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX(), this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY(), 1)->setEstado(INACTIVO);
+						this->jugadores->getCursor()->eliminarSoldado(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX(), this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY());
 					}
 
 				}
