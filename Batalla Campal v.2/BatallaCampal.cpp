@@ -410,7 +410,7 @@ void BatallaCampal::iniciarEscenarioTres(){
 	}	
 }
 
-void BatallaCampal::usarCarta(int numero, int x, int y, int z){
+void BatallaCampal::usarCarta(int numero, int x, int y, int z, char  filaOColumna){
 	if(numero < 1 || numero > 6){
 		throw "El numero de carta no corresponde a una carta existente.";
 	}
@@ -458,7 +458,12 @@ void BatallaCampal::usarCarta(int numero, int x, int y, int z){
 					dispararMisil(x, y, z);
 				}	
 			}
-			this->jugadores->getCursor()->eliminarCarta(numero);
+			if (this->jugadores->getCursor()->getCartas()->getCursor()->getTipoDeCarta() == SUPER){
+				if (filaOColumna == 'C'){
+					this->dispararSuperMisil(y, filaOColumna);
+				}else if (filaOColumna == 'F'){
+					this->dispararSuperMisil(x, filaOColumna);
+			}
 		}
 	}
 }
