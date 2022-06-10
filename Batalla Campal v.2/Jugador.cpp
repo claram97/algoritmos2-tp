@@ -54,7 +54,6 @@ unsigned int Jugador::getCantidadDeCartas(){
 }
 
 Ficha* Jugador::getHerramienta(int id){
-	if(id < 
 	return this->herramientas->get(id);
 }
 
@@ -98,7 +97,7 @@ Lista<Carta*>* Jugador::getCartas(){
 	return this->cartas;
 }
 
-void Jugador::setEstado(estadoJugador estado){
+void Jugador::setEstado(EstadoJugador estado){
 	if(estado != EN_BATALLA && estado != ELIMINADO){
 		throw "El estado del jugador ingresado es inválido";
 	}
