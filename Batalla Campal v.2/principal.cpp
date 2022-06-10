@@ -140,6 +140,7 @@ int main(){
 							cout << "Altura: ";
 							cin >> coordZ;
 							batalla->dispararMisil(coordX, coordY, coordZ);
+						}
 						if (batalla->getJugador()->getCursor()->getHerramienta()->getCursor()->getTipo() == AVION){
 							cout << "Usando avion"<<endl;
 							cout << "Ingrese coordenadas de disparo adicional: "<<endl;
@@ -170,8 +171,8 @@ int main(){
 									batalla -> realizarDisparo(coordX, coordY, coordZ);
 									cout << "Mataste a un soldado enemigo" << endl;
 								}
-							}
 						}
+						batalla->getJugador()->getCursor()->getHerramienta()->avanzarCursor();
 					}
 					cout << "Cantidad de Armamento: "<< batalla->getJugador()->getCursor()->getCantidadDeHerramientas() << endl;
 					cout << "Cantidad de soldados: "<< batalla->getJugador()->getCursor()->getCantidadDeSoldados() << endl;
