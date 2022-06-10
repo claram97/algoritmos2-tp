@@ -94,11 +94,11 @@ Lista <Jugador*>* BatallaCampal::getJugador(){
 }
 
 bool BatallaCampal::esCoordenadaValida(int fila, int columna){
-	return(fila < 0 || columna < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero());
+	return(fila > 0 && columna > 0 && fila < this->getDimensionDelTablero() && columna < this->getDimensionDelTablero());
 }
 
 bool BatallaCampal::esCoordenadaValida(int fila, int columna, int altura){
-	return(fila < 0 || columna < 0 || altura < 0 || fila > this->getDimensionDelTablero() || columna > this->getDimensionDelTablero() || altura > this->getDimensionDelTablero());
+	return(fila > 0 && columna > 0 && altura > 0 && fila < this->getDimensionDelTablero() && columna < this->getDimensionDelTablero() && altura < this->getDimensionDelTablero());
 }
 
 
