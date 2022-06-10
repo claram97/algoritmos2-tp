@@ -463,6 +463,7 @@ void BatallaCampal::usarCarta(int numero, int x, int y, int z, char  filaOColumn
 					this->dispararSuperMisil(y, filaOColumna);
 				}else if (filaOColumna == 'F'){
 					this->dispararSuperMisil(x, filaOColumna);
+				}
 			}
 		}
 	}
