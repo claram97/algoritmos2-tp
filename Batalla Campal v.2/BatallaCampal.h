@@ -132,9 +132,9 @@ class BatallaCampal{
 		 */
 		bool eliminarEnemigo(int x, int y);
 
-		void iniciarEscenarioUno(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
-		void iniciarEscenarioDos(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
-		void iniciarEscenarioTres(unsigned int xMax ,unsigned int yMax, unsigned int zMax);
+		void iniciarEscenarioUno();
+		void iniciarEscenarioDos();
+		void iniciarEscenarioTres();
 
 };
 
