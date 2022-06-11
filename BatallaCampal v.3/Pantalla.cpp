@@ -33,19 +33,17 @@ void Pantalla::nuevaPartida(){
 }
 
 void Pantalla::creacionImagen(){
-	RGBApixel LightGray;
-	LightGray.Red = 255;
-	LightGray.Green = 255;
-	LightGray.Blue = 255;
-	for( int j=0 ; j < this->Window.TellHeight() ; j++ )
-	{
-		for( int i=0 ; i < this->Window.TellWidth() ; i++ )
-		{
-			*this->Window(i,j) = LightGray;
+	RGBApixel White;
+	White.Red = 255;
+	White.Green = 255;
+	White.Blue = 255;
+	for(int j=0;j < this->Window.TellHeight();j++){
+		for(int i=0 ; i < this->Window.TellWidth();i++){
+			*this->Window(i,j) = White;
 		}
 	}
 
-	this->Window.WriteToFile( "tablero.bmp" );
+	this->Window.WriteToFile("tablero.bmp");
 }
 
 void Pantalla::pintarCirculo(int centerX, int centerY){
@@ -58,7 +56,7 @@ void Pantalla::pintarCirculo(int centerX, int centerY){
 	FontColor.Blue = 0;
 	DrawArc(this->Window, centerY+20, centerX+20, 5, 0, 360, FontColor);
 
-	this->Window.WriteToFile( "tablero.bmp" );
+	this->Window.WriteToFile("tablero.bmp");
 }
 
 void Pantalla::pintarLineas(int tamanio){
@@ -75,31 +73,41 @@ void Pantalla::pintarLineas(int tamanio){
 			DrawLine(this->Window, j, i, tamanio*tamanio, i, FontColor);
 		}
 	}
-	this->Window.WriteToFile( "tablero.bmp" );
+	this->Window.WriteToFile("tablero.bmp");
 }
 void Pantalla::pintarCuadrado(int xi,int yi, int xf, int yf, TipoDeCasillero tipo){
 	if(xi < 1 || yi < 1 || xf < 1 || yf < 1){
 		throw "Coordenadas inválidas";
 	}
+	if(tipo != AGUA && tipo != TIERRA && tipo != GENERAL
 	RGBApixel FontColor;
 	if(tipo == TIERRA){
-		FontColor.Red = 0;
-		FontColor.Green = 255;
-		FontColor.Blue = 0;
-	}else if(tipo == AGUA){
+		FontColor.Red = 78;
+		FontColor.Green = 59;
+		FontColor.Blue = 49;
+	}
+	else if(tipo == AGUA){
 		FontColor.Red = 0;
 		FontColor.Green = 0;
 		FontColor.Blue = 255;
-	}else if(tipo == GENERAL){
-		FontColor.Red = 255;
-		FontColor.Green = 0;
-		FontColor.Blue = 0;
 	}
+	else if(tipo == AIRE){
+		FontColor.Red = 162;
+		FontColor.Green = 202;
+		FontColor.Blue = 223;
+	}
+	else if(tipo == GENERAL){
+		throw "Este tipo no es válido en el contexto de la Batalla Campal.";
+	}
+	else{
+		throw "Tipo inválido de casillero.";
+	}
+	
 	while (yi <= yf){
 		DrawLine(this->Window, xi, yi, xf, yi, FontColor);
 		yi++;
 	}
-	this->Window.WriteToFile( "tablero.bmp" );
+	this->Window.WriteToFile("tablero.bmp");
 }
 
 void Pantalla::generarMapa(BatallaCampal* batalla, Pantalla* pantalla){
