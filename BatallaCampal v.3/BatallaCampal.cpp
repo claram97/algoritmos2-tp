@@ -103,6 +103,7 @@ bool BatallaCampal::soldadosCoincidenDistinto(int fila, int columna){
 			this->jugadores->getCursor()->getSoldado()->reiniciarCursor();
 			while(this->jugadores->getCursor()->getSoldado()->avanzarCursor()){
 				if(this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionX() == fila && this->jugadores->getCursor()->getSoldado()->getCursor()->getPosicionY() == columna){
+					this->jugadores->getCursor()->eliminarSoldado(fila,columna); //esto agregue para que se eliminen los 2 soldados
 					coinciden = true;
 				}
 			}
