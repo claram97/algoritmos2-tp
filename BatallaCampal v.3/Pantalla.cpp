@@ -369,12 +369,12 @@ void Pantalla::solicitarDisparo(BatallaCampal* batalla){
 	cout << "Altura: ";
 	cin >> coordZ;
 	cout << "Disparando..." <<endl;
-	batalla -> realizarDisparo(coordX, coordY, coordZ);
 	if (batalla->soldadosCoinciden(coordX, coordY)){
 		cout << "Fuego amigo!" << endl;
 		cout << "Perdiste el turno..." << endl;
 	}
 	else{
+		batalla -> realizarDisparo(coordX, coordY, coordZ);
 		if (batalla -> eliminarEnemigo(coordX, coordY)){
 			cout << "Mataste a un soldado enemigo" << endl;
 		}else{
