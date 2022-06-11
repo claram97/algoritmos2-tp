@@ -79,7 +79,6 @@ void Pantalla::pintarCuadrado(int xi,int yi, int xf, int yf, TipoDeCasillero tip
 	if(xi < 1 || yi < 1 || xf < 1 || yf < 1){
 		throw "Coordenadas inválidas";
 	}
-	if(tipo != AGUA && tipo != TIERRA && tipo != GENERAL
 	RGBApixel FontColor;
 	if(tipo == TIERRA){
 		FontColor.Red = 78;
@@ -102,6 +101,7 @@ void Pantalla::pintarCuadrado(int xi,int yi, int xf, int yf, TipoDeCasillero tip
 	else{
 		throw "Tipo inválido de casillero.";
 	}
+	
 	
 	while (yi <= yf){
 		DrawLine(this->Window, xi, yi, xf, yi, FontColor);
