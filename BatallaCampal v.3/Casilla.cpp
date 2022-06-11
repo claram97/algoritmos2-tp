@@ -34,11 +34,11 @@ void Casilla::setEstado(EstadoDelCasillero estadoCasilla){
     if(estadoCasilla == VACIO || estadoCasilla == LLENO || estadoCasilla == INACTIVO){
         this->estadoCasilla = estadoCasilla;
         if(estadoCasilla == VACIO){
-        	this->estadoActual = VACIO;
+        	this->estadoActual = VACIA;
         }else if(estadoCasilla == LLENO){
-        	this->estadoActual = LLENO;
+        	this->estadoActual = LLENA;
         }else if(estadoCasilla == INACTIVO){
-        	this->estadoActual = INACTIVO;
+        	this->estadoActual = INACTIVA;
         }
     }
     else{
