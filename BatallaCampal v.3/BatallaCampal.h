@@ -44,7 +44,7 @@ class BatallaCampal{
 	public:
 
 		/*
-		 * Pre: Necesita la cantidad de jugadores, de soldados, de herramientas y la dimension del tablero
+		 * Pre: Recibe la cantidad de jugadores, de soldados, de herramientas y la dimension del tablero
 		 * Post: Si las cantidades son validas, crea una partida de batalla con las especificaciones mencionadas
 		 */
 		BatallaCampal(unsigned int cantidadJugadores, unsigned int cantidadSoldados, int dimensionTablero);
@@ -65,7 +65,7 @@ class BatallaCampal{
 		 */
 		unsigned int getTurno();
 		/*
-		 * Pre: Necesita el numero/id del jugador
+		 * Pre:
 		 * Pos: Devuelve el jugador
 		 */
 		Lista <Jugador*>* getJugador();
