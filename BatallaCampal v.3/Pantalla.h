@@ -53,37 +53,37 @@ class Pantalla{
 		 */
 		void solicitarDisparo(BatallaCampal* batalla);
 		/*
-		 * PRE: Batalla previamente inicializado
+		 * PRE: Batalla previamente inicializado y un jugador.
 		 * POS: pregunta por pantalla al usuario si quiere mover un soldado y efectua el movimiento
 		 */
 		void solicitarMovimiento(BatallaCampal* batalla, Jugador* jugador);
 		/*
-		 * PRE: Batalla previamente inicializado
+		 * PRE: Batalla previamente inicializado y un jugador.
 		 * POS:pregunta al usuario por pantalla si quiere usar una carta
 		 */
 		void solicitarCarta(BatallaCampal* batalla, Jugador* jugador);
 		/*
-		 * PRE: Batalla previamente inicializado
+		 * PRE: Batalla previamente inicializado, una ficha de herramientas y un jugador.
 		 * POS: efectua el uso de una herramienta del jugador
 		 */
 		void usarHerramienta(BatallaCampal* batalla, Ficha* herramientaAux, Jugador* jugador);
 		/*
-		 * PRE: Batalla previamente inicializado
+		 * PRE: Batalla previamente inicializado, una carta, un jugador y el numero de carta.
 		 * POS: efectua el uso de una carta del jugador
 		 */
 		void usarCarta(BatallaCampal* batalla, Carta* carta, Jugador* jugador, int numeroCarta);
 		/*
-		 * PRE: Batalla previamente inicializado
+		 * PRE: Batalla previamente inicializado y un jugador.
 		 * POS: pregunta por pantalla al usuario las coordenadas de un nuevo soldado, si son validas lo agrega.
 		 */
 		void solicitarSoldados(BatallaCampal* batalla, Jugador* jugador);
 		/*
-		 * PRE: Batalla previamente inicializado
+		 * PRE: Batalla previamente inicializado y un puntero a pantalla.
 		 * POS: genera la imagen BitMap
 		 */
 		void generarMapa(BatallaCampal* batalla, Pantalla* pantalla);
 		/*
-		 * PRE: valores mayores a 0 y menores a la dimension del tablero
+		 * PRE: valores mayores a 0 y menores a la dimension del tablero, el tipo de casillero.
 		 * POS: genera un cuadrado en la imagen BitMap
 		 */
 		void pintarCuadrado(int xi,int yi, int xf, int yf, TipoDeCasillero tipo);
