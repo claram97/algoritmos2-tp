@@ -4,7 +4,7 @@
 
 #define VACIA "Vacia"
 #define INACTIVA "Inactiva"
-#define LLENA "Llena"
+#define LLENA "Ocupada"
 
 enum EstadoDelCasillero{
 	VACIO,
