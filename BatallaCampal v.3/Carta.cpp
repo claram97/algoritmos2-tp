@@ -8,15 +8,15 @@ Carta::Carta(int aleatorio){
 	
 	switch (aleatorio){
 		case 1:
-			this->tipoDeCarta = AVION;
+			this->tipoDeCarta = AVIONES;
 			this->descripcion = "Avion";
 			break;
 		case 2:
-			this->tipoDeCarta = BARCO;
+			this->tipoDeCarta = BARCOS;
 			this->descripcion = "Barco";
 			break;
 		case 3:
-			this->tipoDeCarta = MINA;
+			this->tipoDeCarta = MINAS;
 			this->descripcion = "Mina";
 			break;
 		case 4:
