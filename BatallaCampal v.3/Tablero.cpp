@@ -39,18 +39,6 @@ Tablero::~Tablero(){
 	}
 	delete []this->casilleros;
 }
-	
-void Tablero::mostrarTablero(){
-	for (int x = 1; x <= this->maxFila; x++){
-        	for (int y = 1; y <= this->maxColumna; y++){
-            		for (int z = 1; z <= this->maxAltura; z++){
-                		std::cout << this->casilleros->get(x)->get(y)->get(z)->getEstado();
-            		}
-            	std::cout << std::endl;
-        	}
-        std::cout << std::endl;
-    	}
-}
 
 bool Tablero::esRangoValido(int fila, int columna, int altura){
 	return(fila >= 1 && columna >= 1 && altura >= 1 && fila <= this->maxFila && columna <= this->maxColumna && altura <= this->maxAltura);
