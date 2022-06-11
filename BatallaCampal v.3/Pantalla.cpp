@@ -51,9 +51,9 @@ void Pantalla::pintarCirculo(int centerX, int centerY){
 		throw "Coordenadas inválidas";
 	}
 	RGBApixel FontColor;
-	FontColor.Red = 0;
-	FontColor.Green = 0;
-	FontColor.Blue = 0;
+	FontColor.Red = 255;
+	FontColor.Green = 255;
+	FontColor.Blue = 255;
 	DrawArc(this->Window, centerY+20, centerX+20, 5, 0, 360, FontColor);
 
 	this->Window.WriteToFile("tablero.bmp");
