@@ -60,7 +60,7 @@ void Pantalla::pintarCirculo(int centerX, int centerY){
 }
 
 void Pantalla::pintarLineas(int tamanio){
-	if(tamanio < 20){
+	if(tamanio < 20 || tamanio > 100){
 		throw "tamaño inválido";
 	}
 	RGBApixel FontColor;
