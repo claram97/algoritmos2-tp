@@ -96,8 +96,9 @@ int main(){
 
 
 		batalla->cargarMapa(pantalla->mapaElegido());
+		cout << "Cargando mapa...." << endl;
 
-		Window.SetSize(pantalla->getDimensionDelTablero()*20, pantalla->getDimensionDelTablero()*20);
+		Window.SetSize((pantalla->getDimensionDelTablero()*20)+20, (pantalla->getDimensionDelTablero()*20)+20);
 		for( int j=0 ; j < Window.TellHeight() ; j++ )
 		{
 		for( int i=0 ; i < Window.TellWidth() ; i++ )
@@ -105,7 +106,7 @@ int main(){
 		*Window(i,j) = LightGray;
 		}
 		}
-		creacionImagen(Window, batalla->getDimensionDelTablero());
+		creacionImagen(Window, (batalla->getDimensionDelTablero()+20));
 
 		for (int x = 1; x <= batalla->getDimensionDelTablero(); x++){
 		        for (int y = 1; y <= batalla->getDimensionDelTablero(); y++){
@@ -127,7 +128,7 @@ int main(){
 		    	}
 		}
 
-		pintarLineas(Window, batalla->getDimensionDelTablero());
+		pintarLineas(Window, (batalla->getDimensionDelTablero()+20));
 
 		batalla->getJugador()->reiniciarCursor();
 		while(batalla->getJugador()->avanzarCursor()){
@@ -138,16 +139,22 @@ int main(){
 				cin >> coordX;
 				cout << "columna: ";
 				cin >> coordY;
-				if( coordX < batalla->getDimensionDelTablero() && coordY <= batalla->getDimensionDelTablero()){
-					batalla->getJugador()->getCursor()->nuevoSoldado(coordX, coordY);
+				if( coordX <= batalla->getDimensionDelTablero() && coordY <= batalla->getDimensionDelTablero()){
+					if(batalla->getTablero()->getCasilla(coordX, coordY, 1)->getTipoDeCasilla() == TIERRA){
+
+						batalla->getJugador()->getCursor()->nuevoSoldado(coordX, coordY);
+						coordX = (coordX*20)-10;
+						coordY = (coordY*20)-10;
+						pintarCirculo(Window, coordX, coordY);
+					}
+					else{
+						cout << "Tu soldado se ahogó" << endl;
+					}
 				}
 				else{
 					throw "Coordenada invalida";
 				}
 				batalla->getTablero()->getCasilla(coordX, coordY, 1)->setEstado(LLENO);
-				coordX = (coordX*20)-10;
-				coordY = (coordY*20)-10;
-				pintarCirculo(Window, coordX, coordY);
 
 			}
 		}
