@@ -71,7 +71,7 @@ class Pantalla{
 		 * PRE: Batalla previamente inicializado, una carta, un jugador y el numero de carta.
 		 * POS: efectua el uso de una carta del jugador
 		 */
-		void usarCarta(BatallaCampal* batalla, Carta* carta, Jugador* jugador, int numeroCarta);
+		void usarUnaCarta(BatallaCampal* batalla, Jugador* jugador);
 		/*
 		 * PRE: Batalla previamente inicializado y un jugador.
 		 * POS: pregunta por pantalla al usuario las coordenadas de un nuevo soldado, si son validas lo agrega.
