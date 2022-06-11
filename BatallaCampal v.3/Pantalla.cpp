@@ -377,6 +377,8 @@ void Pantalla::solicitarMovimiento(BatallaCampal* batalla, Jugador* jugador){
 			this->pintarCirculo(((x*20)-10), ((y*20)-10));
 			this->pintarCirculo(((x*20)-10), ((y*20)-10));
 		}
+
+		pintarLineas((batalla->getDimensionDelTablero()+20));
 	}
 }
 
