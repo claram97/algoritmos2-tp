@@ -38,7 +38,3 @@ class Tablero{
 
 };
 #endif
-
-
-/*
-		
