@@ -13,22 +13,18 @@ class Tablero{
 	
 	public:
 		/*
-		 * Pre: los valores deben ser mayores o iguales a 1
+		 * Pre: Se reciben una fila, una columna y una altura, cuyos valores deben ser mayores o iguales a 1 
 		 * Pos: crea un tablero de casilleros con las dimensiones dadas
 		 */
 		Tablero(int fila, int columna, int altura);
+		
 		/*
-		 * Pre:
-		 * Pos: muestra el tablero por pantalla
-		 */
-		void mostrarTablero();
-		/*
-		 * Pre:los valores deben ser mayores o iguales a 1
-		 * Pos: devuelve una casilla
+		 * Pre:Se reciben una fila, una columna y una altura, cuyos valores deben ser mayores o iguales a 1 
+		 * Pos: Se devuelve una casilla que corresponde a dichas coordenadas.
 		 */
 		Casilla* getCasilla(int fila, int columna, int altura);
 		 /*
-		 * Pre: los valores deben ser mayores o iguales a 1
+		 * Pre: Se reciben una fila, una columna y una altura, cuyos valores deben ser mayores o iguales a 1 
 		 * Pos: Devuelve true si los valores estan dentro de las dimensiones del tablero, sino false.
 		 */
 		bool esRangoValido(int fila,int columna,int altura);
@@ -37,6 +33,12 @@ class Tablero{
 		 * pos: Destruye el tablero
 		*/
 		virtual ~Tablero();
+	
+	
 
 };
 #endif
+
+
+/*
+		
