@@ -374,10 +374,11 @@ void Pantalla::solicitarDisparo(BatallaCampal* batalla){
 		cout << "Perdiste el turno..." << endl;
 	}
 	else{
-		batalla -> realizarDisparo(coordX, coordY, coordZ);
 		if (batalla -> eliminarEnemigo(coordX, coordY)){
 			cout << "Mataste a un soldado enemigo" << endl;
+			batalla -> realizarDisparo(coordX, coordY, coordZ);
 		}else{
+			batalla -> realizarDisparo(coordX, coordY, coordZ);
 			cout << "Disparo fallido!" << endl;
 		}
 
