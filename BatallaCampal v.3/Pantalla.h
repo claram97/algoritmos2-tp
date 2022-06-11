@@ -98,6 +98,11 @@ class Pantalla{
 		 */
 		void pintarCirculo(int centerX, int centerY);
 		/*
+		 * PRE: valores mayores a 0 y menores a la dimension del tablero
+		 * POS: genera un circulo rojo en la imagen BitMap
+		 */
+		void pintarCirculoRojo(int centerX, int centerY);
+		/*
 		 * PRE:
 		 * POS: crea la imagen del BitMap
 		 */

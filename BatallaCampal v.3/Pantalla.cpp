@@ -59,6 +59,19 @@ void Pantalla::pintarCirculo(int centerX, int centerY){
 	this->Window.WriteToFile("tablero.bmp");
 }
 
+void Pantalla::pintarCirculoRojo(int centerX, int centerY){
+	if(centerX < 1 || centerY < 1){
+		throw "Coordenadas inválidas";
+	}
+	RGBApixel FontColor;
+	FontColor.Red = 255;
+	FontColor.Green = 0;
+	FontColor.Blue = 0;
+	DrawArc(this->Window, centerY+20, centerX+20, 5, 0, 360, FontColor);
+
+	this->Window.WriteToFile("tablero.bmp");
+}
+
 void Pantalla::pintarLineas(int tamanio){
 	if(tamanio < 20 || tamanio > 100){
 		throw "tamaño inválido";
@@ -170,7 +183,7 @@ void Pantalla::solicitarSoldados(BatallaCampal* batalla, Jugador* jugador){
 			if(batalla->getTablero()->getCasilla(coordX, coordY, 1)->getTipoDeCasilla() == TIERRA){
 
 				jugador->nuevoSoldado(coordX, coordY);
-				pintarCirculo(((coordX*20)-10), ((coordY*20)-10));
+				this->pintarCirculo(((coordX*20)-10), ((coordY*20)-10));
 			}
 			else{
 				cout << "Tu soldado se ahogó" << endl;
@@ -255,6 +268,7 @@ void Pantalla::usarHerramienta(BatallaCampal* batalla, Ficha* herramientaAux, Ju
 		}else if(batalla->eliminarEnemigo(coordX, coordY)){
 				batalla->realizarDisparo(coordX, coordY, coordZ);
 				cout << "Mataste a un soldado enemigo" << endl;
+				this->pintarCirculoRojo(((coordX*20)-10), ((coordY*20)-10));
 			}
 		cout << "Ingrese coordenadas del 2do disparo adicional: "<<endl;
 		cout << "fila: ";
@@ -269,6 +283,7 @@ void Pantalla::usarHerramienta(BatallaCampal* batalla, Ficha* herramientaAux, Ju
 		}else if(batalla->eliminarEnemigo(coordX, coordY)){
 				batalla->realizarDisparo(coordX, coordY, coordZ);
 				cout << "Mataste a un soldado enemigo" << endl;
+				this->pintarCirculoRojo(((coordX*20)-10), ((coordY*20)-10));
 			}
 	}
 }
@@ -377,6 +392,7 @@ void Pantalla::solicitarDisparo(BatallaCampal* batalla){
 		if (batalla -> eliminarEnemigo(coordX, coordY)){
 			cout << "Mataste a un soldado enemigo" << endl;
 			batalla -> realizarDisparo(coordX, coordY, coordZ);
+			this->pintarCirculoRojo(((coordX*20)-10), ((coordY*20)-10));
 		}else{
 			batalla -> realizarDisparo(coordX, coordY, coordZ);
 			cout << "Disparo fallido!" << endl;
