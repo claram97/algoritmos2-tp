@@ -85,7 +85,7 @@ public:
 	bool esTipoValido(char tipo);
 	/*
 	*  Pre: Necesita las coordenadas y un tipo de ficha
-	*  Pos:
+	*  Pos: Si el tipo y la posicion concuerdan, devuelve true. Sino, devuelve false.
 	*/
 	bool tipoConcuerdaConPosicion(int x, int y, int z, char tipo);
 	/*
