@@ -2,10 +2,6 @@
 #define _CASILLA_H
 #include <string>
 
-#define VACIA "Vacia"
-#define INACTIVA "Inactiva"
-#define LLENA "Llena"
-
 enum EstadoDelCasillero{
 	VACIO,
 	INACTIVO,
