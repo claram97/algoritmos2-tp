@@ -361,7 +361,22 @@ void Pantalla::solicitarMovimiento(BatallaCampal* batalla, Jugador* jugador){
 		cout << "Elija movimiento (WASD): ";
 		cin >> movimiento;
 		cout << "Moviendo soldado..." << endl;
-		batalla->moverSoldado(movimiento, coordX, coordY, jugador);
+
+		TipoDeCasillero tipo = batalla->getTablero()->getCasilla(coordX, coordY, 1)->getTipoDeCasilla();
+		int xi = coordX * 20;
+		int xf = (coordX * 20) + 20;
+		int yi = coordY * 20;
+		int yf = (coordY * 20) + 20;
+		this->pintarCuadrado(yi, xi, yf, xf, tipo);
+
+		Ficha* soldado = batalla->moverSoldado(movimiento, coordX, coordY, jugador);
+
+		if( soldado != NULL ) {
+			int x = soldado->getPosicionX();
+			int y = soldado->getPosicionY();
+			this->pintarCirculo(((x*20)-10), ((y*20)-10));
+			this->pintarCirculo(((x*20)-10), ((y*20)-10));
+		}
 	}
 }
 

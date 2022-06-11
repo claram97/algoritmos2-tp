@@ -79,9 +79,9 @@ class BatallaCampal{
 		virtual ~BatallaCampal();
 		/*
 		 * Pre: Necesita el tipo de movimento, las coordenadas de la fila y la columna, y el turno
-		 * Post: Si el movimiento es valido, mueve un soldado a una casilla de distancia
+		 * Post: Si el movimiento es valido, mueve un soldado a una casilla de distancia, devuelve el soldado movido
 		 */
-		void moverSoldado(char movimiento, int x, int y, Jugador* jugador);
+		Ficha* moverSoldado(char movimiento, int x, int y, Jugador* jugador);
 		/*
 		 * Post: Devuelve la cantidad de jugadores que hay en la batalla
 		 */

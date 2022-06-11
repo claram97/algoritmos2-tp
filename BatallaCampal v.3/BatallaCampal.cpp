@@ -231,7 +231,7 @@ void BatallaCampal::realizarMovimiento(char movimiento, int fila, int columna,Fi
 			break;
 	}
 }
-void BatallaCampal::moverSoldado(char movimiento, int fila, int columna, Jugador* jugador){
+Ficha* BatallaCampal::moverSoldado(char movimiento, int fila, int columna, Jugador* jugador){
 	if(!esCoordenadaValida(fila,columna)){
 		throw "Las magnitudes elegidas para mover al soldado no son validas.";
 	}
@@ -249,7 +249,10 @@ void BatallaCampal::moverSoldado(char movimiento, int fila, int columna, Jugador
 
 					this->tablero->getCasilla(soldadoAux->getPosicionX(), soldadoAux->getPosicionY(), 1)->setEstado(INACTIVO);
 					jugador->eliminarSoldado(soldadoAux->getPosicionX(), soldadoAux->getPosicionY());
+					return NULL;
 			}
+
+			return soldadoAux;
 		}
 	}
 }
