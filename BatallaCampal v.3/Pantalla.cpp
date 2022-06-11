@@ -197,17 +197,34 @@ void Pantalla::solicitarSoldados(BatallaCampal* batalla, Jugador* jugador){
 
 }
 
-void Pantalla::usarCarta(BatallaCampal* batalla, Carta* carta, Jugador* jugador, int numeroCarta){
-
-	if(batalla == NULL || jugador == NULL || carta == NULL){
+void Pantalla::usarUnaCarta(BatallaCampal* batalla, Jugador* jugador){
+	if(batalla == NULL || jugador == NULL){
 		throw "Error en la carga";
 	}
-
 	unsigned int coordX;
 	unsigned int coordY;
 	unsigned int coordZ;
 	char filaOColumna;
-
+	int numeroCarta;
+	int contador = 0;
+	jugador->getCarta()->reiniciarCursor();
+	cout << "Cartas disponibles: "<<endl;
+	int id = 1;
+	while(jugador->getCarta()->avanzarCursor()){
+		cout << id <<"."<< jugador->getCarta()->getCursor()->getDescripcion() << endl;
+		id++;
+		}
+	cout << "Elegir carta: " <<endl;
+	cin >> numeroCarta;
+	if(numeroCarta > jugador->getCantidadDeCartas() || numeroCarta < 1){
+		throw "Numero de carta no disponible";
+	}
+	Carta* carta = jugador->getCarta()->get(numeroCarta);
+	cout << "Ejecutando carta numero "<< numeroCarta<<", tipo " <<carta->getDescripcion() <<endl;
+	if (carta->getTipoDeCarta() == SUPER){
+		cout << "Elegir Columna (C) o Fila (F): "<<endl;
+		cin >> filaOColumna;
+	}
 	cout << "Ingrese coordenadas: "<<endl;
 	cout << "Fila: ";
 	cin >> coordX;
@@ -215,21 +232,16 @@ void Pantalla::usarCarta(BatallaCampal* batalla, Carta* carta, Jugador* jugador,
 	cin >> coordY;
 	cout << "Altura: ";
 	cin >> coordZ;
-	if (carta->getTipoDeCarta() == SUPER){
-		cout << "Elegir Columna (C) o Fila (F): "<<endl;
-		cin >> filaOColumna;
-	}
-	cout << "Ejecutando carta..." <<endl;
 	if (carta->getTipoDeCarta() == RADAR){
 		if (batalla->esCoordenadaValida(coordX, coordY, coordZ) && batalla->esCoordenadaValida(coordX+2, coordY+2, coordZ+2) && batalla->esCoordenadaValida(coordX-2, coordY-2, coordZ-2)){
-		cout << "En los alrededores se encuentran "<< batalla->usarRadar(coordX, coordY, coordZ) << "cantidad de fichas"<<endl;
+		cout << "En los alrededores se encuentran "<< batalla->usarRadar(coordX, coordY, coordZ) << " cantidad de fichas"<<endl;
 		}
 	}else{
-		batalla->usarCarta(numeroCarta, coordX, coordY, coordZ,  filaOColumna);
+		batalla->usarCarta(jugador, numeroCarta, coordX, coordY, coordZ, filaOColumna);
 	}
+	cout << "Ejecutado carta " << carta->getDescripcion()<<endl;
 	jugador->eliminarCarta(numeroCarta);
 }
-
 void Pantalla::usarHerramienta(BatallaCampal* batalla, Ficha* herramientaAux, Jugador* jugador){
 
 	if(batalla == NULL || jugador == NULL || herramientaAux == NULL){
@@ -296,6 +308,7 @@ void Pantalla::solicitarCarta(BatallaCampal* batalla, Jugador* jugador){
 	int numeroCarta;
 	char opcionUsuarioC;
 	int id;
+	bool corte = false;
 
 	cout << "Turno del jugador: " << jugador->getId() << endl;
 	cout << "Generando nueva carta..." << endl;
@@ -308,27 +321,12 @@ void Pantalla::solicitarCarta(BatallaCampal* batalla, Jugador* jugador){
 	cout << "Desea usar una carta? (SI: S, NO: N): ";
 	cin >> opcionUsuarioC;
 	if(opcionUsuarioC == 'S'){
-		cout << "Cartas disponibles: "<<endl;
-		id = 1;
-		jugador->getCarta()->reiniciarCursor();
-		while(jugador->getCarta()->avanzarCursor()){
-			cout << id <<"."<< jugador->getCarta()->getCursor()->getDescripcion() << endl;
-			id++;
-		}
-		cout << "Elegir carta: " <<endl;
-		cin >> numeroCarta;
-		jugador->getCarta()->reiniciarCursor();
-		while(jugador->getCarta()->avanzarCursor()){
-			Carta* cartaAux = jugador->getCarta()->getCursor();
-			this->usarCarta(batalla, cartaAux, jugador, numeroCarta);
-		}
-
+		this->usarUnaCarta(batalla, jugador);
 	}
 	jugador->getHerramienta()->reiniciarCursor();
 	while(jugador->getHerramienta()->avanzarCursor()){
 			Ficha* herramientaAux = jugador->getHerramienta()->getCursor();
 			usarHerramienta(batalla, herramientaAux, jugador);
-
 	}
 }
 
