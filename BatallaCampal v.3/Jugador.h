@@ -117,6 +117,18 @@ public:
 	*Post: si encuentra un id coincidente con las coordenadas devuelve unsigned int
 	*/
 	unsigned int buscarIdSoldado(int fila, int columna);
+	
+	/*
+	*Pre: recibe posicion de fila y columna
+	*Post: devuelve si encuentra una herramienta en las coordenadas
+	*/
+	bool buscarHerramienta(int fila, int columna);
+	
+	/*
+	*Pre: recibe posicion de fila y columna
+	*Post: devuelve el numero si coincide la herramienta con las coordenadas 
+	*/
+	int buscarIdHerramienta(int fila, int columna);
 };
 
 #endif
