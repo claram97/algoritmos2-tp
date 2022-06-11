@@ -63,6 +63,23 @@ unsigned int Jugador::buscarIdSoldado(int fila, int columna){
 	return id;
 }
 
+int Jugador::buscarIdHerramienta(int fila, int columna){
+	if(fila < 1 || columna < 1){
+		throw "No se puede buscar un soldado en una fila o columna que no tenga valor al menos 1.";
+	}
+	bool herramientaEncontrada = false;
+	int idHerramienta = 0;
+	while(this->herramientas->avanzarCursor() && (!herramientaEncontrada)){
+		idHerramienta++;
+		if(this->herramientas->getCursor()->getPosicionX() == fila
+		 	&& this->herramientas->getCursor()->getPosicionY() == columna){
+		 		
+				herramientaEncontrada = true;
+			}
+	}
+	return idHerramienta;
+}
+
 bool Jugador::buscarSoldado(int fila, int columna){
 	bool encontrado = false;
 	this->soldados->reiniciarCursor();
@@ -74,6 +91,20 @@ bool Jugador::buscarSoldado(int fila, int columna){
 		}
 	}
 	return encontrado;
+}
+
+bool Jugador::buscarHerramienta(int fila, int columna){
+	bool HerramientaEncontrada = false;
+	this->herramientas->reiniciarCursor();
+	while (this->herramientas->avanzarCursor() && (!HerramientaEncontrada)) {
+		if (this->herramientas->getCursor()->getPosicionX() == fila
+				&& this->herramientas->getCursor()->getPosicionY() == columna) {
+			return this->herramientas->getCursor();
+			HerramientaEncontrada = true;
+		}
+	}
+	return HerramientaEncontrada;
+	
 }
 
 void Jugador::setEstado(EstadoJugador estado){
